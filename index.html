@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 91st | For What Comes After</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#080808;--surface:#111;--surface2:#181818;
+  --border:rgba(255,255,255,0.08);--white:#F2EDE4;
+  --muted:#666;--green:#5BFF8A;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(8,8,8,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:0.06em;color:var(--white);text-decoration:none;}
+.logo span{color:var(--green);}
+.hamburger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:201;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(8,8,8,0.98);flex-direction:column;align-items:center;justify-content:center;gap:32px;z-index:199;}
+.nav-menu.open{display:flex;}
+.nav-menu a{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:32px;letter-spacing:0.04em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:color 0.2s;}
+.nav-menu a:hover{color:var(--green);}
+.nav-menu .mcta{color:var(--black);background:var(--green);padding:14px 44px;border-radius:2px;margin-top:8px;}
+.nav-desktop{display:none;gap:28px;align-items:center;}
+.nav-desktop a{font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.nav-desktop a:hover{color:var(--white);}
+.nav-desktop .dcta{color:var(--black);background:var(--green);padding:10px 22px;border-radius:2px;font-weight:600;}
+
+/* HERO */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 24px 56px;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(91,255,138,0.07) 0%,transparent 70%);}
+.hero-bg-num{position:absolute;right:-10px;bottom:-20px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52vw;line-height:0.8;color:rgba(255,255,255,0.022);user-select:none;pointer-events:none;}
+.htag{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--green);margin-bottom:16px;opacity:0;animation:up 0.7s ease 0.2s forwards;}
+.hhead{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(54px,14vw,100px);line-height:0.92;text-transform:uppercase;letter-spacing:-0.01em;opacity:0;animation:up 0.8s ease 0.35s forwards;}
+.hhead em{color:var(--green);font-style:normal;}
+.hsub{margin-top:18px;font-size:15px;line-height:1.65;color:rgba(242,237,228,0.55);font-weight:300;max-width:340px;opacity:0;animation:up 0.8s ease 0.5s forwards;}
+.hbtns{display:flex;flex-direction:column;gap:12px;margin-top:32px;opacity:0;animation:up 0.8s ease 0.65s forwards;}
+.btnp{display:block;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px;background:var(--green);color:var(--black);text-decoration:none;border-radius:3px;transition:opacity 0.2s;}
+.btnp:hover{opacity:0.85;}
+.btng{display:block;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px;background:transparent;color:var(--white);text-decoration:none;border-radius:3px;border:1px solid rgba(255,255,255,0.2);transition:border-color 0.2s;}
+.btng:hover{border-color:var(--white);}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat{padding:24px 12px;text-align:center;border-right:1px solid var(--border);background:var(--surface);}
+.stat:last-child{border-right:none;}
+.snum{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(26px,6vw,52px);line-height:1;color:var(--white);}
+.snum span{color:var(--green);}
+.slbl{font-size:10px;color:var(--muted);line-height:1.4;margin-top:5px;}
+
+/* SECTIONS */
+.sec{padding:64px 24px;}
+.slabel{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.slabel::before{content:'';width:18px;height:1px;background:var(--green);}
+.stitle{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(38px,9vw,68px);line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em;}
+
+/* GAP */
+#problem{background:var(--surface);}
+.gcards{display:flex;flex-direction:column;gap:10px;margin-top:28px;}
+.gcard{background:var(--black);border:1px solid var(--border);border-radius:4px;padding:22px;transition:border-color 0.3s;}
+.gcard:hover{border-color:rgba(91,255,138,0.3);}
+.gnum{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:11px;letter-spacing:0.2em;color:var(--green);text-transform:uppercase;margin-bottom:6px;}
+.gtitle{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;text-transform:uppercase;margin-bottom:6px;}
+.gtext{font-size:14px;line-height:1.6;color:rgba(242,237,228,0.55);font-weight:300;}
+
+/* MISSION */
+.pillars{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:28px;}
+.pillar{background:var(--black);padding:24px;display:flex;gap:18px;align-items:flex-start;transition:background 0.2s;}
+.pillar:hover{background:var(--surface2);}
+.pnum{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:var(--green);opacity:0.35;line-height:1;flex-shrink:0;min-width:32px;}
+.ptitle{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:19px;text-transform:uppercase;margin-bottom:5px;}
+.ptext{font-size:14px;line-height:1.6;color:rgba(242,237,228,0.55);font-weight:300;}
+
+/* STORIES */
+#stories{background:var(--surface);}
+.storiessub{font-size:14px;color:var(--muted);margin:8px 0 28px;}
+.scards{display:flex;flex-direction:column;gap:14px;}
+.scard{background:var(--black);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color 0.3s,transform 0.2s;cursor:pointer;}
+.scard:hover{border-color:rgba(91,255,138,0.35);transform:translateY(-2px);}
+.sthumb{aspect-ratio:16/9;background:var(--surface2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.sthumb .lines{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(91,255,138,0.5) 28px,rgba(91,255,138,0.5) 29px);}
+.play{width:50px;height:50px;border-radius:50%;background:rgba(91,255,138,0.15);border:1px solid rgba(91,255,138,0.3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:background 0.2s;}
+.scard:hover .play{background:rgba(91,255,138,0.28);}
+.tri{width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:13px solid var(--green);margin-left:3px;}
+.soon{position:absolute;top:10px;right:10px;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--green);color:var(--black);padding:3px 8px;border-radius:2px;}
+.tap-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,228,0.4);white-space:nowrap;}
+.sbody{padding:16px 18px;}
+.sname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;}
+.spos{font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;}
+.squote{font-size:13px;line-height:1.6;color:rgba(242,237,228,0.5);margin-top:8px;font-style:italic;font-weight:300;border-left:2px solid rgba(91,255,138,0.25);padding-left:10px;}
+
+/* CTA */
+#cta{background:var(--surface);}
+.ctasub{font-size:15px;color:var(--muted);margin:8px 0 28px;line-height:1.5;}
+.ctaform{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;}
+.ctaform input,.ctaform select{background:var(--black);border:1px solid var(--border);color:var(--white);padding:15px 16px;font-size:15px;font-family:'Barlow',sans-serif;border-radius:3px;outline:none;width:100%;transition:border-color 0.2s;appearance:none;}
+.ctaform input:focus,.ctaform select:focus{border-color:rgba(91,255,138,0.4);}
+.ctaform input::placeholder{color:var(--muted);}
+.ctaform select option{background:var(--surface2);}
+.divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
+
+/* PARTNER CARDS */
+.pcards{display:flex;flex-direction:column;gap:10px;margin-top:22px;}
+.pcard{background:var(--black);border:1px solid var(--border);border-radius:4px;padding:18px 20px;cursor:pointer;transition:border-color 0.3s,transform 0.2s;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.pcard:hover{border-color:rgba(91,255,138,0.4);transform:translateY(-1px);}
+.pcard-left{}
+.plabel{font-size:12px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.ptext2{font-size:13px;color:rgba(242,237,228,0.55);line-height:1.4;}
+.pcard-arrow{color:var(--green);font-size:20px;flex-shrink:0;transition:transform 0.2s;}
+.pcard:hover .pcard-arrow{transform:translateX(4px);}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:36px 24px;text-align:center;}
+.flogo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:26px;letter-spacing:0.06em;}
+.flogo span{color:var(--green);}
+.ftag{font-size:12px;color:var(--muted);margin-top:3px;margin-bottom:20px;}
+.flinks{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin-bottom:20px;}
+.flinks a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.flinks a:hover{color:var(--white);}
+.fcopy{font-size:11px;color:rgba(102,102,102,0.5);}
+
+/* PLAYER MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal-sheet{background:var(--surface);width:100%;max-width:680px;max-height:92svh;border-radius:16px 16px 0 0;overflow-y:auto;padding:0 0 40px;animation:slideUp 0.35s ease;}
+.modal-handle{width:36px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin:12px auto 0;}
+.modal-close{position:sticky;top:0;display:flex;justify-content:flex-end;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);z-index:10;}
+.modal-close button{background:var(--surface2);border:1px solid var(--border);color:var(--white);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.modal-close button:hover{background:var(--border);}
+.modal-body{padding:24px 24px 0;}
+.modal-tag{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+.modal-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(40px,10vw,64px);text-transform:uppercase;line-height:0.95;margin-bottom:6px;}
+.modal-pos{font-size:13px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.photo-gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:6px;margin-bottom:24px;height:220px;}
+.photo-main{grid-row:1/3;background:var(--surface2);border-radius:8px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;}
+.photo-thumb{background:var(--surface2);border-radius:6px;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
+.photo-icon{width:36px;height:36px;border-radius:50%;background:rgba(91,255,138,0.08);border:1px solid rgba(91,255,138,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.photo-main .photo-icon{width:52px;height:52px;font-size:22px;}
+.photo-lbl{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.photo-badge{position:absolute;bottom:8px;right:8px;font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:rgba(91,255,138,0.12);color:var(--green);padding:2px 7px;border-radius:2px;border:1px solid rgba(91,255,138,0.2);}
+.modal-video{aspect-ratio:16/9;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;border:1px solid var(--border);position:relative;overflow:hidden;}
+.modal-video .lines{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 28px,rgba(91,255,138,0.5) 28px,rgba(91,255,138,0.5) 29px);}
+.modal-video .play2{width:60px;height:60px;border-radius:50%;background:rgba(91,255,138,0.15);border:1px solid rgba(91,255,138,0.3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+.modal-video .play2 .tri2{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--green);margin-left:4px;}
+.modal-video .vsoon{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--green);color:var(--black);padding:3px 8px;border-radius:2px;}
+.modal-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:10px;margin-top:24px;}
+.modal-story{font-size:15px;line-height:1.75;color:rgba(242,237,228,0.7);font-weight:300;}
+.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px;}
+.mstat{background:var(--black);border:1px solid var(--border);border-radius:6px;padding:14px 12px;text-align:center;}
+.mstat-n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:26px;color:var(--white);}
+.mstat-n span{color:var(--green);}
+.mstat-l{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.3;}
+.modal-bio-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.modal-bio-row:last-child{border-bottom:none;}
+.bio-key{color:var(--muted);font-size:12px;letter-spacing:0.05em;}
+.bio-val{color:var(--white);font-weight:500;text-align:right;}
+
+/* FORM MODAL */
+.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:400;backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;}
+.form-overlay.open{display:flex;}
+.form-sheet{background:var(--surface);width:100%;max-width:580px;border-radius:16px 16px 0 0;overflow-y:auto;max-height:90svh;animation:slideUp 0.35s ease;}
+.form-handle{width:36px;height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin:12px auto 0;}
+.form-header{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;}
+.form-header-left{}
+.form-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:4px;}
+.form-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;}
+.form-body{padding:20px 24px 32px;display:flex;flex-direction:column;gap:12px;}
+.form-body label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+.form-body input,.form-body select,.form-body textarea{background:var(--black);border:1px solid var(--border);color:var(--white);padding:14px 16px;font-size:14px;font-family:'Barlow',sans-serif;border-radius:3px;outline:none;width:100%;transition:border-color 0.2s;appearance:none;resize:none;}
+.form-body input:focus,.form-body select:focus,.form-body textarea:focus{border-color:rgba(91,255,138,0.4);}
+.form-body input::placeholder,.form-body textarea::placeholder{color:var(--muted);}
+.form-body select option{background:var(--surface2);}
+.form-close-btn{background:var(--surface2);border:1px solid var(--border);color:var(--white);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.success-msg{display:none;padding:24px;text-align:center;}
+.success-msg.show{display:block;}
+.success-icon{font-size:40px;margin-bottom:12px;}
+.success-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;margin-bottom:8px;}
+.success-sub{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .hamburger{display:none;}
+  .nav-desktop{display:flex;}
+  #hero{padding:120px 48px 80px;}
+  .hbtns{flex-direction:row;}
+  .btnp,.btng{padding:16px 36px;}
+  .sec{padding:96px 48px;}
+  .gcards{display:grid;grid-template-columns:repeat(3,1fr);}
+  .scards{display:grid;grid-template-columns:repeat(3,1fr);}
+  .sthumb{aspect-ratio:9/14;}
+  .ctainner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .divider{display:none;}
+  footer{text-align:left;display:flex;justify-content:space-between;align-items:flex-end;}
+  .ftag,.flinks{margin-bottom:0;}
+  .modal-overlay,.form-overlay{align-items:center;}
+  .modal-sheet,.form-sheet{border-radius:12px;max-height:85vh;}
+  .modal-handle,.form-handle{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">THE <span>91</span>ST</a>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  <div class="nav-desktop">
+    <a href="#problem">The Gap</a>
+    <a href="#mission">What We Do</a>
+    <a href="#stories">Stories</a>
+    <a href="#cta" class="dcta">Get Involved</a>
+  </div>
+</nav>
+<div class="nav-menu" id="menu">
+  <a href="#problem" class="ml">The Gap</a>
+  <a href="#mission" class="ml">What We Do</a>
+  <a href="#stories" class="ml">Stories</a>
+  <a href="#cta" class="mcta ml">Get Involved</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-bg-num">91</div>
+  <div style="position:relative;z-index:2;">
+    <p class="htag">The 91st Foundation</p>
+    <h1 class="hhead">Life after<br>the final<br><em>whistle.</em></h1>
+    <p class="hsub">We support college soccer players through the transition out of the game, wherever that takes them.</p>
+    <div class="hbtns">
+      <a href="#cta" class="btnp">I'm a Player</a>
+      <a href="#stories" class="btng">Watch Stories</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="snum"><span class="count" data-target="25" data-suffix="K+">0</span></div>
+    <div class="slbl">players graduate yearly with no support</div>
+  </div>
+  <div class="stat reveal d1">
+    <div class="snum"><span style="color:var(--green)">&lt;</span><span class="count" data-target="2" data-suffix="%">0</span></div>
+    <div class="slbl">ever play professionally</div>
+  </div>
+  <div class="stat reveal d2">
+    <div class="snum"><span class="count" data-target="4" data-suffix=" YRS">0</span></div>
+    <div class="slbl">of structure that disappears the moment you graduate</div>
+  </div>
+</div>
+
+<!-- THE GAP -->
+<section id="problem" class="sec">
+  <div class="slabel reveal">The Gap</div>
+  <h2 class="stitle reveal">There's a wall<br>after graduation.</h2>
+  <div class="gcards">
+    <div class="gcard reveal d1">
+      <div class="gnum">01</div>
+      <div class="gtitle">The Pro Pathway</div>
+      <div class="gtext">Real talent goes unseen. No connections, no exposure, no roadmap to get in front of clubs.</div>
+    </div>
+    <div class="gcard reveal d2">
+      <div class="gnum">02</div>
+      <div class="gtitle">The Identity Gap</div>
+      <div class="gtext">Soccer has been everything. When it ends, players don't know who they are without it.</div>
+    </div>
+    <div class="gcard reveal d3">
+      <div class="gnum">03</div>
+      <div class="gtitle">No Roadmap</div>
+      <div class="gtext">Domestic or international, chasing pro or stepping away. Every graduating player hits the same wall.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="mission" class="sec">
+  <div class="slabel reveal">What We Do</div>
+  <h2 class="stitle reveal">We open<br>the door.</h2>
+  <div class="pillars reveal">
+    <div class="pillar"><div class="pnum">01</div><div><div class="ptitle">Pro Pathway</div><div class="ptext">Player profiles, highlight reels, club outreach, and agent connections. We get you seen.</div></div></div>
+    <div class="pillar"><div class="pnum">02</div><div><div class="ptitle">Career Development</div><div class="ptext">Mentorship and resources for players building a life beyond the game.</div></div></div>
+    <div class="pillar"><div class="pnum">03</div><div><div class="ptitle">Community</div><div class="ptext">No player navigates this alone. We tell their stories and build the network around them.</div></div></div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section id="stories" class="sec">
+  <div class="slabel reveal">Their Stories</div>
+  <h2 class="stitle reveal">Real players.<br>Real journeys.</h2>
+  <p class="storiessub reveal">Tap any player to read their full story.</p>
+  <div class="scards">
+    <div class="scard reveal" onclick="openPlayer('gil')">
+      <div class="sthumb"><div class="lines"></div><div class="play"><div class="tri"></div></div><span class="soon">Coming Soon</span><span class="tap-hint">Tap to read story</span></div>
+      <div class="sbody"><div class="sname">Gil</div><div class="spos">Attacking Mid · Southampton Academy · UVU</div><div class="squote">"I know it's not gonna be easy. But I'm not gonna stop here."</div></div>
+    </div>
+    <div class="scard reveal d1" onclick="openPlayer('elijah')">
+      <div class="sthumb"><div class="lines"></div><div class="play"><div class="tri"></div></div><span class="soon">Coming Soon</span><span class="tap-hint">Tap to read story</span></div>
+      <div class="sbody"><div class="sname">Elijah</div><div class="spos">Forward · Canada · Neil McNeil HS</div><div class="squote">"Leaving everything to chase something most people say is impossible."</div></div>
+    </div>
+    <div class="scard reveal d2" style="cursor:default;opacity:0.6;">
+      <div class="sthumb"><div class="lines"></div><div class="play"><div class="tri"></div></div><span class="soon">Coming Soon</span></div>
+      <div class="sbody"><div class="sname">More Coming</div><div class="spos">Players · Stories · Pathways</div><div class="squote">Every week we sit down with players whose stories deserve to be told.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="cta" class="sec">
+  <div class="ctainner">
+    <div>
+      <div class="slabel reveal">For Players</div>
+      <h2 class="stitle reveal" style="font-size:clamp(34px,8vw,52px);">Your 91st<br>minute<br>starts here.</h2>
+      <p class="ctasub reveal">Tell us where you are. We'll take it from there.</p>
+      <div class="ctaform reveal">
+        <input type="text" placeholder="Your name">
+        <input type="email" placeholder="Your email">
+        <select><option value="" disabled selected>Where are you in your journey?</option><option>Senior pursuing professional soccer</option><option>Senior figuring out what comes next</option><option>Recent graduate who needs help now</option><option>Junior planning ahead</option></select>
+        <a href="mailto:players@the91st.org" class="btnp">Connect With Us</a>
+      </div>
+    </div>
+    <div>
+      <hr class="divider">
+      <div class="slabel reveal">For Partners</div>
+      <h2 class="stitle reveal" style="font-size:clamp(34px,8vw,52px);">Help us<br>open more<br>doors.</h2>
+      <div class="pcards">
+        <div class="pcard reveal" onclick="openForm('scout')">
+          <div class="pcard-left"><div class="plabel">Scouts and Agents</div><div class="ptext2">Access profiles of graduating players seeking opportunities.</div></div>
+          <div class="pcard-arrow">›</div>
+        </div>
+        <div class="pcard reveal d1" onclick="openForm('donor')">
+          <div class="pcard-left"><div class="plabel">Donors and Foundations</div><div class="ptext2">Help us scale the real impact we're already making.</div></div>
+          <div class="pcard-arrow">›</div>
+        </div>
+        <div class="pcard reveal d2" onclick="openForm('coach')">
+          <div class="pcard-left"><div class="plabel">Coaches and Programs</div><div class="ptext2">Ensure your players have support beyond graduation day.</div></div>
+          <div class="pcard-arrow">›</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><div class="flogo">THE <span>91</span>ST</div><div class="ftag">For what comes after the final whistle.</div></div>
+  <div class="flinks"><a href="#problem">The Gap</a><a href="#mission">What We Do</a><a href="#stories">Stories</a><a href="mailto:hello@the91st.org">Contact</a></div>
+  <div class="fcopy">© 2025 The 91st Foundation</div>
+</footer>
+
+<!-- PLAYER MODAL -->
+<div class="modal-overlay" id="playerModal" onclick="closePlayerOnBg(event)">
+  <div class="modal-sheet" id="playerSheet">
+    <div class="modal-handle"></div>
+    <div class="modal-close"><button onclick="closePlayer()">✕</button></div>
+    <div class="modal-body" id="playerContent"></div>
+  </div>
+</div>
+
+<!-- FORM MODAL -->
+<div class="form-overlay" id="formModal" onclick="closeFormOnBg(event)">
+  <div class="form-sheet" id="formSheet">
+    <div class="form-handle"></div>
+    <div class="form-header">
+      <div class="form-header-left"><div class="form-eyebrow" id="formEyebrow"></div><div class="form-title" id="formTitle"></div></div>
+      <button class="form-close-btn" onclick="closeForm()">✕</button>
+    </div>
+    <div class="form-body" id="formBody"></div>
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✓</div>
+      <div class="success-title">We got it.</div>
+      <div class="success-sub">Thanks for reaching out. Someone from The 91st will be in touch with you shortly.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Hamburger
+const ham=document.getElementById('ham'),menu=document.getElementById('menu');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');menu.classList.toggle('open');document.body.style.overflow=menu.classList.contains('open')?'hidden':'';});
+document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>{ham.classList.remove('open');menu.classList.remove('open');document.body.style.overflow='';}));
+
+// Scroll reveals
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Count-up animation
+function animateCount(el){
+  const target=parseInt(el.dataset.target);
+  const suffix=el.dataset.suffix||'';
+  const duration=1600;
+  const step=duration/target;
+  let current=0;
+  const timer=setInterval(()=>{
+    current++;
+    el.textContent=current+suffix;
+    if(current>=target)clearInterval(timer);
+  },step);
+}
+const countObs=new IntersectionObserver((e)=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.querySelectorAll('.count').forEach(animateCount);
+      countObs.unobserve(x.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.stat').forEach(s=>countObs.observe(s));
+
+// Player data
+const players={
+  gil:{
+    tag:'Free Agent · Class of 2024',
+    name:'Gil',
+    pos:'Attacking Midfielder · Right Foot · British',
+    stats:[{n:'8',s:'YRS',l:'Southampton Academy'},{n:'D1',s:'',l:'NCAA Level'},{n:'USL',s:'L2',l:'Pro Experience'}],
+    bio:[
+      {k:'Hometown',v:'United Kingdom'},
+      {k:'University',v:'Utah Valley University'},
+      {k:'Degree',v:'BS General Studies, 2024'},
+
+      {k:'Status',v:'Available Immediately'},
+    ],
+    story:`Gil started playing football at five years old in the UK, joining his local team before being scouted at seven by Southampton FC. He spent eight years in the academy system, traveling across Europe for tournaments and earning Player of the Tournament in Spain before being released at 16.
+
+Rather than give up, he and his dad identified a path through American college soccer. Starting at Otero Junior College in Colorado, he helped the program reach nationals for the first time in 12 years before transferring to Salt Lake Community College.
+
+Nine games into his sophomore season, Gil tore his ACL and partially tore his meniscus. His father flew from the UK for his surgery. He spent months in daily rehab, returning stronger and transferring to Utah Valley University to finish his Division I career.
+
+After graduation, Gil returned to the US on a tourist visa to pursue professional opportunities. He was listed for the MLS SuperDraft, played in games against pros, and performed well. But without the right connections or an agent with the right network, the calls never came. He leaves next Saturday.
+
+His story is exactly why The 91st exists.`,
+    highlight:'Highlight reel available on request.'
+  },
+  elijah:{
+    tag:'Current Player · Junior',
+    name:'Elijah',
+    pos:'Forward · Canada · Neil McNeil HS',
+    stats:[{n:'JR',s:'',l:'Year'},{n:'FWD',s:'',l:'Position'},{n:'CAN',s:'',l:'Nationality'}],
+    bio:[
+      {k:'Hometown',v:'Canada'},
+      {k:'High School',v:'Neil McNeil HS'},
+      {k:'Year',v:'Junior'},
+      {k:'Position',v:'Forward'},
+      {k:'Status',v:'Active · Class of 2026'},
+    ],
+    story:`Elijah grew up in Canada chasing a dream that most people around him didn't fully understand. In a country still building its soccer identity, he committed fully to the game and earned his way into American college soccer.
+
+Leaving home, family, and everything familiar to compete at the collegiate level takes a different kind of mentality. Elijah has it. As a junior forward, he's in the most important stretch of his college career. The years where professional scouts start paying attention and every performance matters.
+
+He's not just playing for today. He's building toward the 91st minute, and he knows it's coming.
+
+His story is still being written. We're here to make sure the next chapter has the support it deserves.`,
+    highlight:'Follow Elijah\'s journey as his senior season approaches.'
+  }
+};
+
+function openPlayer(id){
+  const p=players[id];
+  const c=document.getElementById('playerContent');
+  c.innerHTML=`
+    <div class="modal-tag">${p.tag}</div>
+    <div class="modal-name">${p.name}</div>
+    <div class="modal-pos">${p.pos}</div>
+    <div class="photo-gallery"><div class="photo-main"><div class="photo-icon">📷</div><div class="photo-lbl">Headshot</div><div class="photo-badge">Photo coming</div></div><div class="photo-thumb"><div class="photo-icon" style="width:28px;height:28px;font-size:13px;">⚽</div><div class="photo-lbl">Action</div></div><div class="photo-thumb"><div class="photo-icon" style="width:28px;height:28px;font-size:13px;">🏃</div><div class="photo-lbl">In Game</div></div></div>
+    <div class="modal-video"><div class="lines"></div><div class="play2"><div class="tri2"></div></div><span class="vsoon">Highlight Reel Coming</span></div>
+    <div class="modal-stats">${p.stats.map(s=>`<div class="mstat"><div class="mstat-n">${s.n}<span>${s.s}</span></div><div class="mstat-l">${s.l}</div></div>`).join('')}</div>
+    <div class="modal-section-title">Their Story</div>
+    <div class="modal-story">${p.story.split('\n\n').map(x=>`<p style="margin-bottom:14px;">${x}</p>`).join('')}</div>
+    <div class="modal-section-title">Player Info</div>
+    ${p.bio.map(b=>`<div class="modal-bio-row"><span class="bio-key">${b.k}</span><span class="bio-val">${b.v}</span></div>`).join('')}
+    <div style="margin-top:20px;padding:14px;background:var(--black);border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--muted);">${p.highlight}</div>
+    <a href="#cta" onclick="closePlayer()" class="btnp" style="display:block;text-align:center;margin-top:20px;">Support This Player</a>
+  `;
+  document.getElementById('playerModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePlayer(){document.getElementById('playerModal').classList.remove('open');document.body.style.overflow='';}
+function closePlayerOnBg(e){if(e.target===document.getElementById('playerModal'))closePlayer();}
+
+// Partner forms
+const forms={
+  scout:{
+    eyebrow:'Scouts and Agents',
+    title:'Find Your Next Player',
+    fields:`
+      <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div><label>Organization</label><input type="text" placeholder="Club, agency, or team name"></div>
+      <div><label>Role</label><select><option value="" disabled selected>Your role</option><option>Scout</option><option>Agent</option><option>Technical Director</option><option>Head Coach</option><option>Other</option></select></div>
+      <div><label>What level are you scouting?</label><select><option value="" disabled selected>Select level</option><option>MLS / MLS Next Pro</option><option>USL Championship</option><option>USL League One</option><option>USL League Two</option><option>International Leagues</option><option>Multiple Levels</option></select></div>
+      <div><label>What positions are you looking for?</label><input type="text" placeholder="e.g. Center Back, Attacking Midfielder"></div>
+      <div><label>Email</label><input type="email" placeholder="Your email address"></div>
+    `
+  },
+  donor:{
+    eyebrow:'Donors and Foundations',
+    title:'Invest in What\'s Next',
+    fields:`
+      <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div><label>Organization</label><input type="text" placeholder="Foundation, company, or personal"></div>
+      <div><label>How would you like to support?</label><select><option value="" disabled selected>Select type</option><option>One-time donation</option><option>Annual giving</option><option>Grant funding</option><option>Corporate sponsorship</option><option>In-kind support</option><option>Not sure yet</option></select></div>
+      <div><label>What drew you to The 91st?</label><textarea rows="3" placeholder="Tell us a little about your interest..."></textarea></div>
+      <div><label>Email</label><input type="email" placeholder="Your email address"></div>
+    `
+  },
+  coach:{
+    eyebrow:'Coaches and Programs',
+    title:'Support Your Players',
+    fields:`
+      <div><label>Your Name</label><input type="text" placeholder="Full name"></div>
+      <div><label>School or Program</label><input type="text" placeholder="University or club name"></div>
+      <div><label>Division / Level</label><select><option value="" disabled selected>Select level</option><option>NCAA Division I</option><option>NCAA Division II</option><option>NCAA Division III</option><option>NAIA</option><option>NJCAA</option><option>Club / Other</option></select></div>
+      <div><label>Approximately how many seniors do you have each year?</label><select><option value="" disabled selected>Select range</option><option>1 to 5</option><option>6 to 10</option><option>11 to 20</option><option>20 plus</option></select></div>
+      <div><label>What do your players need most?</label><textarea rows="3" placeholder="Pro pathway help, career resources, mentorship..."></textarea></div>
+      <div><label>Email</label><input type="email" placeholder="Your email address"></div>
+    `
+  }
+};
+
+function openForm(type){
+  const f=forms[type];
+  document.getElementById('formEyebrow').textContent=f.eyebrow;
+  document.getElementById('formTitle').textContent=f.title;
+  document.getElementById('formBody').innerHTML=f.fields+`<button class="btnp" style="margin-top:8px;" onclick="submitForm()">Send</button>`;
+  document.getElementById('formBody').style.display='flex';
+  document.getElementById('successMsg').classList.remove('show');
+  document.getElementById('formModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function submitForm(){
+  document.getElementById('formBody').style.display='none';
+  document.getElementById('successMsg').classList.add('show');
+}
+function closeForm(){document.getElementById('formModal').classList.remove('open');document.body.style.overflow='';}
+function closeFormOnBg(e){if(e.target===document.getElementById('formModal'))closeForm();}
+</script>
+</body>
+</html>
