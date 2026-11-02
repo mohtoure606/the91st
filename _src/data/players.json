@@ -14,11 +14,11 @@
       "Alejandro Silva striking the ball in a match",
       "Alejandro Silva on the ball in a training session"
     ],
-    "position": "Attacking midfielder / Forward",
-    "pos_short": "Attacking midfielder",
+    "position": "Midfielder",
+    "pos_short": "Midfielder",
     "origin": "Salt Lake City, Utah",
     "card_line": "RSL Academy · Utah Valley · Oregon State",
-    "headline": "Creative attacking midfielder and set-piece threat. Four-time All-WAC, a Utah Valley program record, and 56 straight starts.",
+    "headline": "Creative midfielder and set-piece threat, developed as an attacking midfielder at the Real Salt Lake Academy. Four-time All-WAC at Utah Valley, a program record.",
     "quote": "On the other side of fear is what you wanna be, but it's just disguised as fear.",
     "badges": [
       "Salt Lake City",
@@ -29,14 +29,14 @@
       "NCAA D-I",
       "Pro pathway"
     ],
-    "status": "Pursuing professional opportunities",
-    "as_of": "Profile reflects November 2026. College stats from official university sources.",
+    "status": "",
+    "as_of": "Updated November 2026.",
     "interview": "9oiMqFZqDmE",
     "highlight": "OCM6MGjGZtQ",
     "key": [
       [
         "Position",
-        "Attacking midfielder / Forward"
+        "Midfielder"
       ],
       [
         "Height / weight",
@@ -66,17 +66,6 @@
       }
     ],
     "seasons": [
-      {
-        "season": "2024",
-        "team": "Oregon State University",
-        "level": "NCAA D-I",
-        "gp": "",
-        "gs": "",
-        "g": "",
-        "a": "",
-        "min": "",
-        "note": "Graduate transfer"
-      },
       {
         "season": "2023",
         "team": "Utah Valley University",
@@ -132,7 +121,6 @@
       "a": "17",
       "min": "4,000+"
     },
-    "seasons_note": "Utah Valley figures from UVU and Oregon State Athletics. Oregon State 2024 stats to be added.",
     "sections": [
       {
         "h": "Where it started",
@@ -218,7 +206,7 @@
       ],
       [
         "Position",
-        "Attacking midfielder / Forward"
+        "Midfielder"
       ],
       [
         "Height / weight",
@@ -280,7 +268,7 @@
       "Class of 2025",
       "NCAA Division I"
     ],
-    "as_of": "Profile reflects the 2025 season.",
+    "as_of": "Updated for the 2025 season.",
     "interview": "sM7---bAkks",
     "highlight": "pByVekX46kU",
     "stats": [
@@ -384,7 +372,7 @@
       "NCAA D-I",
       "Pro pathway"
     ],
-    "status": "Pursuing professional opportunities",
+    "status": "",
     "pos_short": "Midfielder",
     "key": [
       [
@@ -436,7 +424,6 @@
         "min": ""
       }
     ],
-    "seasons_note": "Totals as previously published on the91st.org.",
     "sources": [],
     "quotes": []
   },
@@ -444,7 +431,6 @@
     "id": "bony-ulrich",
     "name": "Bony Ulrich",
     "first": "Bony",
-    "aka": "Also known as Iroche Boni",
     "card_photo": "bony-action",
     "photos": [
       "bony-portrait",
@@ -460,7 +446,7 @@
     "pos_short": "Winger",
     "origin": "Abidjan, Côte d'Ivoire",
     "card_line": "Right to Dream · Salt Lake CC · Lindsey Wilson",
-    "headline": "Quick, confident winger developed at Right to Dream Academy, with European club experience and a scoring record in U.S. college soccer.",
+    "headline": "Quick, confident winger developed at Right to Dream Academy, with European club experience. Now a junior at Lindsey Wilson University.",
     "quote": "Don't give up on your dream, and make right choices and smart decision.",
     "badges": [
       "Côte d'Ivoire",
@@ -472,7 +458,7 @@
       "NJCAA"
     ],
     "status": "Junior at Lindsey Wilson University (2026)",
-    "as_of": "Profile reflects the 2026 season through October 29, 2026.",
+    "as_of": "Updated through October 29, 2026.",
     "interview": "aEsXQxajIX0",
     "highlight": "",
     "key": [
@@ -495,16 +481,16 @@
     ],
     "stats": [
       {
-        "n": "5",
-        "l": "Goals for Salt Lake CC, 2024"
+        "n": "9",
+        "l": "Appearances for Lindsey Wilson, 2026"
+      },
+      {
+        "n": "17",
+        "l": "Shots in 2026, 7 on target"
       },
       {
         "n": "Age 9",
-        "l": "Scouted into Right to Dream"
-      },
-      {
-        "n": "25+",
-        "l": "Countries played in"
+        "l": "Joined Right to Dream Academy"
       }
     ],
     "seasons": [
@@ -518,20 +504,8 @@
         "a": "1",
         "min": "",
         "note": "Through Oct 29, 2026 · 17 shots, 7 on goal"
-      },
-      {
-        "season": "2024",
-        "team": "Salt Lake Community College",
-        "level": "NJCAA",
-        "gp": "16",
-        "gs": "11",
-        "g": "5",
-        "a": "1",
-        "min": "561",
-        "note": "2 goals vs Pacific Northwest Christian"
       }
     ],
-    "seasons_note": "2026 from Lindsey Wilson Athletics cumulative stats. 2024 from the SLCC game-by-game log.",
     "sections": [
       {
         "h": "Where it started",
@@ -560,7 +534,7 @@
       {
         "h": "America",
         "p": [
-          "He rebuilt his career in the United States at Salt Lake Community College, scoring five goals in 2024, and moved on to Lindsey Wilson University, where he is a junior in 2026. Off the pitch he describes himself as shy. On it, he says, he is different. His long-term goal is to become an agent himself, so young players get the guidance he didn't."
+          "He rebuilt his career in the United States at Salt Lake Community College and moved on to Lindsey Wilson University, where he is a junior in 2026. Off the pitch he describes himself as shy. On it, he says, he is different. His long-term goal is to become an agent himself, so young players get the guidance he didn't."
         ]
       }
     ],
@@ -577,7 +551,7 @@
       {
         "club": "Salt Lake Community College",
         "level": "NJCAA · 2024",
-        "detail": "16 appearances, 11 starts, 5 goals, 1 assist."
+        "detail": "Played the 2024 season."
       },
       {
         "club": "FC Nordsjælland",
@@ -592,8 +566,7 @@
     ],
     "honours": [
       "Selected for Right to Dream Academy at age nine",
-      "Played in more than 25 countries",
-      "5 goals in 16 appearances for Salt Lake CC (2024)"
+      "Played in more than 25 countries"
     ],
     "facts": [
       [
@@ -666,7 +639,7 @@
       "Class of 2026",
       "First-generation college student"
     ],
-    "as_of": "Profile reflects Summer 2026.",
+    "as_of": "Updated Summer 2026.",
     "interview": "lCkjCK6NPCo",
     "highlight": "",
     "stats": [
@@ -775,7 +748,7 @@
     "level": [
       "Pro pathway"
     ],
-    "status": "See profile date",
+    "status": "",
     "pos_short": "Forward",
     "key": [
       [
@@ -796,7 +769,6 @@
       ]
     ],
     "seasons": [],
-    "seasons_note": "",
     "sources": [],
     "quotes": []
   },
@@ -822,7 +794,7 @@
       "NCAA Division I",
       "Exploring a transfer"
     ],
-    "as_of": "Profile reflects the 2025 season.",
+    "as_of": "Updated for the 2025 season.",
     "interview": "qeZYiFEHOM8",
     "highlight": "PPRjL7l49Ds",
     "stats": [
@@ -918,7 +890,7 @@
     "level": [
       "NCAA D-I"
     ],
-    "status": "Exploring a transfer (2025)",
+    "status": "Exploring a transfer",
     "pos_short": "Forward",
     "key": [
       [
@@ -951,7 +923,6 @@
         "note": "2 assists in debut vs CSUB · first goal vs FGCU"
       }
     ],
-    "seasons_note": "From the season summary previously published on the91st.org.",
     "sources": [],
     "quotes": []
   }

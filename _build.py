@@ -155,10 +155,14 @@ def video(vid, label, name):
 
 def season_table(p):
     rows = p.get("seasons") or []
-    if not rows:
-        return '<p class="empty-note">Season-by-season statistics will be added after they are confirmed with official sources. Achievements and career history are listed below.</p>'
+    blanks = False
+
     def cell(v):
-        return esc(v) if v else '<span class="na" title="Not yet confirmed">—</span>'
+        nonlocal blanks
+        if v:
+            return esc(v)
+        blanks = True
+        return '<span class="na">—</span>'
     body = "".join(
         f'<tr><th scope="row">{esc(r["season"])}</th><td class="team">{esc(r["team"])}<span>{esc(r.get("level",""))}</span></td>'
         f'<td data-l="GP">{cell(r["gp"])}</td><td data-l="GS">{cell(r["gs"])}</td><td data-l="G">{cell(r["g"])}</td><td data-l="A">{cell(r["a"])}</td><td data-l="Min">{cell(r["min"])}</td>'
@@ -166,12 +170,12 @@ def season_table(p):
     t = p.get("seasons_total")
     foot = (f'<tfoot><tr><th scope="row">{esc(t["season"])}</th><td class="team"></td><td data-l="GP">{esc(t["gp"])}</td><td data-l="GS">{esc(t["gs"])}</td>'
             f'<td data-l="G">{esc(t["g"])}</td><td data-l="A">{esc(t["a"])}</td><td data-l="Min">{esc(t["min"])}</td><td class="tnote"></td></tr></tfoot>') if t else ""
-    return f'''<div class="table-wrap" tabindex="0" role="region" aria-label="Season statistics, scroll sideways on small screens">
+    key = '<p class="small mt-s">— Not available</p>' if blanks else ""
+    return f'''<div class="table-wrap" tabindex="0" role="region" aria-label="Season statistics">
 <table class="stats-table">
   <thead><tr><th scope="col">Season</th><th scope="col">Team</th><th scope="col" title="Games played">GP</th><th scope="col" title="Games started">GS</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Minutes">Min</th><th scope="col">Notes</th></tr></thead>
   <tbody>{body}</tbody>{foot}
-</table></div>
-<p class="small mt-s">{esc(p.get("seasons_note",""))} &ldquo;—&rdquo; means not yet confirmed.</p>'''
+</table></div>{key}'''
 
 
 def profile_body(p, idx):
@@ -203,6 +207,10 @@ def profile_body(p, idx):
     tabs = [("overview", "Overview"), ("video", "Video"), ("stats", "Stats"), ("career", "Career"), ("story", "Story")]
     if not vids:
         tabs = [t for t in tabs if t[0] != "video"]
+    has_stats = bool(p.get("seasons"))
+    if not has_stats:
+        tabs = [t for t in tabs if t[0] != "stats"]
+    status = f'<p class="status"><span class="dot" aria-hidden="true"></span>{esc(p["status"])}</p>' if p.get("status") else ""
     tabnav = "".join(f'<a href="#{i}">{l}</a>' for i, l in tabs)
 
     return f'''<article class="profile" aria-labelledby="pname">
@@ -215,7 +223,7 @@ def profile_body(p, idx):
       {aka}
       <p class="pos">{esc(p["position"])} · {esc(p["origin"])}</p>
       <p class="lede mt-s">{esc(p.get("headline", ""))}</p>
-      <p class="status"><span class="dot" aria-hidden="true"></span>{esc(p.get("status", ""))}</p>
+      {status}
       <div class="btn-row mt-m no-print">
         <a class="btn" href="{contact}">Contact about {esc(p["first"])} {ARROW}</a>
         {('<a class="btn btn--ghost" href="#video">Watch interview</a>' if vids else '')}
@@ -258,12 +266,12 @@ def profile_body(p, idx):
   </div>
 </section>""" if vids else ""}
 
-<section class="section" id="stats" aria-labelledby="stats-h">
+{f"""<section class="section" id="stats" aria-labelledby="stats-h">
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">Statistics</p><h2 class="h2" id="stats-h">Season by season.</h2></div>
     {season_table(p)}
   </div>
-</section>
+</section>""" if has_stats else ""}
 
 <section class="section section--mint" id="career" aria-labelledby="career-h">
   <div class="wrap profile-cols">
@@ -321,7 +329,7 @@ def resources():
                      else '<span class="badge badge--public">Public resource</span>')
             items.append(f'''<div class="res"><div class="res-top"><h3><a href="{esc(it["url"])}" target="_blank" rel="noopener">{esc(it["name"])}</a></h3>{badge}</div><p>{esc(it["desc"])}</p></div>''')
         if not any(it["status"] == "partner" for it in c["items"]):
-            items.append('''<div class="empty"><p>We are building verified listings for this category. Organizations are added after we confirm their services and agree to work together.</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>''')
+            items.append('''<div class="empty"><p>Listings coming soon.</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>''')
         out.append(f'''<section class="dir-cat" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
   <div><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2><p class="mt-s">{esc(c["intro"])}</p></div>
   <div class="dir-list">{"".join(items)}</div>
