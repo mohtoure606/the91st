@@ -14,9 +14,8 @@
         <a class="btn btn--ghost" href="#opportunities">Ways to partner</a>
       </div>
     </div>
-    <div class="hero-media reveal d2">
-      <div class="ph ph-main">{{picture name="gil-training" alt="Gilles Aurelien in a training session" sizes="(min-width: 960px) 44vw, 92vw" eager="true" position="center 25%"}}</div>
-      <div class="ph ph-inset">{{picture name="elijah-portrait" alt="Elijah Tanger" sizes="(min-width: 960px) 20vw, 42vw" position="center 20%"}}</div>
+    <div class="hero-photo reveal d2">
+      <div class="ph hero-tilt tilt" data-tilt-max="5">{{picture name="gil-training" alt="Gilles Aurelien in a training session" sizes="(min-width: 960px) 46vw, 92vw" eager="true" position="center 25%"}}<span class="pcard-glare" aria-hidden="true"></span></div>
     </div>
   </div>
 </section>
@@ -196,6 +195,7 @@
           <div class="field"><label for="pa-name">Contact person's name <span class="req" aria-hidden="true">*</span></label><input id="pa-name" name="contact_name" type="text" autocomplete="name" required aria-describedby="pa-name-err"><p class="err" id="pa-name-err" aria-live="polite"></p></div>
           <div class="field"><label for="pa-email">Email <span class="req" aria-hidden="true">*</span></label><input id="pa-email" name="email" type="email" autocomplete="email" required aria-describedby="pa-email-err"><p class="err" id="pa-email-err" aria-live="polite"></p></div>
         </div>
+        <div class="field"><label for="pa-player">Player you're interested in <span class="opt">(optional)</span></label><input id="pa-player" name="player_of_interest" type="text" placeholder="e.g. Alejandro Silva"></div>
         <div class="field"><label for="pa-offer">What services or opportunities does your organization offer? <span class="req" aria-hidden="true">*</span></label><textarea id="pa-offer" name="services_offered" required minlength="10" aria-describedby="pa-offer-err"></textarea><p class="err" id="pa-offer-err" aria-live="polite"></p></div>
         <div class="field">
           <fieldset class="checks checks--2" data-required-group aria-describedby="pa-collab-err">

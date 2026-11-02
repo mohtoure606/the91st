@@ -162,6 +162,132 @@
     });
   });
 
+
+  /* ---------- 3D tilt (pointer devices only) ---------- */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduce && finePointer) {
+    document.querySelectorAll(".tilt").forEach(function (el) {
+      var max = parseFloat(el.getAttribute("data-tilt-max")) || 9;
+      var raf = 0;
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          el.classList.add("is-tilting");
+          el.style.setProperty("--ry", ((x - 0.5) * 2 * max).toFixed(2) + "deg");
+          el.style.setProperty("--rx", ((0.5 - y) * 2 * max).toFixed(2) + "deg");
+          el.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
+          el.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
+        });
+      });
+      el.addEventListener("pointerleave", function () {
+        cancelAnimationFrame(raf);
+        el.classList.remove("is-tilting");
+        el.style.setProperty("--rx", "0deg");
+        el.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  /* ---------- Player rail arrows ---------- */
+  document.querySelectorAll(".rail-wrap").forEach(function (wrap) {
+    var rail = wrap.querySelector(".rail");
+    var btns = wrap.querySelectorAll(".rail-btn");
+    function update() {
+      var max = rail.scrollWidth - rail.clientWidth - 2;
+      btns[0].disabled = rail.scrollLeft <= 2;
+      btns[1].disabled = rail.scrollLeft >= max;
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var card = rail.firstElementChild;
+        var step = card ? card.getBoundingClientRect().width + 20 : 320;
+        rail.scrollBy({ left: step * parseInt(b.getAttribute("data-dir"), 10), behavior: reduce ? "auto" : "smooth" });
+      });
+    });
+    rail.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+
+  /* ---------- Roster filters ---------- */
+  var filterBtns = document.querySelectorAll(".filter");
+  if (filterBtns.length) {
+    var cards = document.querySelectorAll(".roster .pcard");
+    var countEl = document.querySelector("[data-count]");
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var f = btn.getAttribute("data-filter"), n = 0;
+        filterBtns.forEach(function (b) { var on = b === btn; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", String(on)); });
+        cards.forEach(function (c) {
+          var show = f === "all" || (" " + c.getAttribute("data-level") + " ").indexOf(f) > -1;
+          c.hidden = !show;
+          if (show) { n++; c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop"); }
+        });
+        if (countEl) countEl.textContent = n;
+      });
+    });
+  }
+
+  /* ---------- Profile tab bar: highlight current section ---------- */
+  var tabLinks = document.querySelectorAll(".tabbar a");
+  if (tabLinks.length && "IntersectionObserver" in window) {
+    var map = {};
+    tabLinks.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          tabLinks.forEach(function (a) { a.classList.remove("is-active"); a.removeAttribute("aria-current"); });
+          var a = map[en.target.id];
+          if (a) { a.classList.add("is-active"); a.setAttribute("aria-current", "true"); a.scrollIntoView({ block: "nearest", inline: "nearest" }); }
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+  }
+
+  /* ---------- Count-up numbers ---------- */
+  var counters = document.querySelectorAll("[data-count-to]");
+  if (counters.length && "IntersectionObserver" in window && !reduce) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        cio.unobserve(en.target);
+        var el = en.target, txt = el.getAttribute("data-count-to");
+        var m = txt.match(/^(\D*)([\d,]+)(.*)$/);
+        if (!m) return;
+        var target = parseInt(m[2].replace(/,/g, ""), 10), comma = m[2].indexOf(",") > -1, t0 = performance.now();
+        (function tick(now) {
+          var p = Math.min((now - t0) / 1200, 1), v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          el.textContent = m[1] + (comma ? v.toLocaleString("en-US") : v) + m[3];
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* ---------- Share / print ---------- */
+  document.querySelectorAll("[data-print]").forEach(function (b) { b.addEventListener("click", function () { window.print(); }); });
+  document.querySelectorAll("[data-share]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var data = { title: document.title, url: location.href.split("#")[0] };
+      if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(data.url).then(function () {
+          var old = b.textContent; b.textContent = "Link copied"; setTimeout(function () { b.textContent = old; }, 2000);
+        });
+      }
+    });
+  });
+
+  /* ---------- Pre-fill player of interest (?player=Name) ---------- */
+  var player = params.get("player");
+  var pf = document.querySelector('input[name="player_of_interest"]');
+  if (player && pf) pf.value = player;
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

@@ -25,8 +25,12 @@ Folders starting with `_` are not published by GitHub Pages.
 2. Run `python3 _build.py` (needs Python 3 and `pip install Pillow`).
 3. Commit everything, including the generated `.html` files, and push.
 
-### Add or update a player story
-Edit `_src/data/players.json` (copy an existing player as a template), then rebuild. Photo names refer to files in `assets/img/`.
+### Add or update a player profile
+Each player in `_src/data/players.json` gets a shareable profile page at `/stories/<id>/` (key facts, season stats table, career timeline, honours, official sources, interview videos, story, Save as PDF). Copy an existing player as a template, then rebuild.
+- `seasons`: one row per season; leave a value as `""` if it isn't confirmed (shows as "—").
+- `sources`: links to official roster or stat pages.
+- `photos`: first one is the profile card; names refer to files in `assets/img/`.
+- `level`: tags used by the filters on the Player Stories page (e.g. "NCAA D-I", "NAIA").
 
 ### Add a photo
 Put the original in `images/`, add a line to the `PHOTOS` list in `_tools/optimize_images.py`, run `python3 _tools/optimize_images.py`, then rebuild.

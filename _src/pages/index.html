@@ -11,10 +11,8 @@
         <a class="btn btn--ghost" href="/partners/">Become a Partner</a>
       </div>
     </div>
-    <div class="hero-media reveal d2">
-      <div class="ph ph-main">{{picture name="gil-action" alt="Gilles Aurelien, a featured 91st player, striking the ball in a college match" sizes="(min-width: 960px) 44vw, 92vw" eager="true" position="center 30%"}}</div>
-      <div class="ph ph-inset">{{picture name="sharif-action" alt="Sharif Sayawu, a featured 91st player, dribbling past a defender" sizes="(min-width: 960px) 20vw, 42vw" position="35% center"}}</div>
-      <div class="minute-badge" aria-hidden="true"><strong>91'</strong><span>The next minute</span></div>
+    <div class="hero-photo reveal d2">
+      <div class="ph hero-tilt tilt" data-tilt-max="5">{{picture name="gil-action" alt="Gilles Aurelien, a featured 91st player, striking the ball in a college match" sizes="(min-width: 960px) 46vw, 92vw" eager="true" position="center 30%"}}<span class="pcard-glare" aria-hidden="true"></span></div>
     </div>
   </div>
 </section>
@@ -67,7 +65,7 @@
         </div>
       </article>
       <article class="card area-card card--link reveal d1">
-        <div class="typeblock typeblock--green"><span class="icon" style="background:var(--white)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg></span><span class="big" data-n="02" aria-hidden="true"></span></div>
+        <div class="ph">{{picture name="alejandro-grad" alt="Alejandro Silva at his college graduation" sizes="(min-width: 1000px) 25vw, (min-width: 720px) 50vw, 100vw" position="center 25%"}}</div>
         <div class="body">
           <span class="card-num">02</span>
           <h3 class="h3">Education and scholarships</h3>
@@ -124,11 +122,11 @@
         <h2 class="h2" id="stories-title">Every player has a story. Every story has a next chapter.</h2>
       </div>
       <div class="reveal d1">
-        <p class="lede">Real players, in their own words. Their journeys show what's at stake when college soccer ends, and what's possible next.</p>
-        <p class="mt-s"><a class="link-arrow" href="/stories/">All player stories <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        <p class="lede">Real players, in their own words. Each profile includes stats, career history, and the full interview.</p>
+        <p class="mt-s"><a class="link-arrow" href="/stories/">See all {{player_count}} players <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
       </div>
     </div>
-    {{players_cards}}
+    {{players_rail}}
   </div>
 </section>
 

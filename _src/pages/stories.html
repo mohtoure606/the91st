@@ -1,4 +1,9 @@
-<!--meta {"title": "Player Stories", "description": "Real college soccer players, in their own words: Gilles Aurelien, Elijah Tanger, and Sharif Sayawu share where they came from and what comes next.", "path": "/stories/", "nav": "stories"} -->
+<!--meta {"title": "Player Stories", "description": "Meet the players: profiles with stats, career history, honours, and full interviews for Alejandro Silva, Gilles Aurelien, Bony Ulrich, Elijah Tanger, and Sharif Sayawu.", "path": "/stories/", "nav": "stories"} -->
+
+<script>
+  /* Old links like /stories/#gilles-aurelien now open the player's own profile page. */
+  (function () { var ids = {{player_ids}}; var h = location.hash.slice(1); if (ids.indexOf(h) > -1) location.replace('/stories/' + h + '/'); })();
+</script>
 
 <section class="page-hero">
   <div class="wrap page-hero-grid">
@@ -7,13 +12,18 @@
       <h1 class="display reveal d1">Every player has a story.</h1>
     </div>
     <div class="reveal d2">
-      <p class="lede">These are real players, in their own words: where they came from, what the game gave them, what it cost them, and what they are building next.</p>
-      <div class="mt-m">{{story_index}}</div>
+      <p class="lede">Real players, in their own words. Each profile works like a résumé: key facts, season stats, career history, honours, official sources, and the full interview.</p>
+      <p class="small mt-s">Recruiters and clubs: every profile has its own link you can share, and a <strong>Save as PDF</strong> option.</p>
     </div>
   </div>
 </section>
 
-{{stories}}
+<section class="section section--mint" aria-labelledby="roster-h">
+  <div class="wrap">
+    <h2 class="visually-hidden" id="roster-h">Player roster</h2>
+    {{roster}}
+  </div>
+</section>
 
 <!-- Where are they now -->
 <section class="section section--forest" aria-labelledby="now-title">

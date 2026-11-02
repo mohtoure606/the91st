@@ -13,6 +13,7 @@ WIDTHS = [480, 960, 1440]
 
 # name -> (source file, crop box as fractions (left, top, right, bottom) or None)
 # Sharif photos are Instagram screenshots; crop removes the mute icon bottom-right.
+# Bony photos are cropped closer so he fills the frame.
 PHOTOS = {
     "gil-action": ("gil_action.jpg", None),
     "gil-headshot": ("gil_headshot.jpg", None),
@@ -23,6 +24,15 @@ PHOTOS = {
     "sharif-action": ("Sharif_action.jpg", (0, 0, 0.93, 0.88)),
     "sharif-training": ("Sharif_training.jpg", (0, 0, 0.93, 0.88)),
     "mohamed": ("mohamed.jpg", None),
+    "alejandro-grad": ("alejandro_graduation.jpg", None),
+    "alejandro-portrait": ("alejandro_portrait.jpg", None),
+    "alejandro-action": ("alejandro_action.jpg", None),
+    "alejandro-training": ("alejandro_training.jpg", None),
+    "alejandro-training2": ("alejandro_training2.jpg", None),
+    "bony-portrait": ("bony_portrait.jpg", (0.24, 0.30, 1.0, 1.0)),
+    "bony-action": ("bony_action.jpg", (0.04, 0.36, 0.70, 1.0)),
+    "bony-lindsey": ("bony_lindsey.jpg", None),
+    "bony-lindsey-night": ("bony_lindsey_night.jpg", None),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)
