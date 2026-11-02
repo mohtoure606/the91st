@@ -20,7 +20,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=202611021506">
+<link rel="stylesheet" href="/assets/css/site.css?v=202611021650">
 
 </head>
 <body>
@@ -70,22 +70,20 @@
 </header>
 
 <main id="main">
-<section class="page-hero page-hero--mint">
-  <div class="wrap page-hero-grid">
+<section class="page-hero" style="border-bottom:0;padding-bottom:32px">
+  <div class="wrap head-row" style="margin-bottom:0">
     <div>
       <p class="eyebrow reveal">Resources</p>
-      <h1 class="display reveal d1">A growing directory for what comes next.</h1>
+      <h1 class="display reveal d1">For what comes next.</h1>
     </div>
-    <div class="reveal d2">
-      <p class="lede">Organizations and programs that can help players after college soccer.</p>
-    </div>
+    <p class="lede reveal d2">Organizations and programs that can help players after college soccer.</p>
   </div>
 </section>
 
-<section class="section" aria-label="Resource directory">
+<section class="section section--tight" aria-label="Resource directory" style="padding-top:0">
   <div class="wrap">
-    <div class="mb-0" style="margin-bottom:32px"><nav class="dir-nav" aria-label="Resource categories"><a href="#football">Professional football</a><a href="#education">Education and scholarships</a><a href="#career">Career development</a><a href="#wellbeing">Health and wellbeing</a><a href="#transition">Athlete transition</a></nav></div>
-    <section class="dir-cat" id="football" aria-labelledby="football-h">
+    <div class="reveal"><div class="cats" role="group" aria-label="Filter by category"><button type="button" class="cat" data-cat="football" aria-pressed="false"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/></svg></span><span class="t">Professional football</span></button><button type="button" class="cat" data-cat="education" aria-pressed="false"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><span class="t">Education and scholarships</span></button><button type="button" class="cat" data-cat="career" aria-pressed="false"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/></svg></span><span class="t">Career development</span></button><button type="button" class="cat" data-cat="wellbeing" aria-pressed="false"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 5.6a5 5 0 00-7.1 0L12 7.3l-1.7-1.7a5 5 0 10-7.1 7.1L12 21.5l8.8-8.8a5 5 0 000-7.1z"/></svg></span><span class="t">Health and wellbeing</span></button><button type="button" class="cat" data-cat="transition" aria-pressed="false"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="t">Athlete transition</span></button></div></div>
+    <div class="mt-m"><section class="dir-cat" id="football" aria-labelledby="football-h">
   <div><h2 class="h3" id="football-h">Professional football</h2><p class="mt-s">Clubs, academies, trials, and development programs that offer real pathways for players finishing college soccer, in the United States and abroad.</p></div>
   <div class="dir-list"><div class="empty"><p>Listings coming soon.</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div></div>
 </section>
@@ -104,7 +102,7 @@
 <section class="dir-cat" id="transition" aria-labelledby="transition-h">
   <div><h2 class="h3" id="transition-h">Athlete transition</h2><p class="mt-s">Organizations and programs focused on life after competitive sport: identity, purpose, and the practical steps of starting over.</p></div>
   <div class="dir-list"><div class="empty"><p>Listings coming soon.</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div></div>
-</section>
+</section></div>
   </div>
 </section>
 
@@ -210,6 +208,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js?v=202611021506" defer></script>
+<script src="/assets/js/site.js?v=202611021650" defer></script>
 </body>
 </html>

@@ -20,7 +20,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=202611021506">
+<link rel="stylesheet" href="/assets/css/site.css?v=202611021650">
 
 </head>
 <body>
@@ -70,107 +70,53 @@
 </header>
 
 <main id="main">
-<section class="page-hero page-hero--mint">
-  <div class="wrap page-hero-grid">
+<section class="hero" aria-labelledby="players-h">
+  <div class="wrap hero-grid">
     <div>
       <p class="eyebrow reveal">For players</p>
-      <h1 class="display reveal d1">Your career on the pitch is one part of your story.</h1>
+      <h1 class="display reveal d1" id="players-h">What do you need next?</h1>
+      <p class="lede reveal d2">Your career on the pitch is one part of your story. Pick what you're looking for and tell us about yourself.</p>
     </div>
-    <div class="reveal d2">
-      <p class="lede">Whether you want to keep playing, keep studying, start a career, or figure out what's next, we'll help you explore your options and connect with people who can help.</p>
-      <div class="btn-row mt-m">
-        <a class="btn" href="#apply">Tell us your story <span class="arrow" aria-hidden="true">&rarr;</span></a>
-      </div>
+    <div class="hero-photo reveal d2">
+      <div class="ph hero-tilt tilt" data-tilt-max="5"><picture class=""><source type="image/webp" srcset="/assets/img/elijah-mural-480.webp 480w, /assets/img/elijah-mural-960.webp 960w" sizes="(min-width: 960px) 46vw, 92vw"><img src="/assets/img/elijah-mural-960.jpg" srcset="/assets/img/elijah-mural-480.jpg 480w, /assets/img/elijah-mural-960.jpg 960w" sizes="(min-width: 960px) 46vw, 92vw" width="960" height="1307" alt="Elijah Tenger balancing a ball on his head in front of a mural" loading="eager" fetchpriority="high" decoding="async" style="object-position:center 20%"></picture><span class="pcard-glare" aria-hidden="true"></span></div>
     </div>
   </div>
 </section>
 
-<section class="section section--tight" aria-labelledby="status-title">
+<section class="section section--tight" aria-label="How we can help" style="padding-top:0">
   <div class="wrap">
-    <div class="split split--center">
-      <h2 class="h3 reveal" id="status-title">What's available today, and what we're building.</h2>
-      <div class="reveal d1">
-        <p class="mb-0">Some of this we offer today. The rest we are building with partners. We can't promise placements, scholarships, or outcomes.</p>
-        <div class="legend mt-s"><span class="badge badge--now">Available now</span><span class="badge badge--dev">In development</span></div>
-      </div>
+    <div class="needs">
+      <a class="pc pc--side tilt reveal" id="profile" href="#apply"><picture class=""><source type="image/webp" srcset="/assets/img/bony-portrait-480.webp 480w" sizes="(min-width: 900px) 46vw, 100vw"><img src="/assets/img/bony-portrait-480.jpg" srcset="/assets/img/bony-portrait-480.jpg 480w" sizes="(min-width: 900px) 46vw, 100vw" width="480" height="539" alt="Bony Ulrich driving forward with the ball" loading="lazy" decoding="async" style="object-position:70% 30%"></picture><span class="pc-cap"><span class="pc-title">Submit my profile</span><span class="pc-sub">Share your story, stats, and highlights so we can get to know you.</span><span class="btn btn--sm">Start <span class="arrow" aria-hidden="true">&rarr;</span></span></span><span class="pcard-glare" aria-hidden="true"></span></a>
+      <a class="pc pc--side tilt reveal d1" id="football" href="?need=football#apply"><picture class=""><source type="image/webp" srcset="/assets/img/sharif-action-480.webp 480w, /assets/img/sharif-action-960.webp 960w" sizes="(min-width: 900px) 46vw, 100vw"><img src="/assets/img/sharif-action-960.jpg" srcset="/assets/img/sharif-action-480.jpg 480w, /assets/img/sharif-action-960.jpg 960w" sizes="(min-width: 900px) 46vw, 100vw" width="960" height="593" alt="Sharif Sayawu dribbling past a defender" loading="lazy" decoding="async" style="object-position:70% center"></picture><span class="pc-cap"><span class="pc-title">Help me reach clubs</span><span class="pc-sub">We introduce players to clubs and programs that may be a fit, in the US and abroad.</span><span class="btn btn--sm">Start <span class="arrow" aria-hidden="true">&rarr;</span></span></span><span class="pcard-glare" aria-hidden="true"></span></a>
+      <a class="pc pc--side tilt reveal" id="education" href="?need=education#apply"><picture class=""><source type="image/webp" srcset="/assets/img/alejandro-portrait-480.webp 480w, /assets/img/alejandro-portrait-960.webp 960w" sizes="(min-width: 900px) 46vw, 100vw"><img src="/assets/img/alejandro-portrait-960.jpg" srcset="/assets/img/alejandro-portrait-480.jpg 480w, /assets/img/alejandro-portrait-960.jpg 960w" sizes="(min-width: 900px) 46vw, 100vw" width="960" height="1356" alt="Alejandro Silva in his Oregon State kit" loading="lazy" decoding="async" style="object-position:70% 20%"></picture><span class="pc-cap"><span class="pc-title">Find a new university</span><span class="pc-sub">Transfers and graduate programs, including places you can keep playing.</span><span class="btn btn--sm">Start <span class="arrow" aria-hidden="true">&rarr;</span></span></span><span class="pcard-glare" aria-hidden="true"></span></a>
+      <a class="pc pc--side tilt reveal d1" id="career" href="?need=career#apply"><picture class=""><source type="image/webp" srcset="/assets/img/elijah-training-480.webp 480w, /assets/img/elijah-training-960.webp 960w" sizes="(min-width: 900px) 46vw, 100vw"><img src="/assets/img/elijah-training-960.jpg" srcset="/assets/img/elijah-training-480.jpg 480w, /assets/img/elijah-training-960.jpg 960w" sizes="(min-width: 900px) 46vw, 100vw" width="960" height="1404" alt="Elijah Tenger juggling the ball in training" loading="lazy" decoding="async" style="object-position:65% center"></picture><span class="pc-cap"><span class="pc-title">Connect me with an opportunity</span><span class="pc-sub">Trials, development programs, mentors, and careers beyond the pitch.</span><span class="btn btn--sm">Start <span class="arrow" aria-hidden="true">&rarr;</span></span></span><span class="pcard-glare" aria-hidden="true"></span></a>
+    </div>
+    <div class="strip-note mt-m reveal" id="wellbeing">
+      <p><strong>Health and wellbeing:</strong> recovery and mental health support after competitive sport. If you're struggling right now, call or text <a href="tel:988">988</a> (US) for free, confidential support, 24/7.</p>
+      <a class="link-arrow" href="/resources/">Wellbeing resources <span class="arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </section>
 
-<section class="section section--mint" aria-label="How we can help">
+<section class="section section--tight" aria-labelledby="how-h">
   <div class="wrap">
-    <div class="category reveal" id="football" style="border-top:0;padding-top:0">
-      <div class="category-head">
-        <span class="card-num">01</span>
-        <h2 class="h2">Football opportunities</h2>
-        <p>For players who want to keep playing, in the United States or internationally.</p>
-      </div>
-      <ul class="service-list">
-        <li><div><strong>Player story features</strong><span class="d">Interviews and video features that tell your story and share it with our audience.</span></div><span class="badge badge--now">Available now</span></li>
-        <li><div><strong>Player profiles and visibility</strong><span class="d">A profile with your background, stats, honours, and highlights that clubs can review.</span></div><span class="badge badge--now">Available now</span></li>
-        <li><div><strong>Club and program outreach</strong><span class="d">Introductions on your behalf to clubs and programs that may be a fit.</span></div><span class="badge badge--now">Available now</span></li>
-        <li><div><strong>International club pathways</strong><span class="d">Relationships with clubs and development programs abroad.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Development opportunities</strong><span class="d">Trials, showcases, and training environments through partner organizations.</span></div><span class="badge badge--dev">In development</span></li>
-      </ul>
-    </div>
-
-    <div class="category reveal" id="education">
-      <div class="category-head">
-        <span class="card-num">02</span>
-        <h2 class="h2">Education</h2>
-        <p>For players who want to keep learning, with or without soccer.</p>
-      </div>
-      <ul class="service-list">
-        <li><div><strong>Transfer and program outreach</strong><span class="d">Help reaching college programs when you're looking for a new school.</span></div><span class="badge badge--now">Available now</span></li>
-        <li><div><strong>Graduate school opportunities</strong><span class="d">Information on graduate programs, including ones where you may still be able to play.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Scholarship resources</strong><span class="d">A directory of scholarships open to former college athletes.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Educational partnerships</strong><span class="d">Relationships with universities and international education programs.</span></div><span class="badge badge--dev">In development</span></li>
-      </ul>
-    </div>
-
-    <div class="category reveal" id="career">
-      <div class="category-head">
-        <span class="card-num">03</span>
-        <h2 class="h2">Career development</h2>
-        <p>For players building a career beyond competitive soccer.</p>
-      </div>
-      <ul class="service-list">
-        <li><div><strong>Professional networking</strong><span class="d">Introductions to people working in fields you're interested in.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Career mentorship</strong><span class="d">One-on-one guidance from mentors who have made a similar move.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Employment resources</strong><span class="d">Employers and job resources that value what athletes bring.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Translating athletic experience</strong><span class="d">Help describing your discipline, teamwork, and leadership in résumés and interviews.</span></div><span class="badge badge--dev">In development</span></li>
-      </ul>
-    </div>
-
-    <div class="category reveal" id="wellbeing">
-      <div class="category-head">
-        <span class="card-num">04</span>
-        <h2 class="h2">Health and wellbeing</h2>
-        <p>For the body and mind, during and after the transition.</p>
-      </div>
-      <ul class="service-list">
-        <li><div><strong>Physical recovery resources</strong><span class="d">Sports medicine and physical therapy options for players managing injuries.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Mental wellbeing resources</strong><span class="d">Support for the identity and emotional side of leaving competitive sport.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Athlete support organizations</strong><span class="d">Connections to organizations that focus on athlete transition.</span></div><span class="badge badge--dev">In development</span></li>
-        <li><div><strong>Transition guidance</strong><span class="d">A starting point for players who don't know what comes next.</span></div><span class="badge badge--dev">In development</span></li>
-      </ul>
-      <div class="note" style="grid-column:1/-1"><p><strong>If you're struggling right now,</strong> you don't have to wait for us. In the US, call or text <a href="tel:988">988</a> or visit <a href="https://988lifeline.org/" target="_blank" rel="noopener">988lifeline.org</a> for free, confidential support, 24/7.</p></div>
-    </div>
+    <h2 class="visually-hidden" id="how-h">How it works</h2>
+    <ol class="steps steps--3">
+      <li class="reveal"><h3 class="h3">Tell us where you are</h3><p>Your school, position, and what you want next.</p></li>
+      <li class="reveal d1"><h3 class="h3">We review it</h3><p>We look at your profile and what you're looking for.</p></li>
+      <li class="reveal d2"><h3 class="h3">We connect</h3><p>Introductions to the clubs, schools, and people that fit. No promises, real effort.</p></li>
+    </ol>
   </div>
 </section>
 
 <!-- Apply -->
-<section class="section" id="apply" aria-labelledby="apply-title">
+<section class="section section--mint" id="apply" aria-labelledby="apply-title">
   <div class="wrap split">
     <div class="reveal">
       <p class="eyebrow">Player inquiry</p>
-      <h2 class="h2" id="apply-title">Tell us where you are.</h2>
-      <p class="lede mt-m">Share a little about yourself and what you're looking for.</p>
+      <h2 class="h2" id="apply-title">Tell us your story.</h2>
+      <p class="serif-quote mt-m">What did the week after your last college game feel like?</p>
       <p class="mt-s">Prefer email? Write to <a href="mailto:team@the91st.org">team@the91st.org</a>.</p>
-      <div class="mt-l">
-        <p class="eyebrow">See what a story looks like</p>
-        <a class="link-arrow" href="/stories/">Read player stories <span class="arrow" aria-hidden="true">&rarr;</span></a>
-      </div>
     </div>
     <div class="form-shell reveal d1">
       <form class="form" data-form="player" data-success="player-success" action="https://formspree.io/f/mlgavqpz" method="POST">
@@ -208,8 +154,9 @@
           </fieldset>
           <p class="err" id="pl-int-err" aria-live="polite"></p>
         </div>
-        <div class="field"><label for="pl-link">Highlight reel or profile link <span class="opt">(optional)</span></label><input id="pl-link" name="highlight_link" type="url" placeholder="https://" aria-describedby="pl-link-err"><p class="err" id="pl-link-err" aria-live="polite"></p></div>
+        <details class="more"><summary>Add your highlights and story (optional)</summary><div class="more-body form"><div class="field"><label for="pl-link">Highlight reel or profile link <span class="opt">(optional)</span></label><input id="pl-link" name="highlight_link" type="url" placeholder="https://" aria-describedby="pl-link-err"><p class="err" id="pl-link-err" aria-live="polite"></p></div>
         <div class="field"><label for="pl-story">Your story <span class="opt">(optional)</span></label><textarea id="pl-story" name="story" placeholder="What did the week after your last college game feel like? What are you hoping for next?"></textarea></div>
+        </div></details>
         <div class="field">
           <label class="check"><input type="checkbox" name="consent" value="yes" required data-msg="Please confirm so we can reply to you." aria-describedby="pl-consent-err"> <span>I agree that The 91st Foundation may contact me about this inquiry. See our <a href="/privacy/">Privacy Policy</a>.</span></label>
           <p class="err" id="pl-consent-err" aria-live="polite"></p>
@@ -284,6 +231,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js?v=202611021506" defer></script>
+<script src="/assets/js/site.js?v=202611021650" defer></script>
 </body>
 </html>

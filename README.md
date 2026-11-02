@@ -26,11 +26,13 @@ Folders starting with `_` are not published by GitHub Pages.
 3. Commit everything, including the generated `.html` files, and push.
 
 ### Add or update a player profile
-Each player in `_src/data/players.json` gets a shareable profile page at `/stories/<id>/` (key facts, season stats table, career timeline, honours, official sources, interview videos, story, Save as PDF). Copy an existing player as a template, then rebuild.
-- `seasons`: one row per season; leave a value as `""` if it isn't confirmed (shows as "—").
+Each player in `_src/data/players.json` gets a shareable profile page at `/stories/<id>/` with tabs for Story, Stats, Career, Honours & info, and Video, plus Share and Save as PDF. Copy an existing player as a template, then rebuild.
+- `seasons`: one row per season; leave a value as `""` if it isn't confirmed. Cells stay empty, and a column that is empty for every season is hidden.
 - `sources`: links to official roster or stat pages.
 - `photos`: first one is the profile card; names refer to files in `assets/img/`.
-- `level`: tags used by the filters on the Player Stories page (e.g. "NCAA D-I", "NAIA").
+- `short_quote` and `card_line`: the quote and path line shown on the player cards.
+- The first player in the list is the featured story on the Player Stories page.
+- Renamed a player URL? Add the old path to `REDIRECTS` in `_build.py` so old links still work.
 
 ### Add a photo
 Put the original in `images/`, add a line to the `PHOTOS` list in `_tools/optimize_images.py`, run `python3 _tools/optimize_images.py`, then rebuild.
