@@ -126,7 +126,7 @@
         if (!ok) { f.classList.add("invalid"); f.querySelector(".err").textContent = "Choose at least one option."; if (!firstBad) firstBad = group.querySelector("input"); }
         else f.classList.remove("invalid");
       });
-      if (firstBad) { firstBad.focus(); return; }
+      if (firstBad) { var dt = firstBad.closest("details"); if (dt) dt.open = true; firstBad.focus(); return; }
 
       var btn = form.querySelector("button[type=submit]");
       var label = btn ? btn.innerHTML : "";
@@ -287,6 +287,78 @@
   var player = params.get("player");
   var pf = document.querySelector('input[name="player_of_interest"]');
   if (player && pf) pf.value = player;
+
+
+  /* ---------- Tabs (profile sections, partner types) ---------- */
+  function setupTabs(tablist, onSelect) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+      if (onSelect) onSelect(tab);
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t, false); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+        if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === "Home") n = tabs[0];
+        if (e.key === "End") n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+    return { select: select, byPanel: function (id) { return tabs.filter(function (t) { return t.getAttribute("aria-controls") === id; })[0]; } };
+  }
+  var profileTabs = document.querySelector("[data-tabs] [role=tablist]");
+  if (profileTabs) {
+    var bar = document.querySelector("[data-tabs]");
+    var pt = setupTabs(profileTabs, function () {
+      var top = bar.getBoundingClientRect().top + window.scrollY - 72;
+      if (window.scrollY > top) window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
+    });
+    function openFromHash() {
+      var t = pt.byPanel(location.hash.slice(1));
+      if (t) { pt.select(t, false); bar.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }
+    }
+    document.querySelectorAll("[data-open-tab]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var t = pt.byPanel(a.getAttribute("data-open-tab"));
+        if (t) { e.preventDefault(); pt.select(t, false); bar.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }
+      });
+    });
+    if (location.hash) openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+  }
+  document.querySelectorAll("[data-ptabs]").forEach(function (list) { setupTabs(list); });
+
+  /* ---------- Resource category filter ---------- */
+  var catBtns = document.querySelectorAll(".cat[data-cat]");
+  if (catBtns.length) {
+    var cats = document.querySelectorAll(".dir-cat");
+    catBtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var on = b.getAttribute("aria-pressed") !== "true";
+        catBtns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", String(on));
+        cats.forEach(function (c) { c.hidden = on && c.id !== b.getAttribute("data-cat"); });
+      });
+    });
+  }
+
+  /* ---------- Player form: pre-check an interest (?need=football) ---------- */
+  var need = params.get("need");
+  if (need) {
+    var map = { football: "Football opportunities", education: "Education and scholarships", career: "Career development", wellbeing: "Health and wellbeing" };
+    var box = document.querySelector('input[name="interests"][value="' + map[need] + '"]');
+    if (box) box.checked = true;
+  }
 
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

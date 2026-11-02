@@ -242,7 +242,10 @@
     "resume": "",
     "pos": {
       "alejandro-training": "60% center"
-    }
+    },
+    "short_quote": "Adversity is a beautiful thing.",
+    "hero_photo": "alejandro-portrait",
+    "hero_pos": "center 18%"
   },
   {
     "id": "gilles-aurelien",
@@ -425,7 +428,10 @@
       }
     ],
     "sources": [],
-    "quotes": []
+    "quotes": [],
+    "short_quote": "I know it's not gonna be easy. But I'm not gonna stop here.",
+    "hero_photo": "gil-headshot",
+    "hero_pos": "center 15%"
   },
   {
     "id": "bony-ulrich",
@@ -613,26 +619,29 @@
     "pos": {
       "bony-lindsey": "56% center",
       "bony-lindsey-night": "36% center"
-    }
+    },
+    "short_quote": "Don't give up on your dream.",
+    "hero_photo": "bony-portrait",
+    "hero_pos": "center 25%"
   },
   {
-    "id": "elijah-tanger",
-    "name": "Elijah Tanger",
+    "id": "elijah-tenger",
+    "name": "Elijah Tenger",
     "first": "Elijah",
-    "card_photo": "elijah-action",
+    "card_photo": "elijah-match",
     "photos": [
-      "elijah-portrait",
-      "elijah-action",
-      "elijah-headshot"
+      "elijah-match",
+      "elijah-mural",
+      "elijah-training"
     ],
     "alts": [
-      "Portrait of Elijah Tanger in a red training jacket",
-      "Elijah Tanger striking the ball in a match",
-      "Elijah Tanger on the pitch in a red kit"
+      "Elijah Tenger driving forward with the ball in a stadium match",
+      "Elijah Tenger balancing a ball on his head in front of a mural",
+      "Elijah Tenger juggling the ball in training"
     ],
     "position": "Forward / Winger",
     "origin": "Nigeria / Canada",
-    "card_line": "Toronto FC Academy · Utah United",
+    "card_line": "Toronto FC Academy · Snow College · Utah United",
     "quote": "Your ceiling is someone else's floor. Keep climbing.",
     "badges": [
       "Nigeria / Canada",
@@ -660,7 +669,7 @@
       {
         "h": "Where it started",
         "p": [
-          "Elijah Tanger was born in Nigeria, where football is not a hobby, it is life. From four years old, his father was his first coach. At twelve, his family immigrated to Canada."
+          "Elijah Tenger was born in Nigeria, where football is not a hobby, it is life. From four years old, his father was his first coach. At twelve, his family immigrated to Canada."
         ]
       },
       {
@@ -693,6 +702,11 @@
         "club": "Utah United",
         "level": "Summer 2026",
         "detail": "Current club at time of profile."
+      },
+      {
+        "club": "Snow College",
+        "level": "NJCAA · 2021–2022",
+        "detail": "Forward. #20 in 2021, #10 in 2022."
       },
       {
         "club": "Real Monarchs",
@@ -741,6 +755,14 @@
       [
         "Club",
         "Utah United (Summer 2026)"
+      ],
+      [
+        "High school",
+        "Neil McNeil HS (Canada)"
+      ],
+      [
+        "College",
+        "Snow College (2021–2022)"
       ]
     ],
     "resume": "",
@@ -769,8 +791,21 @@
       ]
     ],
     "seasons": [],
-    "sources": [],
-    "quotes": []
+    "sources": [
+      [
+        "Snow College Athletics roster",
+        "https://snowbadgers.com/sports/mens-soccer/roster/elijah-tenger/3538"
+      ]
+    ],
+    "quotes": [],
+    "short_quote": "Your ceiling is someone else's floor. Keep climbing.",
+    "hero_photo": "elijah-match",
+    "hero_pos": "30% center",
+    "pos": {
+      "elijah-match": "30% center",
+      "elijah-mural": "center 20%",
+      "elijah-training": "60% center"
+    }
   },
   {
     "id": "sharif-sayawu",
@@ -787,14 +822,14 @@
     ],
     "position": "Forward · #29",
     "origin": "Agona Duakwa, Ghana",
-    "card_line": "Phoenix Academy, Ghana · Utah Valley University",
+    "card_line": "Phoenix Academy · Utah Valley · Salt Lake CC",
     "quote": "I left everything I knew. But I never left my dream.",
     "badges": [
       "Ghana",
-      "NCAA Division I",
-      "Exploring a transfer"
+      "Salt Lake CC",
+      "NJCAA"
     ],
-    "as_of": "Updated for the 2025 season.",
+    "as_of": "Updated for the 2026 season.",
     "interview": "qeZYiFEHOM8",
     "highlight": "PPRjL7l49Ds",
     "stats": [
@@ -833,11 +868,16 @@
       {
         "h": "What comes next",
         "p": [
-          "Now Sharif is navigating a transfer, searching for the right program, and carrying the hopes of a family back in Ghana. His story is just beginning."
+          "After a season at Utah Valley, Sharif transferred to Salt Lake Community College, where he is a sophomore forward in 2026. He is still carrying the hopes of a family back in Ghana, and his story is just beginning."
         ]
       }
     ],
     "career": [
+      {
+        "club": "Salt Lake Community College",
+        "level": "NJCAA · 2026",
+        "detail": "Sophomore forward, #29."
+      },
       {
         "club": "Utah Valley University",
         "level": "NCAA Division I · WAC · 2025",
@@ -870,27 +910,27 @@
       ],
       [
         "Height",
-        "6'0\""
+        "6'2\""
+      ],
+      [
+        "Jersey",
+        "#29 (SLCC)"
       ],
       [
         "Academy",
         "Phoenix Academy, Ghana"
       ],
       [
-        "University",
-        "Utah Valley University (2025)"
-      ],
-      [
-        "Status",
-        "Exploring a transfer"
+        "Colleges",
+        "Utah Valley University (2025); Salt Lake Community College (2026)"
       ]
     ],
     "resume": "",
-    "headline": "Direct, 6'0\" forward from Ghana's Phoenix Academy with NCAA Division I experience at Utah Valley.",
+    "headline": "Direct, 6'2\" forward from Ghana's Phoenix Academy, with NCAA Division I experience at Utah Valley. Now at Salt Lake Community College.",
     "level": [
       "NCAA D-I"
     ],
-    "status": "Exploring a transfer",
+    "status": "Sophomore at Salt Lake Community College (2026)",
     "pos_short": "Forward",
     "key": [
       [
@@ -899,7 +939,7 @@
       ],
       [
         "Height",
-        "6'0\""
+        "6'2\""
       ],
       [
         "From",
@@ -907,7 +947,7 @@
       ],
       [
         "College",
-        "Utah Valley University"
+        "Salt Lake CC"
       ]
     ],
     "seasons": [
@@ -923,7 +963,16 @@
         "note": "2 assists in debut vs CSUB · first goal vs FGCU"
       }
     ],
-    "sources": [],
-    "quotes": []
+    "sources": [
+      [
+        "Salt Lake CC Athletics roster",
+        "https://slccbruins.com/sports/mens-soccer/roster/sharif--sayawu/3702"
+      ]
+    ],
+    "quotes": [],
+    "short_quote": "I left everything I knew. But I never left my dream.",
+    "hero_photo": "sharif-action",
+    "hero_pos": "60% center",
+    "headshot": "sharif-slcc"
   }
 ]

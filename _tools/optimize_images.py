@@ -33,6 +33,13 @@ PHOTOS = {
     "bony-action": ("bony_action.jpg", (0.04, 0.36, 0.70, 1.0)),
     "bony-lindsey": ("bony_lindsey.jpg", None),
     "bony-lindsey-night": ("bony_lindsey_night.jpg", None),
+    "embrace": ("players_embrace.jpg", None),
+    "helpup": ("gilles_helped_up.jpg", None),
+    "alejandro-night": ("alejandro_night.jpg", None),
+    "elijah-match": ("elijah_match.jpg", None),
+    "elijah-training": ("elijah_training.jpg", None),
+    "elijah-mural": ("elijah_mural.jpg", None),
+    "sharif-slcc": ("sharif_slcc_headshot.jpg", None),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)
