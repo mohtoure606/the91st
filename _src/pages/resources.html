@@ -1,0 +1,67 @@
+<!--meta {"title": "Resources", "description": "A growing directory of verified resources for college soccer players: professional football, education and scholarships, career development, health and wellbeing, and athlete transition.", "path": "/resources/", "nav": "resources"} -->
+
+<section class="page-hero page-hero--mint">
+  <div class="wrap page-hero-grid">
+    <div>
+      <p class="eyebrow reveal">Resources</p>
+      <h1 class="display reveal d1">A growing directory for what comes next.</h1>
+    </div>
+    <div class="reveal d2">
+      <p class="lede">Organizations and programs that can help players after college soccer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Resource directory">
+  <div class="wrap">
+    <div class="mb-0" style="margin-bottom:32px">{{resource_nav}}</div>
+    {{resources}}
+  </div>
+</section>
+
+<!-- Suggest -->
+<section class="section section--mint" id="suggest" aria-labelledby="suggest-title">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow">Grow the directory</p>
+      <h2 class="h2" id="suggest-title">Know a resource we should add?</h2>
+      <p class="lede mt-m">Tell us about an organization, program, or service that has helped you or that you provide. We'll review it before anything is listed.</p>
+      <p class="mt-s">Representing an organization and interested in a formal partnership? Use our <a href="/partners/#inquiry">partnership inquiry</a> instead.</p>
+    </div>
+    <div class="form-shell reveal d1">
+      <form class="form" data-form="resource" data-success="resource-success" action="{{formspree}}" method="POST">
+        <input type="hidden" name="form_type" value="Resource suggestion">
+        <input type="hidden" name="_subject" value="New resource suggestion, the91st.org">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+        <div class="form-row form-row--2">
+          <div class="field"><label for="rs-org">Organization or program <span class="req" aria-hidden="true">*</span></label><input id="rs-org" name="resource_name" type="text" required aria-describedby="rs-org-err"><p class="err" id="rs-org-err" aria-live="polite"></p></div>
+          <div class="field"><label for="rs-url">Website <span class="opt">(optional)</span></label><input id="rs-url" name="resource_website" type="url" placeholder="https://" aria-describedby="rs-url-err"><p class="err" id="rs-url-err" aria-live="polite"></p></div>
+        </div>
+        <div class="field"><label for="rs-cat">Category <span class="req" aria-hidden="true">*</span></label>
+          <select id="rs-cat" name="category" required aria-describedby="rs-cat-err">
+            <option value="">Select one</option>
+            <option>Professional football</option>
+            <option>Education and scholarships</option>
+            <option>Career development</option>
+            <option>Health and wellbeing</option>
+            <option>Athlete transition</option>
+          </select><p class="err" id="rs-cat-err" aria-live="polite"></p></div>
+        <div class="field"><label for="rs-why">How does it help players? <span class="req" aria-hidden="true">*</span></label><textarea id="rs-why" name="description" required aria-describedby="rs-why-err"></textarea><p class="err" id="rs-why-err" aria-live="polite"></p></div>
+        <div class="form-row form-row--2">
+          <div class="field"><label for="rs-name">Your name <span class="opt">(optional)</span></label><input id="rs-name" name="name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="rs-email">Your email <span class="req" aria-hidden="true">*</span></label><input id="rs-email" name="email" type="email" autocomplete="email" required aria-describedby="rs-email-err"><p class="err" id="rs-email-err" aria-live="polite"></p></div>
+        </div>
+        <div class="form-status" aria-live="assertive"></div>
+        <div class="form-foot">
+          <p class="small">See our <a href="/privacy/">Privacy Policy</a>.</p>
+          <button class="btn" type="submit">Suggest resource</button>
+        </div>
+      </form>
+      <div class="form-success" id="resource-success" role="status">
+        <div class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3 class="h3">Thanks for the suggestion.</h3>
+        <p class="mt-s">We'll review it and may reach out with questions before adding it to the directory.</p>
+      </div>
+    </div>
+  </div>
+</section>

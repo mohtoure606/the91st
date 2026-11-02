@@ -1,0 +1,47 @@
+<!--meta {"title": "Player Stories", "description": "Meet the players: profiles with stats, career history, honours, and full interviews for Alejandro Silva, Gilles Aurelien, Bony Ulrich, Elijah Tanger, and Sharif Sayawu.", "path": "/stories/", "nav": "stories"} -->
+
+<script>
+  /* Old links like /stories/#gilles-aurelien now open the player's own profile page. */
+  (function () { var ids = {{player_ids}}; var h = location.hash.slice(1); if (ids.indexOf(h) > -1) location.replace('/stories/' + h + '/'); })();
+</script>
+
+<section class="page-hero">
+  <div class="wrap page-hero-grid">
+    <div>
+      <p class="eyebrow reveal">Player stories</p>
+      <h1 class="display reveal d1">Every player has a story.</h1>
+    </div>
+    <p class="lede reveal d2">Real players, in their own words.</p>
+  </div>
+</section>
+
+<section class="section section--mint" aria-labelledby="roster-h">
+  <div class="wrap">
+    <h2 class="visually-hidden" id="roster-h">Player roster</h2>
+    {{roster}}
+  </div>
+</section>
+
+<!-- Where are they now -->
+<section class="section section--forest" aria-labelledby="now-title">
+  <div class="wrap split split--center">
+    <div class="reveal">
+      <p class="eyebrow">A new series</p>
+      <h2 class="h2" id="now-title">Where are they now?</h2>
+    </div>
+    <div class="reveal d1">
+      <p class="lede" style="color:rgba(255,255,255,.85)">A player's story doesn't end when the profile is published. In this ongoing series we'll check back in with the players we've featured to document their transitions: the trials, the new schools, the first jobs, and the setbacks too.</p>
+      <p class="mt-s">The first updates are coming soon. Follow along on <a href="https://www.instagram.com/91stclub" target="_blank" rel="noopener" style="color:var(--green)">Instagram</a> and <a href="https://www.youtube.com/@91stclub" target="_blank" rel="noopener" style="color:var(--green)">YouTube</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap inner">
+    <h2 class="h2" id="cta-title">Have a story to tell?</h2>
+    <div class="btn-row">
+      <a class="btn btn--dark" href="/players/#apply">Share your story</a>
+      <a class="btn btn--light" href="/partners/?type=club#inquiry">Clubs: get in touch</a>
+    </div>
+  </div>
+</section>

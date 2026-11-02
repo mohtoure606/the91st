@@ -1,0 +1,929 @@
+[
+  {
+    "id": "alejandro-silva",
+    "name": "Alejandro Silva",
+    "first": "Alejandro",
+    "card_photo": "alejandro-action",
+    "photos": [
+      "alejandro-portrait",
+      "alejandro-action",
+      "alejandro-training"
+    ],
+    "alts": [
+      "Alejandro Silva holding a ball in his Oregon State #17 kit",
+      "Alejandro Silva striking the ball in a match",
+      "Alejandro Silva on the ball in a training session"
+    ],
+    "position": "Midfielder",
+    "pos_short": "Midfielder",
+    "origin": "Salt Lake City, Utah",
+    "card_line": "RSL Academy · Utah Valley · Oregon State",
+    "headline": "Creative midfielder and set-piece threat, developed as an attacking midfielder at the Real Salt Lake Academy. Four-time All-WAC at Utah Valley, a program record.",
+    "quote": "On the other side of fear is what you wanna be, but it's just disguised as fear.",
+    "badges": [
+      "Salt Lake City",
+      "NCAA Division I",
+      "4× All-WAC"
+    ],
+    "level": [
+      "NCAA D-I",
+      "Pro pathway"
+    ],
+    "status": "",
+    "as_of": "Updated November 2026.",
+    "interview": "9oiMqFZqDmE",
+    "highlight": "OCM6MGjGZtQ",
+    "key": [
+      [
+        "Position",
+        "Midfielder"
+      ],
+      [
+        "Height / weight",
+        "5'6\" · 150 lbs"
+      ],
+      [
+        "Hometown",
+        "Salt Lake City, Utah"
+      ],
+      [
+        "Youth",
+        "Real Salt Lake Academy"
+      ]
+    ],
+    "stats": [
+      {
+        "n": "4×",
+        "l": "All-WAC (program record)"
+      },
+      {
+        "n": "56",
+        "l": "Starts at Utah Valley, every match he played"
+      },
+      {
+        "n": "4,000+",
+        "l": "Career minutes, 11th in UVU history"
+      }
+    ],
+    "seasons": [
+      {
+        "season": "2023",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I · WAC",
+        "gp": "16",
+        "gs": "16",
+        "g": "5",
+        "a": "4",
+        "min": "1,377",
+        "note": "1st Team All-WAC · team leader in goals"
+      },
+      {
+        "season": "2022",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I · WAC",
+        "gp": "16",
+        "gs": "16",
+        "g": "2",
+        "a": "6",
+        "min": "1,228",
+        "note": "1st Team All-WAC · team leader in assists"
+      },
+      {
+        "season": "Fall 2021",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I · WAC",
+        "gp": "17",
+        "gs": "17",
+        "g": "1",
+        "a": "4",
+        "min": "1,498",
+        "note": "2nd Team All-WAC · WAC All-Freshman"
+      },
+      {
+        "season": "Spring 2021",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I · WAC",
+        "gp": "7",
+        "gs": "7",
+        "g": "2",
+        "a": "3",
+        "min": "",
+        "note": "Honorable Mention All-WAC"
+      }
+    ],
+    "seasons_total": {
+      "season": "UVU total",
+      "team": "",
+      "level": "",
+      "gp": "56",
+      "gs": "56",
+      "g": "10",
+      "a": "17",
+      "min": "4,000+"
+    },
+    "sections": [
+      {
+        "h": "Where it started",
+        "p": [
+          "Alejandro Silva was born and raised in Salt Lake City, the son of Elsa and José Luis Silva and one of four brothers. He learned the game in the city's Hispanic Sunday leagues, with his dad as his first teacher, and played club soccer for La Roca, winning a 2018 Utah Youth Soccer Association state title."
+        ]
+      },
+      {
+        "h": "The academy",
+        "p": [
+          "He came up through the Real Salt Lake Academy as an attacking midfielder for the U-19 team. When the academy first offered him a spot, he admits he was scared to take it. He took it anyway. He trained with the Real Monarchs and started in their preseason, then heard the words every academy player fears: they would not sign him."
+        ]
+      },
+      {
+        "h": "Utah Valley",
+        "p": [
+          "He turned that rejection into one of the best careers in Utah Valley history. He started every match he played across four seasons (56 starts), earned All-WAC honours a program-record four times, including First Team in 2022 and 2023, and became the 11th player in program history to pass 4,000 minutes. As a senior he led the team in goals, and his strike against Pacific was named WAC Top Play."
+        ]
+      },
+      {
+        "h": "Oregon State",
+        "p": [
+          "He finished his college career as a graduate transfer at Oregon State. It was a step up, and also, in his words, one of the lowest moments of his career. He talks openly about reaching out for help, and about the person who helped him through it."
+        ]
+      },
+      {
+        "h": "After college",
+        "p": [
+          "Since college he has kept playing, including a spell with Utah United. He describes life after college as harder than college itself, because the system that structured every day is gone, and he is still chasing the professional game."
+        ]
+      }
+    ],
+    "quotes": [
+      "Adversity is a beautiful thing.",
+      "People only see the glory, but there's so much more behind the scenes that's not seen.",
+      "It's only you who can decide if you're gonna make it or not."
+    ],
+    "career": [
+      {
+        "club": "Utah United",
+        "level": "2025",
+        "detail": "Post-college playing spell."
+      },
+      {
+        "club": "Oregon State University",
+        "level": "NCAA Division I · 2024",
+        "detail": "Graduate transfer. Joined as a two-time All-WAC First Team selection."
+      },
+      {
+        "club": "Utah Valley University",
+        "level": "NCAA Division I · WAC · 2021–2023",
+        "detail": "56 starts, 10 goals, 17 assists. Four All-WAC selections, a program record."
+      },
+      {
+        "club": "Real Monarchs",
+        "level": "MLS Next Pro · Preseason",
+        "detail": "Trained with the club and started in preseason."
+      },
+      {
+        "club": "Real Salt Lake Academy",
+        "level": "U-19 · Attacking midfielder",
+        "detail": "Developed in the RSL Academy system."
+      },
+      {
+        "club": "La Roca",
+        "level": "Utah youth club",
+        "detail": "2018 UYSA state champions."
+      }
+    ],
+    "honours": [
+      "All-WAC First Team (2022, 2023)",
+      "All-WAC Second Team and WAC All-Freshman Team (2021)",
+      "All-WAC Honorable Mention (Spring 2021)",
+      "Four All-WAC selections, a Utah Valley program record",
+      "Preseason All-WAC (2023)",
+      "WAC Top Play, goal vs Pacific (2023)",
+      "11th player in UVU history to reach 4,000 minutes"
+    ],
+    "facts": [
+      [
+        "Hometown",
+        "Salt Lake City, Utah"
+      ],
+      [
+        "Position",
+        "Midfielder"
+      ],
+      [
+        "Height / weight",
+        "5'6\" · 150 lbs"
+      ],
+      [
+        "Youth",
+        "Real Salt Lake Academy (U-19)"
+      ],
+      [
+        "Colleges",
+        "Utah Valley University; Oregon State University"
+      ],
+      [
+        "Jersey",
+        "#10 (UVU) · #17 (Oregon State)"
+      ]
+    ],
+    "sources": [
+      [
+        "Utah Valley Athletics roster bio",
+        "https://gouvu.com/sports/mens-soccer/roster/alejandro-silva/9678"
+      ],
+      [
+        "Oregon State Athletics roster",
+        "https://osubeavers.com/sports/mens-soccer/roster/alejandro-silva/10608"
+      ],
+      [
+        "Oregon State signing class (Aug 2024)",
+        "https://osubeavers.com/news/2024/8/1/mens-soccer-beavers-announce-signing-class"
+      ]
+    ],
+    "resume": "",
+    "pos": {
+      "alejandro-training": "60% center"
+    }
+  },
+  {
+    "id": "gilles-aurelien",
+    "name": "Gilles Aurelien",
+    "first": "Gilles",
+    "card_photo": "gil-action",
+    "photos": [
+      "gil-headshot",
+      "gil-action",
+      "gil-training"
+    ],
+    "alts": [
+      "Gilles Aurelien in a Utah Valley University kit",
+      "Gilles Aurelien striking the ball in a match for Utah Valley University",
+      "Gilles Aurelien during a training session"
+    ],
+    "position": "Midfielder · CDM / CM / CAM",
+    "origin": "Bracknell, England",
+    "card_line": "Southampton FC Academy · Utah Valley University",
+    "quote": "I know it's not gonna be easy. But I'm not gonna stop here.",
+    "badges": [
+      "England",
+      "Class of 2025",
+      "NCAA Division I"
+    ],
+    "as_of": "Updated for the 2025 season.",
+    "interview": "sM7---bAkks",
+    "highlight": "pByVekX46kU",
+    "stats": [
+      {
+        "n": "All-WAC",
+        "l": "Second Team, 2025"
+      },
+      {
+        "n": "WAC",
+        "l": "Assists leader, 2024"
+      },
+      {
+        "n": "8+ yrs",
+        "l": "Southampton FC Academy"
+      }
+    ],
+    "sections": [
+      {
+        "h": "Where it started",
+        "p": [
+          "Gilles Aurelien grew up in Bracknell, England, with a football at his feet and a father who believed in him before anyone else did. At seven, a scout invited him to trial at Southampton FC. He spent eight-plus years in the academy, traveling across Europe and winning Player of the Tournament in Spain."
+        ]
+      },
+      {
+        "h": "The setback",
+        "p": [
+          "COVID wiped out his post-academy trials. He and his dad chose America. He started at Otero Junior College, helped the program reach nationals for the first time in 12 years, then tore his ACL nine games into his sophomore season. His father flew from the UK for the surgery."
+        ]
+      },
+      {
+        "h": "College",
+        "p": [
+          "He came back. He transferred to Utah Valley University, became one of the best midfielders in the WAC, and graduated with a BS degree."
+        ]
+      },
+      {
+        "h": "What comes next",
+        "p": [
+          "After graduating, he returned to pursue professional opportunities. He was listed for the MLS SuperDraft. He has played against pros. He is not done."
+        ]
+      }
+    ],
+    "career": [
+      {
+        "club": "Utah Valley University",
+        "level": "NCAA Division I · WAC · 2024–2025",
+        "detail": "32 games · 2 goals · 9 assists · 2,417 minutes. All-WAC Second Team 2025. WAC assists leader 2024. Academic All-WAC 2024."
+      },
+      {
+        "club": "Salt Lake Community College",
+        "level": "NJCAA · 2023",
+        "detail": "10 games · 4 goals · 5 assists. Region 18 champions. Transferred to Division I."
+      },
+      {
+        "club": "Otero Junior College",
+        "level": "NJCAA · 2022",
+        "detail": "14 games · 3 goals · 1 assist. Reached NJCAA Nationals for the first time in 12 years."
+      },
+      {
+        "club": "Southampton FC Academy",
+        "level": "English professional academy · 2007–2016",
+        "detail": "From age 7 to 16. International tournaments across Europe. Player of the Tournament in Spain."
+      }
+    ],
+    "honours": [
+      "All-WAC Second Team, Utah Valley University (2025)",
+      "WAC assists leader (2024)",
+      "Academic All-WAC, Utah Valley University (2024)",
+      "Region 18 champions, Salt Lake CC (2023)",
+      "NJCAA Nationals, Otero JC (2022)"
+    ],
+    "facts": [
+      [
+        "Hometown",
+        "Bracknell, England"
+      ],
+      [
+        "Position",
+        "CDM / CM / CAM"
+      ],
+      [
+        "Height / weight",
+        "5'10\" · 165 lbs"
+      ],
+      [
+        "Nationality",
+        "British (UK passport)"
+      ],
+      [
+        "University",
+        "Utah Valley University"
+      ],
+      [
+        "Degree",
+        "BS, General Studies (2025)"
+      ]
+    ],
+    "resume": "/images/Gilles_Aurelien_Resume_The91st.pdf",
+    "headline": "Two-way midfielder with eight years at Southampton FC Academy and All-WAC honours at NCAA Division I level.",
+    "level": [
+      "NCAA D-I",
+      "Pro pathway"
+    ],
+    "status": "",
+    "pos_short": "Midfielder",
+    "key": [
+      [
+        "Position",
+        "CDM / CM / CAM"
+      ],
+      [
+        "Height",
+        "5'10\""
+      ],
+      [
+        "Born in",
+        "England"
+      ],
+      [
+        "Last college",
+        "Utah Valley University"
+      ]
+    ],
+    "seasons": [
+      {
+        "season": "2024–25",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I",
+        "gp": "32",
+        "gs": "",
+        "g": "2",
+        "a": "9",
+        "min": "2,417"
+      },
+      {
+        "season": "2023",
+        "team": "Salt Lake Community College",
+        "level": "NJCAA",
+        "gp": "10",
+        "gs": "",
+        "g": "4",
+        "a": "5",
+        "min": ""
+      },
+      {
+        "season": "2022",
+        "team": "Otero Junior College",
+        "level": "NJCAA",
+        "gp": "14",
+        "gs": "",
+        "g": "3",
+        "a": "1",
+        "min": ""
+      }
+    ],
+    "sources": [],
+    "quotes": []
+  },
+  {
+    "id": "bony-ulrich",
+    "name": "Bony Ulrich",
+    "first": "Bony",
+    "card_photo": "bony-action",
+    "photos": [
+      "bony-portrait",
+      "bony-lindsey",
+      "bony-lindsey-night"
+    ],
+    "alts": [
+      "Bony Ulrich driving forward with the ball",
+      "Bony Ulrich, #10, lining up a free kick for Lindsey Wilson",
+      "Bony Ulrich leaping in a Lindsey Wilson night match"
+    ],
+    "position": "Winger / Forward",
+    "pos_short": "Winger",
+    "origin": "Abidjan, Côte d'Ivoire",
+    "card_line": "Right to Dream · Salt Lake CC · Lindsey Wilson",
+    "headline": "Quick, confident winger developed at Right to Dream Academy, with European club experience. Now a junior at Lindsey Wilson University.",
+    "quote": "Don't give up on your dream, and make right choices and smart decision.",
+    "badges": [
+      "Côte d'Ivoire",
+      "Right to Dream",
+      "NAIA"
+    ],
+    "level": [
+      "NAIA",
+      "NJCAA"
+    ],
+    "status": "Junior at Lindsey Wilson University (2026)",
+    "as_of": "Updated through October 29, 2026.",
+    "interview": "aEsXQxajIX0",
+    "highlight": "",
+    "key": [
+      [
+        "Position",
+        "Winger / Forward"
+      ],
+      [
+        "Height",
+        "5'6\""
+      ],
+      [
+        "From",
+        "Abidjan, Côte d'Ivoire"
+      ],
+      [
+        "College",
+        "Lindsey Wilson University"
+      ]
+    ],
+    "stats": [
+      {
+        "n": "9",
+        "l": "Appearances for Lindsey Wilson, 2026"
+      },
+      {
+        "n": "17",
+        "l": "Shots in 2026, 7 on target"
+      },
+      {
+        "n": "Age 9",
+        "l": "Joined Right to Dream Academy"
+      }
+    ],
+    "seasons": [
+      {
+        "season": "2026",
+        "team": "Lindsey Wilson University",
+        "level": "NAIA",
+        "gp": "9",
+        "gs": "",
+        "g": "1",
+        "a": "1",
+        "min": "",
+        "note": "Through Oct 29, 2026 · 17 shots, 7 on goal"
+      }
+    ],
+    "sections": [
+      {
+        "h": "Where it started",
+        "p": [
+          "Bony Ulrich grew up in Abidjan, Côte d'Ivoire. His mother wanted him in school, so he snuck out to play. Some mornings he woke up at 4:30 and walked an hour to practice with the other boys, waking each other up and hopping trucks to get there."
+        ]
+      },
+      {
+        "h": "Scouted at nine",
+        "p": [
+          "At nine, he showed up to a trial with dyed hair so he would stand out among more than a hundred kids. It worked. He was picked for Right to Dream, the academy in Ghana, and left home to chase the game. In his words, the hardest part of moving to Ghana was the food."
+        ]
+      },
+      {
+        "h": "Europe, and the clubs that said no",
+        "p": [
+          "Right to Dream took him to FC Nordsjælland in Denmark and to tournaments and trials across Europe. Over the years he has played in more than 25 countries. Teammates he started with went on to play professionally at the top level, while trial after trial ended with a version of the same answer: they wanted bigger players. A bad experience with an agent cost him a contract."
+        ]
+      },
+      {
+        "h": "Almost walking away",
+        "p": [
+          "During COVID, caught between Spain and Norway and told to go back to Ghana, he came close to quitting. Along the way, a mentor, a Ghanaian professional player who later passed away on the field, talked him out of giving up on the game."
+        ]
+      },
+      {
+        "h": "America",
+        "p": [
+          "He rebuilt his career in the United States at Salt Lake Community College and moved on to Lindsey Wilson University, where he is a junior in 2026. Off the pitch he describes himself as shy. On it, he says, he is different. His long-term goal is to become an agent himself, so young players get the guidance he didn't."
+        ]
+      }
+    ],
+    "quotes": [
+      "Outside the field, I'm a shy person though. But on the field, nah, I'm different.",
+      "I just wanna be an agent."
+    ],
+    "career": [
+      {
+        "club": "Lindsey Wilson University",
+        "level": "NAIA · 2026",
+        "detail": "Junior, #10. 9 appearances, 1 goal, 1 assist through Oct 29, 2026."
+      },
+      {
+        "club": "Salt Lake Community College",
+        "level": "NJCAA · 2024",
+        "detail": "Played the 2024 season."
+      },
+      {
+        "club": "FC Nordsjælland",
+        "level": "Denmark",
+        "detail": "Part of the Right to Dream pathway in Europe."
+      },
+      {
+        "club": "Right to Dream Academy",
+        "level": "Ghana",
+        "detail": "Selected at age nine. Trials and tournaments across Europe."
+      }
+    ],
+    "honours": [
+      "Selected for Right to Dream Academy at age nine",
+      "Played in more than 25 countries"
+    ],
+    "facts": [
+      [
+        "Hometown",
+        "Abidjan, Côte d'Ivoire"
+      ],
+      [
+        "Position",
+        "Winger / Forward"
+      ],
+      [
+        "Height",
+        "5'6\""
+      ],
+      [
+        "Jersey",
+        "#10"
+      ],
+      [
+        "High school",
+        "Gwiraman Senior High School"
+      ],
+      [
+        "College",
+        "Lindsey Wilson University (Junior, 2026)"
+      ]
+    ],
+    "sources": [
+      [
+        "Lindsey Wilson Athletics roster",
+        "https://lindseyathletics.com/sports/mens-soccer/roster/bony-ulrich/28193"
+      ],
+      [
+        "Lindsey Wilson 2026 cumulative stats (PDF)",
+        "https://s3.us-east-1.amazonaws.com/sidearm.sites/lindseywilsonky.sidearmsports.com/stats/msoc/2026/pdf/cume.pdf"
+      ],
+      [
+        "Salt Lake CC Athletics roster",
+        "https://slccbruins.com/sports/mens-soccer/roster/bony-ulrich/3018"
+      ]
+    ],
+    "resume": "",
+    "photos_card_alt": "Bony Ulrich dribbling at speed",
+    "pos": {
+      "bony-lindsey": "56% center",
+      "bony-lindsey-night": "36% center"
+    }
+  },
+  {
+    "id": "elijah-tanger",
+    "name": "Elijah Tanger",
+    "first": "Elijah",
+    "card_photo": "elijah-action",
+    "photos": [
+      "elijah-portrait",
+      "elijah-action",
+      "elijah-headshot"
+    ],
+    "alts": [
+      "Portrait of Elijah Tanger in a red training jacket",
+      "Elijah Tanger striking the ball in a match",
+      "Elijah Tanger on the pitch in a red kit"
+    ],
+    "position": "Forward / Winger",
+    "origin": "Nigeria / Canada",
+    "card_line": "Toronto FC Academy · Utah United",
+    "quote": "Your ceiling is someone else's floor. Keep climbing.",
+    "badges": [
+      "Nigeria / Canada",
+      "Class of 2026",
+      "First-generation college student"
+    ],
+    "as_of": "Updated Summer 2026.",
+    "interview": "lCkjCK6NPCo",
+    "highlight": "",
+    "stats": [
+      {
+        "n": "2×",
+        "l": "UPSL Mountain Division top scorer"
+      },
+      {
+        "n": "POY",
+        "l": "UPSL Mountain Division, 2024"
+      },
+      {
+        "n": "MLS NP",
+        "l": "Training period, Real Monarchs"
+      }
+    ],
+    "sections": [
+      {
+        "h": "Where it started",
+        "p": [
+          "Elijah Tanger was born in Nigeria, where football is not a hobby, it is life. From four years old, his father was his first coach. At twelve, his family immigrated to Canada."
+        ]
+      },
+      {
+        "h": "The academy years",
+        "p": [
+          "He earned a spot at Toronto FC Academy at U14, continued at the De Rosario Academy from U16 to U18, and trained at Phoenix Football Academy in Abuja."
+        ]
+      },
+      {
+        "h": "The setback",
+        "p": [
+          "COVID nearly closed the window. When it reopened, he earned a spot among the top sixty players across Canada."
+        ]
+      },
+      {
+        "h": "Breaking through",
+        "p": [
+          "In 2024 he trained with Real Monarchs of MLS Next Pro, won Player of the Year in the UPSL Mountain Division, and made the USL Academy All-Tournament Team. He was top scorer again in 2025."
+        ]
+      },
+      {
+        "h": "What comes next",
+        "p": [
+          "He is the first person in his family to go to college, and he is still chasing a professional contract."
+        ]
+      }
+    ],
+    "career": [
+      {
+        "club": "Utah United",
+        "level": "Summer 2026",
+        "detail": "Current club at time of profile."
+      },
+      {
+        "club": "Real Monarchs",
+        "level": "MLS Next Pro · Training period",
+        "detail": "Trained with the MLS Next Pro squad. Exposure to professional pace, tactics, and expectations."
+      },
+      {
+        "club": "Phoenix Football Academy",
+        "level": "Abuja, Nigeria",
+        "detail": "Professional academy coached by Udechi Emmanuel."
+      },
+      {
+        "club": "Dwayne De Rosario Academy",
+        "level": "Canada · U16–U18",
+        "detail": "High-level technical and tactical development."
+      },
+      {
+        "club": "Toronto FC Academy",
+        "level": "Canada · U14",
+        "detail": "MLS academy environment."
+      }
+    ],
+    "honours": [
+      "Top goal scorer, UPSL Mountain Division (2025)",
+      "Top goal scorer, UPSL Mountain Division (2024)",
+      "USL Academy All-Tournament Team (2024)",
+      "Player of the Year, UPSL Mountain Division (2024)"
+    ],
+    "facts": [
+      [
+        "From",
+        "Nigeria / Canada"
+      ],
+      [
+        "Position",
+        "Forward / Winger"
+      ],
+      [
+        "Academies",
+        "Toronto FC, De Rosario, Phoenix Football Academy"
+      ],
+      [
+        "Class",
+        "2026"
+      ],
+      [
+        "Club",
+        "Utah United (Summer 2026)"
+      ]
+    ],
+    "resume": "",
+    "headline": "Goal-scoring forward from the Toronto FC and De Rosario academies; two-time UPSL Mountain Division top scorer.",
+    "level": [
+      "Pro pathway"
+    ],
+    "status": "",
+    "pos_short": "Forward",
+    "key": [
+      [
+        "Position",
+        "Forward / Winger"
+      ],
+      [
+        "From",
+        "Nigeria / Canada"
+      ],
+      [
+        "Academy",
+        "Toronto FC"
+      ],
+      [
+        "Class",
+        "2026"
+      ]
+    ],
+    "seasons": [],
+    "sources": [],
+    "quotes": []
+  },
+  {
+    "id": "sharif-sayawu",
+    "name": "Sharif Sayawu",
+    "first": "Sharif",
+    "card_photo": "sharif-action",
+    "photos": [
+      "sharif-action",
+      "sharif-training"
+    ],
+    "alts": [
+      "Sharif Sayawu, number 29, in a match for Utah Valley University",
+      "Sharif Sayawu during a match for Utah Valley University"
+    ],
+    "position": "Forward · #29",
+    "origin": "Agona Duakwa, Ghana",
+    "card_line": "Phoenix Academy, Ghana · Utah Valley University",
+    "quote": "I left everything I knew. But I never left my dream.",
+    "badges": [
+      "Ghana",
+      "NCAA Division I",
+      "Exploring a transfer"
+    ],
+    "as_of": "Updated for the 2025 season.",
+    "interview": "qeZYiFEHOM8",
+    "highlight": "PPRjL7l49Ds",
+    "stats": [
+      {
+        "n": "15",
+        "l": "Goals at Phoenix Academy, 2023"
+      },
+      {
+        "n": "Best",
+        "l": "Player, 2024 Academy Showcase"
+      },
+      {
+        "n": "2 ast",
+        "l": "In his first college game"
+      }
+    ],
+    "sections": [
+      {
+        "h": "Where it started",
+        "p": [
+          "Sharif Sayawu grew up in Agona Duakwa, a small town in Ghana where football is not something you choose, it is something that chooses you. His parents, Iddrisu Sayawu and Ayishatu Mohammed, believed in what they saw and sacrificed to make sure he had the chance to pursue it."
+        ]
+      },
+      {
+        "h": "The academy",
+        "p": [
+          "He earned his way to Phoenix Academy, one of Ghana's most respected development programs, which has sent players to MLS, USL, and NCAA Division I. He repaid their belief with 15 goals in 2023 and Best Player honors at the 2024 Showcase. The calls from America came. He chose Utah Valley University."
+        ]
+      },
+      {
+        "h": "College",
+        "p": [
+          "Getting on that plane was one of the hardest things he has ever done. He left his family, his country, and everything familiar, and arrived in Utah as a freshman. In his very first collegiate game he recorded two assists. Weeks later he scored his first Division I goal."
+        ]
+      },
+      {
+        "h": "What comes next",
+        "p": [
+          "Now Sharif is navigating a transfer, searching for the right program, and carrying the hopes of a family back in Ghana. His story is just beginning."
+        ]
+      }
+    ],
+    "career": [
+      {
+        "club": "Utah Valley University",
+        "level": "NCAA Division I · WAC · 2025",
+        "detail": "9 appearances, 3 starts. 2 assists in his first collegiate game vs CSUB. First collegiate goal vs FGCU."
+      },
+      {
+        "club": "Phoenix Academy",
+        "level": "Ghana · 2022–2024",
+        "detail": "Top goal scorer in 2023 with 15 goals. Best Player at the 2024 Phoenix Academy Showcase."
+      },
+      {
+        "club": "Odupong Senior High School",
+        "level": "Owulabu, Ghana",
+        "detail": "Developed his foundational game before earning a pathway to Phoenix Academy."
+      }
+    ],
+    "honours": [
+      "Best Player, Phoenix Academy Showcase (2024)",
+      "Top goal scorer, Phoenix Academy (2023, 15 goals)",
+      "2 assists in first collegiate game, Utah Valley University vs CSUB"
+    ],
+    "facts": [
+      [
+        "Hometown",
+        "Agona Duakwa, Ghana"
+      ],
+      [
+        "Position",
+        "Forward"
+      ],
+      [
+        "Height",
+        "6'0\""
+      ],
+      [
+        "Academy",
+        "Phoenix Academy, Ghana"
+      ],
+      [
+        "University",
+        "Utah Valley University (2025)"
+      ],
+      [
+        "Status",
+        "Exploring a transfer"
+      ]
+    ],
+    "resume": "",
+    "headline": "Direct, 6'0\" forward from Ghana's Phoenix Academy with NCAA Division I experience at Utah Valley.",
+    "level": [
+      "NCAA D-I"
+    ],
+    "status": "Exploring a transfer",
+    "pos_short": "Forward",
+    "key": [
+      [
+        "Position",
+        "Forward"
+      ],
+      [
+        "Height",
+        "6'0\""
+      ],
+      [
+        "From",
+        "Ghana"
+      ],
+      [
+        "College",
+        "Utah Valley University"
+      ]
+    ],
+    "seasons": [
+      {
+        "season": "2025",
+        "team": "Utah Valley University",
+        "level": "NCAA D-I",
+        "gp": "9",
+        "gs": "3",
+        "g": "",
+        "a": "",
+        "min": "",
+        "note": "2 assists in debut vs CSUB · first goal vs FGCU"
+      }
+    ],
+    "sources": [],
+    "quotes": []
+  }
+]

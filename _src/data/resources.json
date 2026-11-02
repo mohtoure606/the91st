@@ -1,0 +1,42 @@
+{
+  "_how_to_add": "Add an entry to a category's 'items' list, then run: python3 _build.py. status must be 'partner' (a verified 91st partner) or 'public' (a public resource we point to, not a partner). Only add a 'partner' entry after the partnership is formalized and the organization has agreed to be listed.",
+  "categories": [
+    {
+      "id": "football",
+      "title": "Professional football",
+      "intro": "Clubs, academies, trials, and development programs that offer real pathways for players finishing college soccer, in the United States and abroad.",
+      "items": []
+    },
+    {
+      "id": "education",
+      "title": "Education and scholarships",
+      "intro": "Graduate programs, scholarships, and international study options for athletes who want to keep learning, on or off the pitch.",
+      "items": []
+    },
+    {
+      "id": "career",
+      "title": "Career development",
+      "intro": "Employers, mentorship programs, and career services that understand what athletes bring to a workplace.",
+      "items": []
+    },
+    {
+      "id": "wellbeing",
+      "title": "Health and wellbeing",
+      "intro": "Physical recovery, mental health, and wellbeing support for the body and mind after competitive sport.",
+      "items": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "status": "public",
+          "url": "https://988lifeline.org/",
+          "desc": "Free, confidential support 24/7 in the United States. Call or text 988, or chat online, if you or someone you know is struggling."
+        }
+      ]
+    },
+    {
+      "id": "transition",
+      "title": "Athlete transition",
+      "intro": "Organizations and programs focused on life after competitive sport: identity, purpose, and the practical steps of starting over.",
+      "items": []
+    }
+  ]
+}
