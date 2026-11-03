@@ -11,6 +11,7 @@
         <a class="btn" href="/players/">I'm a player <span class="arrow" aria-hidden="true">&rarr;</span></a>
         <a class="btn btn--outline-light" href="/partners/">Partner with us</a>
       </div>
+      <a class="stage-link reveal d3" href="/stories/">Recruiting? Meet the players <span aria-hidden="true">&rarr;</span></a>
     </div>
     <figure class="stage-photo stage-photo--tall tilt" data-tilt-max="5">{{picture name="elijah-mural" alt="Elijah Tenger balancing a ball on his head in front of a painted mural" sizes="(min-width: 900px) 480px, 100vw" eager="true" position="center 22%"}}<span class="pcard-glare" aria-hidden="true"></span><figcaption class="stage-cap"><a href="/stories/elijah-tenger/">Elijah Tenger</a> · Forward</figcaption></figure>
   </div>
@@ -19,10 +20,24 @@
 <div class="wrap">
   <nav class="quick" aria-label="Start here">
     <a href="/players/#apply"><b>Submit your profile <span aria-hidden="true">&rarr;</span></b><span>Tell us where you are and what you want next.</span></a>
-    <a href="/stories/#find"><b>Find a player <span aria-hidden="true">&rarr;</span></b><span>Search by name, position, or school.</span></a>
+    <a href="/stories/"><b>Meet the players <span aria-hidden="true">&rarr;</span></b><span>Profiles, film, and stats.</span></a>
     <a href="/get-involved/"><b>Work with us <span aria-hidden="true">&rarr;</span></b><span>Clubs, universities, mentors, sponsors.</span></a>
   </nav>
 </div>
+
+<!-- Meet the players -->
+<section class="section section--mint" aria-labelledby="stories-title">
+  <div class="wrap wrap--wide">
+    <div class="head-row">
+      <div>
+        <p class="eyebrow reveal">Player stories</p>
+        <h2 class="h2 reveal d1" id="stories-title">Meet the players.</h2>
+      </div>
+      <a class="link-arrow reveal d2" href="/stories/">All players <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+    {{players_rail}}
+  </div>
+</section>
 
 <!-- What we do -->
 <section class="section" aria-labelledby="areas-title">
@@ -40,20 +55,6 @@
       <a class="pc tilt" href="/players/?need=career#apply">{{picture name="mentor" alt="Three coaches talking through a plan on a soccer field" sizes="(min-width: 1000px) 25vw, 78vw" position="50% 40%"}}<span class="pc-cap"><span class="pc-title">Careers &amp; mentoring</span><span class="pc-sub">Mentors, jobs, and networks beyond the pitch.</span></span><span class="pcard-glare" aria-hidden="true"></span></a>
       <a class="pc tilt" href="/resources/">{{picture name="embrace" alt="Two players embracing on the pitch" sizes="(min-width: 1000px) 25vw, 78vw" position="center 45%"}}<span class="pc-cap"><span class="pc-title">Wellbeing</span><span class="pc-sub">Support for the body and mind.</span></span><span class="pcard-glare" aria-hidden="true"></span></a>
     </div>
-  </div>
-</section>
-
-<!-- Meet the players -->
-<section class="section section--mint" aria-labelledby="stories-title">
-  <div class="wrap wrap--wide">
-    <div class="head-row">
-      <div>
-        <p class="eyebrow reveal">Player stories</p>
-        <h2 class="h2 reveal d1" id="stories-title">Meet the players.</h2>
-      </div>
-      <a class="link-arrow reveal d2" href="/stories/">All players <span class="arrow" aria-hidden="true">&rarr;</span></a>
-    </div>
-    {{players_rail}}
   </div>
 </section>
 
