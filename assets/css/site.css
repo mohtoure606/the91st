@@ -1465,3 +1465,4 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 900px) { .h3-wrap { padding-bottom: 110px; } .h3-player { height: 720px; } }
 .h3-player { filter: none; }
 @media (min-width: 1200px) { .h3-player { right: 29%; top: 6px; } .h3-name { right: calc(29% - 20px); } }
+@media (min-width: 900px) { .stage--home .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); padding-right: 0; } }
