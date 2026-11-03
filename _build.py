@@ -29,10 +29,10 @@ MISSING = []
 REDIRECTS = {"/stories/elijah-tanger/": "/stories/elijah-tenger/"}
 
 NAV = [
+    ("stories", "/stories/", "Player Stories"),
     ("mission", "/mission/", "Our Mission"),
     ("players", "/players/", "For Players"),
     ("partners", "/partners/", "Partnerships"),
-    ("stories", "/stories/", "Player Stories"),
     ("resources", "/resources/", "Resources"),
     ("involved", "/get-involved/", "Get Involved"),
 ]
@@ -450,7 +450,7 @@ def wrap_page(meta, body):
 
     active = meta.get("nav", "")
     cur = ' aria-current="page"'
-    nav = "\n".join(f'        <li><a href="{href}"{cur if key == active else ""}>{label}</a></li>' for key, href, label in NAV)
+    nav = "\n".join(f'        <li><a href="{href}"{cur if key == active else ""}{' class="nav-feature"' if key == "stories" else ""}>{label}</a></li>' for key, href, label in NAV)
     mnav = "\n".join(f'        <li><a class="mm-link" href="{href}"{cur if key == active else ""}>{label}</a></li>' for key, href, label in NAV)
 
     title = meta["title"]

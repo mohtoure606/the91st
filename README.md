@@ -34,7 +34,7 @@ Each player in `_src/data/players.json` gets a shareable profile page at `/stori
 - `highlight` and `highlight2`: YouTube IDs for highlight reels (the second is optional).
 - `feature_photo`: photo used when the player is featured on Player Stories. `hero_bg`: optional high-resolution wide photo shown behind the profile header.
 - `short_quote` and `card_line`: the quote and path line shown on the player cards.
-- The featured story on Player Stories rotates through every player. The "Find a player" search searches name, position, origin, and career clubs.
+- The featured story on Player Stories rotates through every player.
 - Renamed a player URL? Add the old path to `REDIRECTS` in `_build.py` so old links still work.
 
 ### Add a photo

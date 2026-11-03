@@ -1294,3 +1294,7 @@ body.menu-open { overflow: hidden; }
 .fr-go { font-weight: 700; }
 .finder-empty { margin: 0; color: var(--muted); font-size: 15px; }
 .lineup .vcard[hidden], .glance-table tr[hidden] { display: none; }
+.nav a.nav-feature { font-weight: 700; color: var(--forest); }
+.nav a.nav-feature::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 7px; vertical-align: 2px; box-shadow: 0 0 0 3px rgba(91,255,138,.3); }
+.stage-link { color: var(--green); font-weight: 600; font-size: 16px; text-decoration: none; border-bottom: 2px solid rgba(91,255,138,.5); padding-bottom: 2px; }
+.stage-link:hover { color: var(--white); border-bottom-color: var(--white); }
