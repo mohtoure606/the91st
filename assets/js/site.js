@@ -379,7 +379,12 @@
     }
     function schedule() {
       clearTimeout(timer);
-      if (!paused && !hold) timer = setTimeout(function () { show(i + 1); schedule(); }, 7000);
+      root.classList.remove("run");
+      void root.offsetWidth; // restart the progress bar
+      if (!paused && !hold) {
+        root.classList.add("run");
+        timer = setTimeout(function () { show(i + 1); schedule(); }, 7000);
+      }
     }
     function setPaused(v) {
       paused = v;
