@@ -97,6 +97,8 @@ ARROW = '<span class="arrow" aria-hidden="true">&rarr;</span>'
 def photo_alt(p, name):
     if name in p["photos"]:
         return p["alts"][p["photos"].index(name)]
+    if name in p.get("photos_extra_alts", {}):
+        return p["photos_extra_alts"][name]
     return p.get("photos_card_alt", p["name"])
 
 
@@ -104,24 +106,34 @@ def photo_pos(p, name):
     return p.get("pos", {}).get(name, "")
 
 
-def photo_card(p, cls="", sizes="(min-width: 1000px) 30vw, (min-width: 720px) 45vw, 85vw", quote=True, sub=True):
-    q = f'<span class="pc-quote">&ldquo;{esc(p["short_quote"])}&rdquo;</span>' if quote and p.get("short_quote") else ""
-    line = f'<span class="pc-sub">{esc(p["card_line"])}</span>' if sub else ""
-    return f'''<a class="pc tilt {cls}" href="/stories/{p["id"]}/">
-  {picture(p["card_photo"], photo_alt(p, p["card_photo"]), sizes, position=photo_pos(p, p["card_photo"]))}
-  <span class="pc-cap">
-    <span class="pc-tag">{esc(p.get("pos_short", p["position"]))} · {esc(p["origin"])}</span>
-    <span class="pc-title">{esc(p["name"])}</span>
-    {q}{line}
+def last_name(p):
+    return p["name"][len(p["first"]):].strip()
+
+
+def now_html(p, cls="status"):
+    if not p.get("now"):
+        return ""
+    return f'<p class="{cls}"><span class="dot" aria-hidden="true"></span><b>{esc(p.get("now_label", "Now"))}:</b>&nbsp;{esc(p["now"])}</p>'
+
+
+def vcard(p, sizes="(min-width: 1000px) 240px, 72vw"):
+    """Tall player card: big name, position, short headline, current status."""
+    return f'''<a class="vcard tilt" href="/stories/{p["id"]}/">
+  <span class="vcard-photo">{picture(p["card_photo"], photo_alt(p, p["card_photo"]), sizes, position=photo_pos(p, p["card_photo"]))}</span>
+  <span class="vcard-cap">
+    <span class="pc-tag">{esc(p.get("pos_short", p["position"]))}</span>
+    <span class="vcard-name"><span>{esc(p["first"])}</span>{esc(last_name(p))}</span>
+    <span class="vcard-line">{esc(p.get("tagline", ""))}</span>
+    <span class="vcard-now"><span class="dot" aria-hidden="true"></span>{esc(p.get("now_label", "Now"))}: {esc(p.get("now", ""))}</span>
   </span>
   <span class="pcard-glare" aria-hidden="true"></span>
 </a>'''
 
 
-def players_rail():
-    cards = "\n".join(photo_card(p, "rail-item", "(min-width: 1000px) 26vw, 78vw", sub=False) for p in PLAYERS)
+def lineup(label="Players"):
+    cards = "\n".join(vcard(p) for p in PLAYERS)
     return f'''<div class="rail-wrap">
-  <div class="rail" tabindex="0" aria-label="Featured players, scroll sideways">{cards}</div>
+  <div class="rail lineup" tabindex="0" aria-label="{esc(label)}, scroll sideways">{cards}</div>
   <div class="rail-ctrl">
     <button class="rail-btn" type="button" data-dir="-1" aria-label="Previous players">&larr;</button>
     <button class="rail-btn" type="button" data-dir="1" aria-label="Next players">&rarr;</button>
@@ -129,30 +141,81 @@ def players_rail():
 </div>'''
 
 
+def players_rail():
+    return lineup("Featured players")
+
+
+def stage_bg(photo, sharp=False):
+    """Blurred, green-shaded copy of the photo behind the hero. High-resolution photos can stay sharp."""
+    return (f'<div class="stage-bg{" stage-bg--sharp" if sharp else ""}" aria-hidden="true">'
+            f'{picture(photo, "", "100vw" if sharp else "480px")}</div>')
+
+
 def featured_story():
-    p = PLAYERS[0]
-    photo = p.get("featured_photo", "alejandro-night")
-    vid = f'<a class="btn btn--outline-light" href="/stories/{p["id"]}/#video">&#9654; Watch the interview</a>' if p.get("interview") else ""
-    return f'''<section class="cine" aria-labelledby="featured-h">
-  {picture(photo, photo_alt(p, photo) if photo in p["photos"] else p["name"] + " on the ball", "100vw", eager=True, position="center 35%")}
-  <div class="wrap cine-inner"><div class="cine-copy">
-    <p class="eyebrow">Featured story</p>
-    <h1 class="display" id="featured-h">{esc(p["name"])}</h1>
-    <p class="pc-tag" style="margin:0">{esc(p.get("pos_short",""))} · {esc(p["origin"])}</p>
-    <p class="cine-tag" style="color:var(--white)">&ldquo;{esc(p["quote"])}&rdquo;</p>
-    <div class="btn-row"><a class="btn" href="/stories/{p["id"]}/">Meet {esc(p["first"])} {ARROW}</a>{vid}</div>
+    n = len(PLAYERS)
+    slides, dots = [], []
+    for i, p in enumerate(PLAYERS):
+        photo = p.get("feature_photo", p["card_photo"])
+        vid = (f'<a class="btn btn--outline-light" href="/stories/{p["id"]}/#video">&#9654; Watch the interview</a>'
+               if p.get("interview") else "")
+        hidden = "" if i == 0 else ' aria-hidden="true"'
+        count = f"{i + 1:02d} / {n:02d}"
+        slides.append(f'''<div class="feat-slide stage{" is-active" if i == 0 else ""}" role="group" aria-roledescription="slide" aria-label="{i + 1} of {n}: {esc(p["name"])}"{hidden}>
+  {stage_bg(p.get("hero_bg", photo), sharp=bool(p.get("hero_bg")))}
+  <div class="wrap stage-grid">
+    <div class="stage-copy">
+      <p class="eyebrow">Featured story <span class="feat-count">{count}</span></p>
+      <h2 class="feat-name"><span>{esc(p["first"])}</span>{esc(last_name(p))}</h2>
+      <p class="feat-meta">{esc(p["position"])} · {esc(p["origin"])}</p>
+      <p class="feat-tagline">{esc(p.get("tagline", ""))}</p>
+      <p class="serif-quote">&ldquo;{esc(p["short_quote"])}&rdquo;</p>
+      {now_html(p)}
+      <div class="btn-row"><a class="btn" href="/stories/{p["id"]}/">Meet {esc(p["first"])} {ARROW}</a>{vid}</div>
+    </div>
+    <figure class="stage-photo tilt" data-tilt-max="5">{picture(photo, photo_alt(p, photo), "(min-width: 900px) 460px, 100vw", eager=(i == 0), position=photo_pos(p, photo))}<span class="pcard-glare" aria-hidden="true"></span></figure>
+  </div>
+</div>''')
+        cur = "true" if i == 0 else "false"
+        dots.append(f'<button type="button" class="feat-dot" aria-label="Show {esc(p["name"])}" aria-current="{cur}"><span>{esc(p["first"])}</span></button>')
+    return f'''<section class="feature" data-feature aria-roledescription="carousel" aria-label="Featured players">
+  <h1 class="visually-hidden">Player Stories</h1>
+  <div class="feat-slides">{"".join(slides)}</div>
+  <div class="feat-ctrl"><div class="wrap feat-ctrl-in">
+    <div class="feat-dots">{"".join(dots)}</div>
+    <div class="feat-btns">
+      <button type="button" class="feat-btn" data-feat="-1" aria-label="Previous player">&larr;</button>
+      <button type="button" class="feat-btn feat-pause" aria-pressed="false" aria-label="Pause rotation"><span aria-hidden="true">II</span></button>
+      <button type="button" class="feat-btn" data-feat="1" aria-label="Next player">&rarr;</button>
+    </div>
   </div></div>
 </section>'''
 
 
 def roster():
-    cards = "\n".join(photo_card(p, "roster-card") for p in PLAYERS)
-    return f'<div class="roster">{cards}</div>'
+    return lineup("All players")
+
+
+def player_table():
+    rows = []
+    for p in PLAYERS:
+        film = []
+        if p.get("interview"):
+            film.append(f'<a href="https://www.youtube.com/watch?v={p["interview"]}" target="_blank" rel="noopener">Interview</a>')
+        for n, h in enumerate([x for x in (p.get("highlight"), p.get("highlight2")) if x]):
+            film.append(f'<a href="https://www.youtube.com/watch?v={h}" target="_blank" rel="noopener">Highlights{" " + str(n + 1) if p.get("highlight2") else ""}</a>')
+        rows.append(f'<tr><th scope="row"><a href="/stories/{p["id"]}/">{esc(p["name"])}</a></th>'
+                    f'<td data-k="Position">{esc(p["position"])}</td><td data-k="From">{esc(p["origin"])}</td>'
+                    f'<td data-k="Team">{esc(p.get("now", ""))}</td><td class="film" data-k="Film">{" · ".join(film)}</td></tr>')
+    return f'''<div class="table-wrap" tabindex="0" role="region" aria-label="Players at a glance">
+<table class="stats-table glance-table">
+  <thead><tr><th scope="col">Player</th><th scope="col">Position</th><th scope="col">From</th><th scope="col">Current or latest team</th><th scope="col">Film</th></tr></thead>
+  <tbody>{"".join(rows)}</tbody>
+</table></div>'''
 
 
 def video(vid, label, name):
     return (f'<figure class="video"><button type="button" class="yt" data-id="{vid}" aria-label="Play {esc(label)}: {esc(name)}">'
-            f'<span class="play" aria-hidden="true"></span><span class="yt-label">{esc(label)}</span></button>'
+            f'<span class="play" aria-hidden="true"></span></button><figcaption>{esc(label)}</figcaption>'
             f'<noscript><a href="https://www.youtube.com/watch?v={vid}">Watch on YouTube</a></noscript></figure>')
 
 
@@ -179,101 +242,109 @@ def season_table(p):
 
 
 def profile_body(p, idx):
-    ph = p["photos"]
     next_p = PLAYERS[(idx + 1) % len(PLAYERS)]
-    facts = "".join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in p.get("key", []))
+    first = esc(p["first"])
+    key = p.get("key", [])
+    facts = "".join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in key)
     counters = "".join(f'<div class="counter"><b data-count-to="{esc(s["n"])}">{esc(s["n"])}</b><span>{esc(s["l"])}</span></div>' for s in p["stats"])
     vids = []
     if p.get("interview"):
         vids.append(video(p["interview"], "Full interview", p["name"]))
-    if p.get("highlight"):
-        vids.append(video(p["highlight"], "Highlight reel", p["name"]))
+    hl = [x for x in (p.get("highlight"), p.get("highlight2")) if x]
+    for n, h in enumerate(hl):
+        vids.append(video(h, "Highlight reel" + (f" {n + 1}" if len(hl) > 1 else ""), p["name"]))
     sections = p["sections"]
     intro = "".join(f"<p>{esc(x)}</p>" for x in sections[0]["p"])
     rest = "".join(f'<h3>{esc(s["h"])}</h3>' + "".join(f"<p>{esc(x)}</p>" for x in s["p"]) for s in sections[1:])
     quotes = "".join(f'<blockquote class="qcard"><p>&ldquo;{esc(q)}&rdquo;</p><cite>{esc(p["name"])}</cite></blockquote>' for q in p.get("quotes", []))
     path = "".join(f'<li><b>{esc(c["club"])}</b><span>{esc(c["level"])}</span><p>{esc(c["detail"])}</p></li>' for c in reversed(p["career"]))
     honours = "".join(f"<li>{esc(h)}</li>" for h in p["honours"])
-    info = "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in p["facts"])
+    # Details not already shown in the hero fact bar
+    shown = {v.lower() for _, v in key} | {k.lower() for k, _ in key}
+    extra = [(k, v) for k, v in p["facts"] if k.lower() not in shown and v.lower() not in shown]
+    info = "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in extra)
     sources = "".join(f'<li><a href="{esc(u)}" target="_blank" rel="noopener">{esc(l)}</a></li>' for l, u in p.get("sources", []))
-    sources_html = f'<div class="aside-block"><h3 class="aside-h">Official sources</h3><ul class="src-list">{sources}</ul></div>' if sources else ""
     resume = (f'<a class="util" href="{p["resume"]}" target="_blank" rel="noopener">Résumé (PDF)</a>' if p.get("resume") else "")
     contact = f'/partners/?type=club&amp;player={esc(p["name"]).replace(" ", "+")}#inquiry'
-    status = f'<p class="status"><span class="dot" aria-hidden="true"></span>{esc(p["status"])}</p>' if p.get("status") else ""
     head = (f'<div class="phero-head">{picture(p["headshot"], p["name"] + " official headshot", "92px")}</div>' if p.get("headshot") else "")
-    gallery = "".join(f'<div class="ph">{picture(n, photo_alt(p, n), "(min-width: 960px) 22vw, 33vw", position=photo_pos(p, n))}</div>' for n in ph[:3])
-    video_feature = (f'<div>{vids[0]}</div>' if vids else f'<div class="gallery3" style="margin-top:0">{gallery}</div>')
+    gallery = "".join(f'<div class="ph tilt" data-tilt-max="4">{picture(n, photo_alt(p, n), "(min-width: 1000px) 260px, 45vw", position=photo_pos(p, n))}</div>' for n in p["photos"][:3])
+    hero = p["hero_photo"]
+    watch = '<a class="btn btn--outline-light" href="#video">&#9654; Watch film</a>' if vids else ""
 
-    tabs = [("story", "Story")]
-    if p.get("seasons"):
-        tabs.append(("stats", "Stats"))
-    tabs += [("career", "Career"), ("honours", "Honours & info")]
-    if vids:
-        tabs.append(("video", "Video"))
-    tabbar = "".join(f'<button type="button" role="tab" id="tab-{i}" aria-controls="{i}" aria-selected="{"true" if n == 0 else "false"}" tabindex="{0 if n == 0 else -1}">{l}</button>' for n, (i, l) in enumerate(tabs))
+    film = (f'''<section class="section film" id="video" aria-labelledby="film-h">
+  <div class="wrap">
+    <div class="head-row"><h2 class="h2" id="film-h">Watch {first}.</h2><p>{"Full interview and highlights." if len(vids) > 1 else "Full interview."}</p></div>
+    <div class="videos videos--{min(len(vids), 3)}">{"".join(vids)}</div>
+  </div>
+</section>''' if vids else "")
 
-    stats_panel = (f'''<section class="tabpanel" id="stats" role="tabpanel" aria-labelledby="tab-stats" hidden><div class="wrap">
-  <h2 class="h2 mb-0" style="margin-bottom:28px">Season by season.</h2>{season_table(p)}</div></section>''' if p.get("seasons") else "")
-    video_panel = (f'''<section class="tabpanel" id="video" role="tabpanel" aria-labelledby="tab-video" hidden><div class="wrap">
-  <div class="videos {"videos--2" if len(vids) > 1 else ""}">{"".join(vids)}</div></div></section>''' if vids else "")
+    table = season_table(p) if p.get("seasons") else ""
+    glance_left = (f'<div><h3 class="aside-h">Season by season</h3>{table}</div>' if table else "")
 
     return f'''<article class="profile" aria-labelledby="pname">
-<section class="phero">
-  <div class="phero-photo">{picture(p["hero_photo"], photo_alt(p, p["hero_photo"]), "(min-width: 900px) 62vw, 100vw", eager=True, position=p.get("hero_pos", ""))}</div>
-  <div class="wrap phero-inner">
+<section class="stage stage--profile">
+  {stage_bg(p.get("hero_bg", hero), sharp=bool(p.get("hero_bg")))}
+  <div class="wrap">
     <a class="back-link" href="/stories/">&larr; All players</a>
-    <div class="phero-copy">
-      {head}
-      <p class="eyebrow">{esc(p["position"])} · {esc(p["origin"])}</p>
-      <h1 class="display" id="pname">{esc(p["name"])}</h1>
-      <p class="serif-quote">&ldquo;{esc(p["short_quote"])}&rdquo;</p>
-      {status}
-      <div class="btn-row no-print"><a class="btn" href="{contact}">Contact about {esc(p["first"])} {ARROW}</a>{('<a class="btn btn--outline-light" href="#video" data-open-tab="video">&#9654; Watch interview</a>' if vids else '')}</div>
+    <div class="stage-grid">
+      <div class="stage-copy">
+        {head}
+        <p class="eyebrow">{esc(p["position"])} · {esc(p["origin"])}</p>
+        <h1 class="display" id="pname">{esc(p["name"])}</h1>
+        {now_html(p)}
+        <p class="feat-tagline">{esc(p.get("tagline", ""))}</p>
+        <p class="serif-quote">&ldquo;{esc(p["short_quote"])}&rdquo;</p>
+        <div class="btn-row no-print"><a class="btn" href="{contact}">Contact about {first} {ARROW}</a>{watch}</div>
+      </div>
+      <figure class="stage-photo tilt" data-tilt-max="5">{picture(hero, photo_alt(p, hero), "(min-width: 900px) 460px, 100vw", eager=True, position=p.get("hero_pos", ""))}<span class="pcard-glare" aria-hidden="true"></span></figure>
     </div>
     <div class="factbar"><dl>{facts}</dl><div class="util-row no-print" style="margin:0"><button type="button" class="util" data-share>Share</button><button type="button" class="util" data-print>Save as PDF</button>{resume}</div></div>
   </div>
 </section>
 
-<section class="section section--tight" aria-label="Highlights">
-  <div class="wrap"><div class="counters" style="margin-top:0">{counters}</div></div>
+{film}
+
+<section class="section section--mint" id="stats" aria-labelledby="glance-h">
+  <div class="wrap">
+    <h2 class="h2" id="glance-h">At a glance.</h2>
+    <div class="counters">{counters}</div>
+    <div class="glance-grid{" glance-grid--one" if not table else ""}">
+      {glance_left}
+      <div class="aside-block" id="honours"><h3 class="aside-h">Honours &amp; achievements</h3><ul class="honours">{honours}</ul><p class="as-of mt-s">{esc(p["as_of"])}</p></div>
+    </div>
+  </div>
 </section>
 
-<div class="ptabbar no-print" data-tabs><div class="wrap" role="tablist" aria-label="Profile sections">{tabbar}</div></div>
+<section class="section" id="career" aria-labelledby="path-h">
+  <div class="wrap">
+    <h2 class="h2" id="path-h" style="margin-bottom:36px">The path so far.</h2>
+    <ol class="path">{path}</ol>
+  </div>
+</section>
 
-<section class="tabpanel" id="story" role="tabpanel" aria-labelledby="tab-story"><div class="wrap">
-  <div class="story-grid">
-    {video_feature}
+<section class="section section--tight" id="story" aria-labelledby="story-h">
+  <div class="wrap story-grid">
     <div class="prose">
-      <h2 class="h2" style="margin-bottom:14px">His story.</h2>
+      <h2 class="h2" id="story-h" style="margin-bottom:14px">His story.</h2>
       <p class="story-lede">{esc(p.get("headline", ""))}</p>
       {intro}
       <details class="more"><summary>Read his full story</summary><div class="more-body">{rest}</div></details>
+      {('<div class="quote-stack">' + quotes + '</div>') if quotes else ""}
     </div>
+    <div class="mosaic">{gallery}</div>
   </div>
-  {('<div class="tiles mt-l">' + quotes + '</div>') if quotes else ""}
-  {('<div class="gallery3">' + gallery + '</div>') if vids else ""}
-</div></section>
+</section>
 
-{stats_panel}
-
-<section class="tabpanel" id="career" role="tabpanel" aria-labelledby="tab-career" hidden><div class="wrap">
-  <h2 class="h2" style="margin-bottom:32px">The path so far.</h2>
-  <ol class="path">{path}</ol>
-</div></section>
-
-<section class="tabpanel" id="honours" role="tabpanel" aria-labelledby="tab-honours" hidden><div class="wrap profile-cols">
-  <div class="aside-block"><h3 class="aside-h">Honours &amp; achievements</h3><ul class="honours">{honours}</ul></div>
-  <div class="profile-side">
-    <div class="aside-block"><h3 class="aside-h">Player info</h3><dl class="facts">{info}</dl><p class="as-of mt-s">{esc(p["as_of"])}</p></div>
-    {sources_html}
+<section class="section section--tight info-band" aria-labelledby="info-h">
+  <div class="wrap info-row">
+    {f'<div><h3 class="aside-h" id="info-h">Player details</h3><dl class="facts facts--grid">{info}</dl></div>' if info else '<h3 class="visually-hidden" id="info-h">Sources</h3>'}
+    {f'<div><h3 class="aside-h">Official sources</h3><ul class="src-list">{sources}</ul></div>' if sources else ""}
   </div>
-</div></section>
-
-{video_panel}
+</section>
 
 <section class="cta-band no-print" aria-labelledby="pcta">
   <div class="wrap inner">
-    <h2 class="h2" id="pcta">Interested in {esc(p["first"])}?</h2>
+    <h2 class="h2" id="pcta">Interested in {first}?</h2>
     <div class="btn-row">
       <a class="btn btn--dark" href="{contact}">Contact The 91st</a>
       <a class="btn btn--light" href="/stories/{next_p["id"]}/">Next: {esc(next_p["name"])} &rarr;</a>
@@ -320,6 +391,7 @@ BLOCKS = {
     "players_rail": players_rail,
     "roster": roster,
     "featured_story": featured_story,
+    "player_table": player_table,
     "resources": resources,
     "resource_nav": resource_nav,
     "player_count": lambda: str(len(PLAYERS)),
