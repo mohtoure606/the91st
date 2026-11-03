@@ -435,6 +435,44 @@
     if (location.hash === "#find") { input.focus({ preventScroll: true }); }
   });
 
+  /* ---------- Home banner: rotating player photos ---------- */
+  document.querySelectorAll("[data-rotator]").forEach(function (root) {
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".rot-slide"));
+    var bgs = Array.prototype.slice.call(document.querySelectorAll("[data-rotator-bg] .rot-bg"));
+    if (slides.length < 2) return;
+    var i = 0, timer = null, paused = reduce, hold = false;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      var len = slides.length;
+      slides.forEach(function (s, k) {
+        var d = (k - i + len) % len, on = d === 0;
+        s.classList.toggle("is-active", on);
+        s.classList.toggle("is-next", d === 1);
+        s.classList.toggle("is-next2", d === 2 && len > 3);
+        s.classList.toggle("is-prev", d === len - 1 && len > 2);
+        if (on) { s.removeAttribute("aria-hidden"); s.removeAttribute("tabindex"); }
+        else { s.setAttribute("aria-hidden", "true"); s.setAttribute("tabindex", "-1"); }
+      });
+      bgs.forEach(function (b, k) { b.classList.toggle("is-active", k === i); });
+    }
+    function schedule() {
+      clearTimeout(timer);
+      root.classList.remove("run");
+      void root.offsetWidth;
+      if (!paused && !hold) {
+        root.classList.add("run");
+        timer = setTimeout(function () { show(i + 1); schedule(); }, 5000);
+      }
+    }
+    root.addEventListener("mouseenter", function () { hold = true; schedule(); });
+    root.addEventListener("mouseleave", function () { hold = false; schedule(); });
+    root.addEventListener("focusin", function () { hold = true; schedule(); });
+    root.addEventListener("focusout", function (e) { if (!root.contains(e.relatedTarget)) { hold = false; schedule(); } });
+    document.addEventListener("visibilitychange", function () { hold = document.hidden; schedule(); });
+    show(0);
+    schedule();
+  });
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

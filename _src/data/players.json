@@ -237,7 +237,12 @@
     "tagline": "All-WAC midfielder from the Real Salt Lake Academy",
     "now_label": "Latest",
     "now": "Utah United (2025)",
-    "feature_photo": "alejandro-night"
+    "feature_photo": "alejandro-night",
+    "home_photo": [
+      "alejandro-night",
+      "center 30%",
+      "Alejandro Silva on the ball in a night match"
+    ]
   },
   {
     "id": "gilles-aurelien",
@@ -427,7 +432,12 @@
     "tagline": "Southampton FC Academy to All-WAC midfielder",
     "now_label": "Latest",
     "now": "Utah Valley University (2025)",
-    "feature_photo": "gil-action"
+    "feature_photo": "gil-action",
+    "home_photo": [
+      "gil-headshot",
+      "center 18%",
+      "Gilles Aurelien smiling in his Utah Valley kit"
+    ]
   },
   {
     "id": "bony-ulrich",
@@ -649,7 +659,12 @@
     "now_label": "Now",
     "now": "Lindsey Wilson University · Junior",
     "feature_photo": "bony-action",
-    "highlight2": "klU09uNBaAU"
+    "highlight2": "klU09uNBaAU",
+    "home_photo": [
+      "bony-portrait",
+      "60% 30%",
+      "Bony Ulrich driving forward with the ball"
+    ]
   },
   {
     "id": "elijah-tenger",
@@ -836,7 +851,12 @@
     "tagline": "Two-time UPSL Mountain Division top scorer",
     "now_label": "Latest",
     "now": "Utah United (Summer 2026)",
-    "feature_photo": "elijah-training"
+    "feature_photo": "elijah-training",
+    "home_photo": [
+      "elijah-mural",
+      "center 22%",
+      "Elijah Tenger balancing a ball on his head in front of a painted mural"
+    ]
   },
   {
     "id": "sharif-sayawu",
@@ -1042,6 +1062,11 @@
       "sharif-slcc-run": "Sharif Sayawu, #29, signalling to a teammate during a Salt Lake CC match",
       "sharif-slcc-volley": "Sharif Sayawu striking a volley for Salt Lake CC"
     },
-    "hero_bg": "sharif-slcc-volley"
+    "hero_bg": "sharif-slcc-volley",
+    "home_photo": [
+      "sharif-slcc-run-tall",
+      "center 30%",
+      "Sharif Sayawu, #29, during a Salt Lake CC match"
+    ]
   }
 ]

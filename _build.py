@@ -221,6 +221,37 @@ def player_finder():
 </section>'''
 
 
+def hero_rotator():
+    """Home banner: rotating player photos (not their card photo). Name and position only; each links to the profile."""
+    order = [p["id"] for p in sorted(PLAYERS, key=lambda x: x["id"] != "elijah-tenger")]
+    byid = {p["id"]: p for p in PLAYERS}
+    slides = []
+    for n, pid in enumerate(order):
+        p = byid[pid]
+        hp = p.get("home_photo")
+        if not hp:
+            continue
+        name, pos, alt = hp
+        first = n == 0
+        hidden = "" if first else ' aria-hidden="true" tabindex="-1"'
+        slides.append(f'<a class="rot-slide{" is-active" if first else ""}" href="/stories/{p["id"]}/"{hidden}>'
+                      f'{picture(name, alt, "(min-width: 900px) 480px, 100vw", eager=first, position=pos)}'
+                      f'<span class="rot-cap"><b>{esc(p["name"])}</b><span>{esc(p.get("pos_short", p["position"]))}</span></span></a>')
+    return f'''<figure class="stage-photo stage-photo--tall stage-rot tilt" data-tilt-max="5" data-rotator aria-label="Our players">
+      {"".join(slides)}
+      <span class="pcard-glare" aria-hidden="true"></span>
+      <span class="rot-progress" aria-hidden="true"></span>
+    </figure>'''
+
+
+def hero_rotator_bg():
+    out = []
+    for n, p in enumerate(sorted(PLAYERS, key=lambda x: x["id"] != "elijah-tenger")):
+        if p.get("home_photo"):
+            out.append(f'<div class="rot-bg{" is-active" if n == 0 else ""}">{picture(p["home_photo"][0], "", "480px")}</div>')
+    return f'<div class="stage-bg" aria-hidden="true" data-rotator-bg>{"".join(out)}</div>'
+
+
 def player_table():
     rows = []
     for p in PLAYERS:
@@ -418,6 +449,8 @@ BLOCKS = {
     "roster": roster,
     "featured_story": featured_story,
     "player_table": player_table,
+    "hero_rotator": hero_rotator,
+    "hero_rotator_bg": hero_rotator_bg,
     "player_finder": player_finder,
     "resources": resources,
     "resource_nav": resource_nav,
@@ -450,7 +483,7 @@ def wrap_page(meta, body):
 
     active = meta.get("nav", "")
     cur = ' aria-current="page"'
-    nav = "\n".join(f'        <li><a href="{href}"{cur if key == active else ""}{' class="nav-feature"' if key == "stories" else ""}>{label}</a></li>' for key, href, label in NAV)
+    nav = "\n".join(f'        <li><a href="{href}"{cur if key == active else ""}>{label}</a></li>' for key, href, label in NAV)
     mnav = "\n".join(f'        <li><a class="mm-link" href="{href}"{cur if key == active else ""}>{label}</a></li>' for key, href, label in NAV)
 
     title = meta["title"]
