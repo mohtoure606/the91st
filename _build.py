@@ -111,7 +111,7 @@ def last_name(p):
 
 
 def now_html(p, cls="status"):
-    if not p.get("now"):
+    if not p.get("now") or p.get("now_label") == "Latest":
         return ""
     return f'<p class="{cls}"><span class="dot" aria-hidden="true"></span><b>{esc(p.get("now_label", "Now"))}:</b>&nbsp;{esc(p["now"])}</p>'
 
@@ -124,7 +124,7 @@ def vcard(p, sizes="(min-width: 1000px) 240px, 72vw"):
     <span class="pc-tag">{esc(p.get("pos_short", p["position"]))}</span>
     <span class="vcard-name"><span>{esc(p["first"])}</span>{esc(last_name(p))}</span>
     <span class="vcard-line">{esc(p.get("tagline", ""))}</span>
-    <span class="vcard-now"><span class="dot" aria-hidden="true"></span>{esc(p.get("now_label", "Now"))}: {esc(p.get("now", ""))}</span>
+    {now_html(p, "vcard-now").replace("<p ", "<span ").replace("</p>", "</span>")}
   </span>
   <span class="pcard-glare" aria-hidden="true"></span>
 </a>'''
