@@ -457,7 +457,12 @@
     }
     function schedule() {
       clearTimeout(timer);
-      if (!paused && !hold) timer = setTimeout(function () { show(i + 1); schedule(); }, 5000);
+      root.classList.remove("run");
+      void root.offsetWidth;
+      if (!paused && !hold) {
+        root.classList.add("run");
+        timer = setTimeout(function () { show(i + 1); schedule(); }, 5000);
+      }
     }
     root.addEventListener("mouseenter", function () { hold = true; schedule(); });
     root.addEventListener("mouseleave", function () { hold = false; schedule(); });

@@ -240,6 +240,7 @@ def hero_rotator():
     return f'''<figure class="stage-photo stage-photo--tall stage-rot tilt" data-tilt-max="5" data-rotator aria-label="Our players">
       {"".join(slides)}
       <span class="pcard-glare" aria-hidden="true"></span>
+      <span class="rot-progress" aria-hidden="true"></span>
     </figure>'''
 
 
