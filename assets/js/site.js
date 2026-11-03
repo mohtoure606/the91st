@@ -473,6 +473,25 @@
     schedule();
   });
 
+  /* ---------- Home hero depth (pointer parallax) ---------- */
+  document.querySelectorAll("[data-depth]").forEach(function (root) {
+    if (reduce || !window.matchMedia("(pointer: fine)").matches) return;
+    var layers = Array.prototype.slice.call(root.querySelectorAll("[data-layer]"));
+    var raf = null;
+    root.addEventListener("pointermove", function (e) {
+      var r = root.getBoundingClientRect();
+      var dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        layers.forEach(function (el) {
+          var d = parseFloat(el.getAttribute("data-layer")) || 0;
+          el.style.transform = "translate3d(" + (dx * d).toFixed(1) + "px," + (dy * d * 0.6).toFixed(1) + "px,0)";
+        });
+      });
+    });
+    root.addEventListener("pointerleave", function () { layers.forEach(function (el) { el.style.transform = ""; }); });
+  });
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
