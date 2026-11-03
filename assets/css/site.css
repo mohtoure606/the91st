@@ -1129,7 +1129,7 @@ body.menu-open { overflow: hidden; }
 .stage-cap a:hover { color: var(--green); }
 .feat-tagline { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 2vw, 26px); line-height: 1.05; color: var(--white); letter-spacing: .01em; }
 @media (min-width: 900px) {
-  .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 64px; min-height: clamp(560px, 78vh, 720px); padding: 56px 0 64px; }
+  .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 64px; min-height: clamp(560px, 78vh, 720px); padding-top: 56px; padding-bottom: 64px; }
   .stage--home .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); }
   .stage-photo { width: 100%; max-height: 640px; }
 }
@@ -1233,7 +1233,7 @@ body.menu-open { overflow: hidden; }
 .mini-steps li::before { content: counter(ms); width: 32px; height: 32px; border-radius: 50%; background: var(--forest); color: var(--green); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 17px; }
 .mini-steps b { color: var(--forest); }
 .stage--short .stage-grid { min-height: 0; }
-@media (min-width: 900px) { .stage--short .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); padding: 48px 0 56px; } .stage--short .stage-photo { aspect-ratio: 5 / 4.6; } }
+@media (min-width: 900px) { .stage--short .stage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); padding-top: 48px; padding-bottom: 56px; } .stage--short .stage-photo { aspect-ratio: 5 / 4.6; } }
 @media (max-width: 899px) { .stage--short .stage-photo { height: min(52vh, 420px); } }
 .values-h { color: var(--green); font-size: 22px; margin-bottom: 18px; }
 .values-list { display: grid; gap: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.2); }
@@ -1298,3 +1298,11 @@ body.menu-open { overflow: hidden; }
 .nav a.nav-feature::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 7px; vertical-align: 2px; box-shadow: 0 0 0 3px rgba(91,255,138,.3); }
 .stage-link { color: var(--green); font-weight: 600; font-size: 16px; text-decoration: none; border-bottom: 2px solid rgba(91,255,138,.5); padding-bottom: 2px; }
 .stage-link:hover { color: var(--white); border-bottom-color: var(--white); }
+/* Live progress on the featured player */
+.feat-dot { position: relative; }
+.feat-dot::after { content: ""; position: absolute; left: 0; top: -3px; height: 3px; width: 0; background: var(--white); }
+.feature.run .feat-dot[aria-current="true"]::after { animation: featProgress 7s linear forwards; }
+@keyframes featProgress { from { width: 0; } to { width: 100%; } }
+.feat-slide.is-active .stage-photo img { animation: featZoom 7.5s ease-out both; }
+@keyframes featZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .feature.run .feat-dot[aria-current="true"]::after, .feat-slide.is-active .stage-photo img { animation: none; } }

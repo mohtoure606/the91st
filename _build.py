@@ -29,9 +29,9 @@ MISSING = []
 REDIRECTS = {"/stories/elijah-tanger/": "/stories/elijah-tenger/"}
 
 NAV = [
-    ("stories", "/stories/", "Player Stories"),
+    ("stories", "/stories/", "Our Players"),
     ("mission", "/mission/", "Our Mission"),
-    ("players", "/players/", "For Players"),
+    ("players", "/players/", "Get Support"),
     ("partners", "/partners/", "Partnerships"),
     ("resources", "/resources/", "Resources"),
     ("involved", "/get-involved/", "Get Involved"),
@@ -164,7 +164,7 @@ def featured_story():
   {stage_bg(p.get("hero_bg", photo), sharp=bool(p.get("hero_bg")))}
   <div class="wrap stage-grid">
     <div class="stage-copy">
-      <p class="eyebrow">Featured story <span class="feat-count">{count}</span></p>
+      <p class="eyebrow">Featured player <span class="feat-count">{count}</span></p>
       <h2 class="feat-name"><span>{esc(p["first"])}</span>{esc(last_name(p))}</h2>
       <p class="feat-meta">{esc(p["position"])} · {esc(p["origin"])}</p>
       <p class="feat-tagline">{esc(p.get("tagline", ""))}</p>
@@ -178,7 +178,7 @@ def featured_story():
         cur = "true" if i == 0 else "false"
         dots.append(f'<button type="button" class="feat-dot" aria-label="Show {esc(p["name"])}" aria-current="{cur}"><span>{esc(p["first"])}</span></button>')
     return f'''<section class="feature" data-feature aria-roledescription="carousel" aria-label="Featured players">
-  <h1 class="visually-hidden">Player Stories</h1>
+  <h1 class="visually-hidden">Our Players</h1>
   <div class="feat-slides">{"".join(slides)}</div>
   <div class="feat-ctrl"><div class="wrap feat-ctrl-in">
     <div class="feat-dots">{"".join(dots)}</div>
