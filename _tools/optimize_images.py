@@ -72,3 +72,10 @@ for name, (fname, crop) in PHOTOS.items():
 base = ImageOps.exif_transpose(Image.open(SRC / "gil_action.jpg")).convert("RGB")
 og = ImageOps.fit(base, (1200, 630), Image.LANCZOS, centering=(0.5, 0.35))
 og.save(OUT / "og-default.jpg", "JPEG", quality=82, optimize=True)
+
+# Transparent cut-out of Elijah (home banner). Made with rembg (isnet-general-use) from elijah_mural.jpg.
+cut = Image.open(SRC / "elijah_mural_cutout.png").convert("RGBA")
+for w in (300, cut.width):
+    r = cut if w == cut.width else cut.resize((w, round(cut.height * w / cut.width)), Image.LANCZOS)
+    r.save(OUT / f"elijah-cutout-{w}.webp", "WEBP", quality=86, method=6)
+    r.save(OUT / f"elijah-cutout-{w}.png", optimize=True)
