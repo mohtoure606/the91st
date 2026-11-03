@@ -199,6 +199,7 @@
       var max = rail.scrollWidth - rail.clientWidth - 2;
       btns[0].disabled = rail.scrollLeft <= 2;
       btns[1].disabled = rail.scrollLeft >= max;
+      wrap.classList.toggle("no-overflow", max <= 2);
     }
     btns.forEach(function (b) {
       b.addEventListener("click", function () {
@@ -359,6 +360,75 @@
     var box = document.querySelector('input[name="interests"][value="' + map[need] + '"]');
     if (box) box.checked = true;
   }
+
+  /* ---------- Featured player rotation ---------- */
+  document.querySelectorAll("[data-feature]").forEach(function (root) {
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".feat-slide"));
+    var dots = Array.prototype.slice.call(root.querySelectorAll(".feat-dot"));
+    var pauseBtn = root.querySelector(".feat-pause");
+    if (slides.length < 2) return;
+    var i = 0, timer = null, paused = reduce, hold = false;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        var on = k === i;
+        s.classList.toggle("is-active", on);
+        if (on) s.removeAttribute("aria-hidden"); else s.setAttribute("aria-hidden", "true");
+      });
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", k === i ? "true" : "false"); });
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (!paused && !hold) timer = setTimeout(function () { show(i + 1); schedule(); }, 7000);
+    }
+    function setPaused(v) {
+      paused = v;
+      pauseBtn.setAttribute("aria-pressed", v ? "true" : "false");
+      pauseBtn.setAttribute("aria-label", v ? "Play rotation" : "Pause rotation");
+      schedule();
+    }
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); schedule(); }); });
+    root.querySelectorAll("[data-feat]").forEach(function (b) {
+      b.addEventListener("click", function () { show(i + parseInt(b.getAttribute("data-feat"), 10)); schedule(); });
+    });
+    pauseBtn.addEventListener("click", function () { setPaused(!paused); });
+    root.addEventListener("mouseenter", function () { hold = true; schedule(); });
+    root.addEventListener("mouseleave", function () { hold = false; schedule(); });
+    root.addEventListener("focusin", function () { hold = true; schedule(); });
+    root.addEventListener("focusout", function (e) { if (!root.contains(e.relatedTarget)) { hold = false; schedule(); } });
+    document.addEventListener("visibilitychange", function () { hold = document.hidden; schedule(); });
+    // Start on a different player each visit so every player gets featured.
+    show(Math.floor(Math.random() * slides.length));
+    setPaused(paused);
+  });
+
+  /* ---------- Find a player ---------- */
+  document.querySelectorAll("[data-finder]").forEach(function (input) {
+    var root = input.closest(".finder");
+    var empty = root.querySelector(".finder-empty");
+    var count = document.getElementById("find-count");
+    var items = Array.prototype.slice.call(document.querySelectorAll(".finder-results li, .lineup [data-search], .glance-table tr[data-search]"));
+    function run() {
+      var words = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      items.forEach(function (el) {
+        var text = el.getAttribute("data-search") || "";
+        var ok = words.every(function (w) { return text.indexOf(w) > -1; });
+        el.hidden = !ok;
+        if (ok && el.tagName === "LI") shown++;
+      });
+      empty.hidden = shown > 0;
+      if (count) count.textContent = words.length ? shown + (shown === 1 ? " player found" : " players found") : "";
+      document.querySelectorAll(".rail-wrap").forEach(function (w) { var r = w.querySelector(".rail"); if (r) r.dispatchEvent(new Event("scroll")); });
+    }
+    input.addEventListener("input", run);
+    input.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter") return;
+      var first = root.querySelector(".finder-results li:not([hidden]) a");
+      if (first) { e.preventDefault(); window.location.href = first.getAttribute("href"); }
+    });
+    if (location.hash === "#find") { input.focus({ preventScroll: true }); }
+  });
 
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

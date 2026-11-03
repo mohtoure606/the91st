@@ -5,25 +5,30 @@
   (function () { var ids = {{player_ids}}; var h = location.hash.slice(1).replace('elijah-tanger', 'elijah-tenger'); if (ids.indexOf(h) > -1) location.replace('/stories/' + h + '/'); })();
 </script>
 
+{{player_finder}}
+
 {{featured_story}}
 
-<section class="section" aria-labelledby="roster-h">
-  <div class="wrap">
+<section class="section section--mint" aria-labelledby="roster-h">
+  <div class="wrap wrap--wide">
     <div class="head-row">
-      <h2 class="h2 reveal" id="roster-h">Every player has a story.</h2>
-      <p class="reveal d1">Real players, in their own words.</p>
+      <div>
+        <p class="eyebrow reveal">The players</p>
+        <h2 class="h2 reveal d1" id="roster-h">Every player has a story.</h2>
+      </div>
+      <p class="reveal d2">Real players, in their own words. Tap a player for film, stats, and their path so far.</p>
     </div>
     {{roster}}
   </div>
 </section>
 
-<section class="section section--tight section--forest" aria-labelledby="now-title">
-  <div class="wrap split split--center">
-    <div class="reveal">
-      <p class="eyebrow">A new series</p>
-      <h2 class="h2" id="now-title">Where are they now?</h2>
+<section class="section section--tight" aria-labelledby="glance-h">
+  <div class="wrap">
+    <div class="head-row">
+      <h2 class="h2 reveal" id="glance-h">For clubs and coaches.</h2>
+      <p class="reveal d1">Every player at a glance, with links to their film.</p>
     </div>
-    <p class="lede reveal d1" style="color:rgba(255,255,255,.85)">We check back in with the players we've featured: the trials, new schools, first jobs, and the setbacks too. First updates soon on <a href="https://www.instagram.com/91stclub" target="_blank" rel="noopener" style="color:var(--green)">Instagram</a> and <a href="https://www.youtube.com/@91stclub" target="_blank" rel="noopener" style="color:var(--green)">YouTube</a>.</p>
+    <div class="reveal">{{player_table}}</div>
   </div>
 </section>
 

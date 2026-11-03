@@ -57,8 +57,8 @@
         "l": "All-WAC (program record)"
       },
       {
-        "n": "56",
-        "l": "Starts at Utah Valley, every match he played"
+        "n": "49",
+        "l": "Starts in 49 games at Utah Valley"
       },
       {
         "n": "4,000+",
@@ -89,7 +89,7 @@
         "note": "1st Team All-WAC · team leader in assists"
       },
       {
-        "season": "Fall 2021",
+        "season": "2021",
         "team": "Utah Valley University",
         "level": "NCAA D-I · WAC",
         "gp": "17",
@@ -98,28 +98,17 @@
         "a": "4",
         "min": "1,498",
         "note": "2nd Team All-WAC · WAC All-Freshman"
-      },
-      {
-        "season": "Spring 2021",
-        "team": "Utah Valley University",
-        "level": "NCAA D-I · WAC",
-        "gp": "7",
-        "gs": "7",
-        "g": "2",
-        "a": "3",
-        "min": "",
-        "note": "Honorable Mention All-WAC"
       }
     ],
     "seasons_total": {
       "season": "UVU total",
       "team": "",
       "level": "",
-      "gp": "56",
-      "gs": "56",
-      "g": "10",
-      "a": "17",
-      "min": "4,000+"
+      "gp": "49",
+      "gs": "49",
+      "g": "8",
+      "a": "14",
+      "min": "4,103"
     },
     "sections": [
       {
@@ -193,7 +182,6 @@
     "honours": [
       "All-WAC First Team (2022, 2023)",
       "All-WAC Second Team and WAC All-Freshman Team (2021)",
-      "All-WAC Honorable Mention (Spring 2021)",
       "Four All-WAC selections, a Utah Valley program record",
       "Preseason All-WAC (2023)",
       "WAC Top Play, goal vs Pacific (2023)",
@@ -245,7 +233,11 @@
     },
     "short_quote": "Adversity is a beautiful thing.",
     "hero_photo": "alejandro-portrait",
-    "hero_pos": "center 18%"
+    "hero_pos": "center 18%",
+    "tagline": "All-WAC midfielder from the Real Salt Lake Academy",
+    "now_label": "Latest",
+    "now": "Utah United (2025)",
+    "feature_photo": "alejandro-night"
   },
   {
     "id": "gilles-aurelien",
@@ -431,7 +423,11 @@
     "quotes": [],
     "short_quote": "I know it's not gonna be easy. But I'm not gonna stop here.",
     "hero_photo": "gil-headshot",
-    "hero_pos": "center 15%"
+    "hero_pos": "center 15%",
+    "tagline": "Southampton FC Academy to All-WAC midfielder",
+    "now_label": "Latest",
+    "now": "Utah Valley University (2025)",
+    "feature_photo": "gil-action"
   },
   {
     "id": "bony-ulrich",
@@ -464,9 +460,9 @@
       "NJCAA"
     ],
     "status": "Junior at Lindsey Wilson University (2026)",
-    "as_of": "Updated through October 29, 2026.",
+    "as_of": "Updated November 2, 2026. Lindsey Wilson stats through October 29, 2026.",
     "interview": "aEsXQxajIX0",
-    "highlight": "",
+    "highlight": "snQIdCkHZno",
     "key": [
       [
         "Position",
@@ -487,12 +483,12 @@
     ],
     "stats": [
       {
-        "n": "9",
-        "l": "Appearances for Lindsey Wilson, 2026"
+        "n": "5",
+        "l": "Goals for Salt Lake CC, 2024"
       },
       {
-        "n": "17",
-        "l": "Shots in 2026, 7 on target"
+        "n": "9",
+        "l": "Appearances for Lindsey Wilson, 2026"
       },
       {
         "n": "Age 9",
@@ -510,6 +506,17 @@
         "a": "1",
         "min": "",
         "note": "Through Oct 29, 2026 · 17 shots, 7 on goal"
+      },
+      {
+        "season": "2024",
+        "team": "Salt Lake Community College",
+        "level": "NJCAA · SWAC",
+        "gp": "16",
+        "gs": "11",
+        "g": "5",
+        "a": "1",
+        "min": "561",
+        "note": "From SLCC game-by-game log · 24 shots, 19 on goal"
       }
     ],
     "sections": [
@@ -557,7 +564,7 @@
       {
         "club": "Salt Lake Community College",
         "level": "NJCAA · 2024",
-        "detail": "Played the 2024 season."
+        "detail": "Sophomore forward, #10. Five goals in 16 games for the 2024 SWAC regular-season champions, who reached the NJCAA national tournament."
       },
       {
         "club": "FC Nordsjælland",
@@ -571,6 +578,9 @@
       }
     ],
     "honours": [
+      "SWAC regular-season champions, Salt Lake CC (2024)",
+      "NJCAA national tournament as the No. 3 seed, Salt Lake CC (2024)",
+      "Scored in the 2024 Region 18 semifinal win over USU Eastern",
       "Selected for Right to Dream Academy at age nine",
       "Played in more than 25 countries"
     ],
@@ -612,6 +622,18 @@
       [
         "Salt Lake CC Athletics roster",
         "https://slccbruins.com/sports/mens-soccer/roster/bony-ulrich/3018"
+      ],
+      [
+        "SLCC: Region 18 semifinal (Oct 31, 2024)",
+        "https://slccbruins.com/news/2024/10/31/no-1-salt-lake-mens-soccer-dominate-in-region-18-semi-final-victory.aspx"
+      ],
+      [
+        "SLCC: SWAC regular-season title (Oct 19, 2024)",
+        "https://slccbruins.com/news/2024/10/19/no-2-salt-lake-mens-soccer-clinch-regular-season-title-with-home-win.aspx"
+      ],
+      [
+        "SLCC: NJCAA national tournament (Nov 17, 2024)",
+        "https://slccbruins.com/news/2024/11/17/no-3-seed-salt-lake-mens-soccer-start-nationals-with-shootout-win.aspx"
       ]
     ],
     "resume": "",
@@ -622,7 +644,12 @@
     },
     "short_quote": "Don't give up on your dream.",
     "hero_photo": "bony-portrait",
-    "hero_pos": "center 25%"
+    "hero_pos": "center 25%",
+    "tagline": "Right to Dream winger, now at Lindsey Wilson",
+    "now_label": "Now",
+    "now": "Lindsey Wilson University · Junior",
+    "feature_photo": "bony-action",
+    "highlight2": "klU09uNBaAU"
   },
   {
     "id": "elijah-tenger",
@@ -805,7 +832,11 @@
       "elijah-match": "30% center",
       "elijah-mural": "center 20%",
       "elijah-training": "60% center"
-    }
+    },
+    "tagline": "Two-time UPSL Mountain Division top scorer",
+    "now_label": "Latest",
+    "now": "Utah United (Summer 2026)",
+    "feature_photo": "elijah-training"
   },
   {
     "id": "sharif-sayawu",
@@ -814,11 +845,13 @@
     "card_photo": "sharif-action",
     "photos": [
       "sharif-action",
-      "sharif-training"
+      "sharif-slcc-ball",
+      "sharif-trophies"
     ],
     "alts": [
-      "Sharif Sayawu, number 29, in a match for Utah Valley University",
-      "Sharif Sayawu during a match for Utah Valley University"
+      "Sharif Sayawu dribbling past a defender for Utah Valley",
+      "Sharif Sayawu controlling the ball for Salt Lake CC",
+      "Sharif Sayawu holding Salt Lake CC championship plaques in the locker room"
     ],
     "position": "Forward · #29",
     "origin": "Agona Duakwa, Ghana",
@@ -829,21 +862,21 @@
       "Salt Lake CC",
       "NJCAA"
     ],
-    "as_of": "Updated for the 2026 season.",
+    "as_of": "Updated November 2, 2026.",
     "interview": "qeZYiFEHOM8",
     "highlight": "PPRjL7l49Ds",
     "stats": [
       {
-        "n": "15",
-        "l": "Goals at Phoenix Academy, 2023"
+        "n": "5",
+        "l": "Goals for Salt Lake CC, 2026"
       },
       {
-        "n": "Best",
-        "l": "Player, 2024 Academy Showcase"
+        "n": "9",
+        "l": "Starts in 14 games, 2026"
       },
       {
-        "n": "2 ast",
-        "l": "In his first college game"
+        "n": "16-0-3",
+        "l": "SLCC record: SWAC and Region 18 champions"
       }
     ],
     "sections": [
@@ -876,7 +909,7 @@
       {
         "club": "Salt Lake Community College",
         "level": "NJCAA · 2026",
-        "detail": "Sophomore forward, #29."
+        "detail": "Sophomore forward, #29. Five goals in 14 games for the 2026 SWAC and Region 18 champions."
       },
       {
         "club": "Utah Valley University",
@@ -895,6 +928,8 @@
       }
     ],
     "honours": [
+      "Region 18 champions, Salt Lake CC (2026), qualified for NJCAA Nationals",
+      "SWAC regular-season champions, Salt Lake CC (2026)",
       "Best Player, Phoenix Academy Showcase (2024)",
       "Top goal scorer, Phoenix Academy (2023, 15 goals)",
       "2 assists in first collegiate game, Utah Valley University vs CSUB"
@@ -926,7 +961,7 @@
       ]
     ],
     "resume": "",
-    "headline": "Direct, 6'2\" forward from Ghana's Phoenix Academy, with NCAA Division I experience at Utah Valley. Now at Salt Lake Community College.",
+    "headline": "Direct, 6'2\" forward from Ghana's Phoenix Academy, with NCAA Division I experience at Utah Valley. Now scoring for Salt Lake Community College, the 2026 Region 18 champions.",
     "level": [
       "NCAA D-I"
     ],
@@ -952,6 +987,17 @@
     ],
     "seasons": [
       {
+        "season": "2026",
+        "team": "Salt Lake Community College",
+        "level": "NJCAA · SWAC",
+        "gp": "14",
+        "gs": "9",
+        "g": "5",
+        "a": "0",
+        "min": "558",
+        "note": "Through Oct 31, 2026 · 10 shots, 6 on goal"
+      },
+      {
         "season": "2025",
         "team": "Utah Valley University",
         "level": "NCAA D-I",
@@ -965,14 +1011,37 @@
     ],
     "sources": [
       [
-        "Salt Lake CC Athletics roster",
+        "SLCC roster",
         "https://slccbruins.com/sports/mens-soccer/roster/sharif--sayawu/3702"
+      ],
+      [
+        "SLCC 2026 statistics",
+        "https://slccbruins.com/sports/mens-soccer/stats/2026"
+      ],
+      [
+        "SLCC: Region 18 Championship (Oct 31, 2026)",
+        "https://slccbruins.com/news/2026/10/31/mens-soccer-salt-lake-men-soccer-win-region-18-championship.aspx"
+      ],
+      [
+        "SLCC: SWAC regular-season title (Oct 24, 2026)",
+        "https://slccbruins.com/news/2026/10/24/mens-soccer-salt-lake-earn-2026-swac-regular-season-championship.aspx"
       ]
     ],
     "quotes": [],
     "short_quote": "I left everything I knew. But I never left my dream.",
-    "hero_photo": "sharif-action",
+    "hero_photo": "sharif-slcc-run-tall",
     "hero_pos": "60% center",
-    "headshot": "sharif-slcc"
+    "headshot": "sharif-slcc",
+    "tagline": "Five goals for Region 18 champions Salt Lake CC",
+    "now_label": "Now",
+    "now": "Salt Lake CC · Sophomore",
+    "feature_photo": "sharif-slcc-run-tall",
+    "pos": {},
+    "photos_extra_alts": {
+      "sharif-slcc-run-tall": "Sharif Sayawu, #29, signalling to a teammate during a Salt Lake CC match",
+      "sharif-slcc-run": "Sharif Sayawu, #29, signalling to a teammate during a Salt Lake CC match",
+      "sharif-slcc-volley": "Sharif Sayawu striking a volley for Salt Lake CC"
+    },
+    "hero_bg": "sharif-slcc-volley"
   }
 ]

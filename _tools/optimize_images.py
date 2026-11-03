@@ -4,12 +4,13 @@ Originals in /images are left untouched (other sites may link to them).
 Run from the repo root:  python3 _tools/optimize_images.py
 Requires Pillow (pip install Pillow).
 """
+import re
 from pathlib import Path
 from PIL import Image, ImageOps
 
 SRC = Path("images")
 OUT = Path("assets/img")
-WIDTHS = [480, 960, 1440]
+WIDTHS = [480, 960, 1440, 2400]  # plus the source's own width when it is smaller than a step
 
 # name -> (source file, crop box as fractions (left, top, right, bottom) or None)
 # Sharif photos are Instagram screenshots; crop removes the mute icon bottom-right.
@@ -40,6 +41,15 @@ PHOTOS = {
     "elijah-training": ("elijah_training.jpg", None),
     "elijah-mural": ("elijah_mural.jpg", None),
     "sharif-slcc": ("sharif_slcc_headshot.jpg", None),
+    # Sharif at Salt Lake CC, 2026 (full-resolution originals from Mo's Drive)
+    "sharif-slcc-run": ("sharif_slcc_run.jpg", None),
+    "sharif-slcc-run-tall": ("sharif_slcc_run.jpg", (0.225, 0.08, 0.675, 0.92)),
+    "sharif-slcc-volley": ("sharif_slcc_volley.jpg", None),
+    "sharif-slcc-ball": ("sharif_slcc_ball.jpg", None),
+    "sharif-trophies": ("sharif_slcc_trophies.jpg", None),
+    # Stock photo: Jeffrey F Lin on Unsplash (Unsplash License, free to use)
+    # https://unsplash.com/photos/three-men-standing-on-football-field-pSHpFB5WNUE
+    "mentor": ("mentor_unsplash_jeffrey_f_lin.jpg", None),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)
@@ -48,12 +58,14 @@ for name, (fname, crop) in PHOTOS.items():
     if crop:
         w, h = im.size
         im = im.crop((int(crop[0] * w), int(crop[1] * h), int(crop[2] * w), int(crop[3] * h)))
-    for w in WIDTHS:
-        if w > im.width and w != WIDTHS[0]:
-            continue
+    steps = [w for w in WIDTHS if w < im.width] + [min(im.width, WIDTHS[-1])]
+    for old in OUT.glob(f"{name}-*.*"):
+        if re.fullmatch(rf"{re.escape(name)}-\d+\.(jpg|webp)", old.name):
+            old.unlink()
+    for w in sorted(set(steps)):
         r = im if im.width <= w else im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
-        r.save(OUT / f"{name}-{w}.webp", "WEBP", quality=78, method=6)
-        r.save(OUT / f"{name}-{w}.jpg", "JPEG", quality=80, optimize=True, progressive=True)
+        r.save(OUT / f"{name}-{w}.webp", "WEBP", quality=82, method=6)
+        r.save(OUT / f"{name}-{w}.jpg", "JPEG", quality=84, optimize=True, progressive=True)
     print(name, im.size)
 
 # Social sharing image (1200x630)
