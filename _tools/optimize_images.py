@@ -47,6 +47,9 @@ PHOTOS = {
     "sharif-slcc-volley": ("sharif_slcc_volley.jpg", None),
     "sharif-slcc-ball": ("sharif_slcc_ball.jpg", None),
     "sharif-trophies": ("sharif_slcc_trophies.jpg", None),
+    # Stock photo: Jeffrey F Lin on Unsplash (Unsplash License, free to use)
+    # https://unsplash.com/photos/three-men-standing-on-football-field-pSHpFB5WNUE
+    "mentor": ("mentor_unsplash_jeffrey_f_lin.jpg", None),
 }
 
 OUT.mkdir(parents=True, exist_ok=True)

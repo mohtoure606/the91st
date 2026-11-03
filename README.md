@@ -30,12 +30,15 @@ Each player in `_src/data/players.json` gets a shareable profile page at `/stori
 - `seasons`: one row per season; leave a value as `""` if it isn't confirmed. Cells stay empty, and a column that is empty for every season is hidden.
 - `sources`: links to official roster or stat pages.
 - `photos`: first one is the profile card; names refer to files in `assets/img/`.
+- `tagline`: one-line headline on the player card and profile. `now_label` ("Now" or "Latest") and `now`: current or most recent team.
+- `highlight` and `highlight2`: YouTube IDs for highlight reels (the second is optional).
+- `feature_photo`: photo used when the player is featured on Player Stories. `hero_bg`: optional high-resolution wide photo shown behind the profile header.
 - `short_quote` and `card_line`: the quote and path line shown on the player cards.
-- The first player in the list is the featured story on the Player Stories page.
+- The featured story on Player Stories rotates through every player. The "Find a player" search searches name, position, origin, and career clubs.
 - Renamed a player URL? Add the old path to `REDIRECTS` in `_build.py` so old links still work.
 
 ### Add a photo
-Put the original in `images/`, add a line to the `PHOTOS` list in `_tools/optimize_images.py`, run `python3 _tools/optimize_images.py`, then rebuild.
+Use the largest original you have (phone screenshots are about 1,200px wide, so they are shown framed, not full width). Put the original in `images/`, add a line to the `PHOTOS` list in `_tools/optimize_images.py`, run `python3 _tools/optimize_images.py`, then rebuild.
 
 ### Add a resource
 Add an item to the right category in `_src/data/resources.json`. Use `"status": "partner"` only for verified, formal partners who agreed to be listed; otherwise use `"public"`.

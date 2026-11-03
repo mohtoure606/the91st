@@ -118,7 +118,7 @@ def now_html(p, cls="status"):
 
 def vcard(p, sizes="(min-width: 1000px) 240px, 72vw"):
     """Tall player card: big name, position, short headline, current status."""
-    return f'''<a class="vcard tilt" href="/stories/{p["id"]}/">
+    return f'''<a class="vcard tilt" href="/stories/{p["id"]}/" data-search="{search_text(p)}">
   <span class="vcard-photo">{picture(p["card_photo"], photo_alt(p, p["card_photo"]), sizes, position=photo_pos(p, p["card_photo"]))}</span>
   <span class="vcard-cap">
     <span class="pc-tag">{esc(p.get("pos_short", p["position"]))}</span>
@@ -195,6 +195,32 @@ def roster():
     return lineup("All players")
 
 
+def search_text(p):
+    bits = [p["name"], p["position"], p.get("pos_short", ""), p["origin"], p.get("now", ""), p.get("tagline", "")]
+    bits += [c["club"] + " " + c["level"] for c in p.get("career", [])] + [v for _, v in p.get("key", [])]
+    return esc(" ".join(bits).lower())
+
+
+def player_finder():
+    items = "".join(
+        f'<li data-search="{search_text(p)}"><a href="/stories/{p["id"]}/">'
+        f'<span class="fr-thumb">{picture(p["card_photo"], "", "56px", position=photo_pos(p, p["card_photo"]))}</span>'
+        f'<span class="fr-txt"><b>{esc(p["name"])}</b><span>{esc(p.get("pos_short", p["position"]))} · {esc(p.get("now", ""))}</span></span>'
+        f'<span class="fr-go" aria-hidden="true">&rarr;</span></a></li>' for p in PLAYERS)
+    return f'''<section class="finder" id="find" aria-labelledby="find-h">
+  <div class="wrap finder-in">
+    <h2 class="finder-h" id="find-h">Find a player</h2>
+    <div class="finder-box">
+      <label class="visually-hidden" for="find-q">Search players by name, position, school, or country</label>
+      <input id="find-q" type="search" placeholder="Name, position, school, or country" autocomplete="off" data-finder aria-controls="find-results" aria-describedby="find-count">
+      <p class="visually-hidden" id="find-count" aria-live="polite"></p>
+    </div>
+    <ul class="finder-results" id="find-results">{items}</ul>
+    <p class="finder-empty" hidden>No players match that search. Try a position like &ldquo;forward&rdquo; or a school like &ldquo;Salt Lake&rdquo;.</p>
+  </div>
+</section>'''
+
+
 def player_table():
     rows = []
     for p in PLAYERS:
@@ -203,7 +229,7 @@ def player_table():
             film.append(f'<a href="https://www.youtube.com/watch?v={p["interview"]}" target="_blank" rel="noopener">Interview</a>')
         for n, h in enumerate([x for x in (p.get("highlight"), p.get("highlight2")) if x]):
             film.append(f'<a href="https://www.youtube.com/watch?v={h}" target="_blank" rel="noopener">Highlights{" " + str(n + 1) if p.get("highlight2") else ""}</a>')
-        rows.append(f'<tr><th scope="row"><a href="/stories/{p["id"]}/">{esc(p["name"])}</a></th>'
+        rows.append(f'<tr data-search="{search_text(p)}"><th scope="row"><a href="/stories/{p["id"]}/">{esc(p["name"])}</a></th>'
                     f'<td data-k="Position">{esc(p["position"])}</td><td data-k="From">{esc(p["origin"])}</td>'
                     f'<td data-k="Team">{esc(p.get("now", ""))}</td><td class="film" data-k="Film">{" · ".join(film)}</td></tr>')
     return f'''<div class="table-wrap" tabindex="0" role="region" aria-label="Players at a glance">
@@ -392,6 +418,7 @@ BLOCKS = {
     "roster": roster,
     "featured_story": featured_story,
     "player_table": player_table,
+    "player_finder": player_finder,
     "resources": resources,
     "resource_nav": resource_nav,
     "player_count": lambda: str(len(PLAYERS)),

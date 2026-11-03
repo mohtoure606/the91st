@@ -402,6 +402,34 @@
     setPaused(paused);
   });
 
+  /* ---------- Find a player ---------- */
+  document.querySelectorAll("[data-finder]").forEach(function (input) {
+    var root = input.closest(".finder");
+    var empty = root.querySelector(".finder-empty");
+    var count = document.getElementById("find-count");
+    var items = Array.prototype.slice.call(document.querySelectorAll(".finder-results li, .lineup [data-search], .glance-table tr[data-search]"));
+    function run() {
+      var words = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      items.forEach(function (el) {
+        var text = el.getAttribute("data-search") || "";
+        var ok = words.every(function (w) { return text.indexOf(w) > -1; });
+        el.hidden = !ok;
+        if (ok && el.tagName === "LI") shown++;
+      });
+      empty.hidden = shown > 0;
+      if (count) count.textContent = words.length ? shown + (shown === 1 ? " player found" : " players found") : "";
+      document.querySelectorAll(".rail-wrap").forEach(function (w) { var r = w.querySelector(".rail"); if (r) r.dispatchEvent(new Event("scroll")); });
+    }
+    input.addEventListener("input", run);
+    input.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter") return;
+      var first = root.querySelector(".finder-results li:not([hidden]) a");
+      if (first) { e.preventDefault(); window.location.href = first.getAttribute("href"); }
+    });
+    if (location.hash === "#find") { input.focus({ preventScroll: true }); }
+  });
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
