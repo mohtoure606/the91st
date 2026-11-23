@@ -91,6 +91,7 @@ def picture_directive(m):
 # ---------- data ----------
 PLAYERS = json.loads((SRC / "data/players.json").read_text())
 RESOURCES = json.loads((SRC / "data/resources.json").read_text())
+PARTNERS = json.loads((SRC / "data/partners.json").read_text())["partners"]
 ARROW = '<span class="arrow" aria-hidden="true">&rarr;</span>'
 
 
@@ -412,21 +413,90 @@ def profile_body(p, idx):
 
 
 
+def partner_feature(pt):
+    """Large featured card for a formal partner on the Resources page."""
+    from urllib.parse import quote
+    c = pt.get("contact") or {}
+    story = "".join(f"<p>{esc(t)}</p>" for t in pt.get("story", []))
+    facts = "".join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in pt.get("facts", []))
+    contact = ""
+    if c.get("email"):
+        mail = f'mailto:{c["email"]}' + (f'?subject={quote(c["subject"])}' if c.get("subject") else "")
+        contact = f'''<div class="pfeat-contact">
+        <div class="pfeat-contact-text">
+          <p class="pfeat-label">Get involved</p>
+          <p class="pfeat-person"><strong>{esc(c.get("name", ""))}</strong><span>{esc(c.get("role", ""))}</span></p>
+          {f'<p class="pfeat-note">{esc(c["note"])}</p>' if c.get("note") else ""}
+          <a class="pfeat-email" href="{esc(mail)}">{esc(c["email"])}</a>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="{esc(mail)}">Email {esc(c.get("name", "").split(" ")[0] or "them")} {ARROW}</a>
+          <a class="btn btn--ghost" href="{esc(pt["url"])}" target="_blank" rel="noopener">Visit {esc(pt.get("site_label", "website"))}</a>
+        </div>
+      </div>'''
+    return f'''<article class="pfeat reveal" id="partner-{esc(pt["id"])}" aria-labelledby="pf-{esc(pt["id"])}">
+  <div class="pfeat-media">
+    <a class="pfeat-crest tilt" data-tilt-max="8" href="{esc(pt["url"])}" target="_blank" rel="noopener" aria-label="{esc(pt["name"])} website (opens in a new tab)">
+      <img src="{esc(pt["logo"])}" alt="{esc(pt["name"])} crest" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy">
+      <span class="pcard-glare" aria-hidden="true"></span>
+    </a>
+    <p class="pfeat-ribbon">Official partner of The 91st</p>
+    {f'<p class="pfeat-since">Partner since {esc(pt["since"])}</p>' if pt.get("since") else ""}
+  </div>
+  <div class="pfeat-body">
+    <p class="eyebrow">{esc(pt.get("kicker", ""))}</p>
+    <h3 class="pfeat-name" id="pf-{esc(pt["id"])}">{esc(pt["name"])}</h3>
+    <p class="pfeat-tag">{esc(pt.get("tagline", ""))}</p>
+    <div class="pfeat-story">{story}</div>
+    {f'<dl class="pfeat-facts">{facts}</dl>' if facts else ""}
+    {contact}
+  </div>
+</article>'''
+
+
 def resources():
     out = []
     for c in RESOURCES["categories"]:
-        items = []
-        for it in c["items"]:
-            badge = ('<span class="badge badge--now">Verified partner</span>' if it["status"] == "partner"
-                     else '<span class="badge badge--public">Public resource</span>')
-            items.append(f'''<div class="res"><div class="res-top"><h3><a href="{esc(it["url"])}" target="_blank" rel="noopener">{esc(it["name"])}</a></h3>{badge}</div><p>{esc(it["desc"])}</p></div>''')
-        if not any(it["status"] == "partner" for it in c["items"]):
-            items.append('''<div class="empty"><p>Listings coming soon.</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>''')
-        out.append(f'''<section class="dir-cat" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
-  <div><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2><p class="mt-s">{esc(c["intro"])}</p></div>
-  <div class="dir-list">{"".join(items)}</div>
+        partners = [pt for pt in PARTNERS if pt.get("category") == c["id"]]
+        feats = "".join(partner_feature(pt) for pt in partners)
+        cards = "".join(
+            f'''<a class="res" href="{esc(it["url"])}" target="_blank" rel="noopener"><h3>{esc(it["name"])}</h3><p>{esc(it["desc"])}</p><span class="res-go">Visit site {ARROW}</span></a>'''
+            for it in c["items"])
+        body = feats
+        if cards:
+            body += (f'<p class="res-sub">More resources</p>' if feats else "") + f'<div class="res-grid">{cards}</div>'
+        if not body:
+            body = '''<div class="empty"><p>We're building partnerships in this area now. Know an organization players should hear about?</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>'''
+        count = len(partners)
+        label = f'<span class="dir-count">{count} partner{"s" if count != 1 else ""}</span>' if count else ""
+        out.append(f'''<section class="dir-cat{" dir-cat--featured" if feats else ""}" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
+  <div class="dir-head"><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2>{label}<p class="mt-s">{esc(c["intro"])}</p></div>
+  <div class="dir-list">{body}</div>
 </section>''')
     return "\n".join(out)
+
+
+def partner_strip():
+    """Logo strip above the footer on every page. Each logo links to the partner's site."""
+    if not PARTNERS:
+        return ""
+    per_set = max(8, len(PARTNERS))
+    seq = [PARTNERS[i % len(PARTNERS)] for i in range(per_set)]
+    def tile(pt, hidden):
+        attrs = ' aria-hidden="true" tabindex="-1"' if hidden else ""
+        return (f'<a class="pstrip-item" href="{esc(pt["url"])}" target="_blank" rel="noopener"{attrs}'
+                f' aria-label="{esc(pt["name"])} website (opens in a new tab)">'
+                f'<span class="pstrip-logo"><img src="{esc(pt["logo"])}" alt="" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy"></span>'
+                f'<span class="pstrip-name">{esc(pt["name"])}</span></a>')
+    first = "".join(tile(pt, i >= len(PARTNERS)) for i, pt in enumerate(seq))
+    second = "".join(tile(pt, True) for pt in seq)
+    return f'''<section class="pstrip no-print" aria-labelledby="pstrip-h" data-pstrip>
+  <div class="wrap pstrip-head">
+    <p class="eyebrow" id="pstrip-h">Our partners</p>
+    <a class="link-arrow" href="/partners/">Become a partner <span class="arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="pstrip-stage"><div class="pstrip-track">{first}{second}</div></div>
+</section>'''
 
 
 ICONS = {
@@ -506,6 +576,7 @@ def wrap_page(meta, body):
                  .replace("{{home_current}}", ' aria-current="page"' if meta["path"] == "/" else "")
                  .replace("{{jsonld}}", jsonld)
                  .replace("{{donate_url}}", DONATE_URL)
+                 .replace("{{partner_strip}}", partner_strip())
                  .replace("{{version}}", VERSION))
     if meta.get("noindex"):
         out = out.replace('<meta name="theme-color"', '<meta name="robots" content="noindex">\n<meta name="theme-color"')

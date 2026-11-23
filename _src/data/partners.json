@@ -1,0 +1,36 @@
+{
+  "_how_to_add": "One entry per formal partner (agreed to be listed). 'category' must match a category id in resources.json (football, education, career, wellbeing, transition). Put the logo in assets/img/partners/ (transparent PNG, about 240px tall). Every partner also appears in the logo strip above the footer on every page. Run python3 _build.py after editing.",
+  "partners": [
+    {
+      "id": "fc-ogden",
+      "name": "FC Ogden",
+      "category": "football",
+      "url": "https://fcogden.com/",
+      "site_label": "fcogden.com",
+      "since": "November 2026",
+      "logo": "/assets/img/partners/fc-ogden.png",
+      "logo_w": 181,
+      "logo_h": 240,
+      "kicker": "Partner club · Ogden, Utah",
+      "tagline": "A professional club built from the ground up, for Ogden.",
+      "story": [
+        "FC Ogden is building Ogden’s professional soccer club from the ground up. The club kicks off in UPSL Division 1 in spring 2028 and plans to earn its way up from there.",
+        "It is run for the community. FC Ogden keeps its books open to the public and never charges players to play.",
+        "For players finishing college soccer, that makes it a real place to keep competing in Northern Utah. The 91st and FC Ogden work together to connect those players with the club."
+      ],
+      "facts": [
+        ["Founded", "2026"],
+        ["First season", "UPSL Division 1, spring 2028"],
+        ["Home", "Ogden, Utah"],
+        ["Cost to play", "Free"]
+      ],
+      "contact": {
+        "name": "Derick Turner",
+        "role": "Founder & Executive Director",
+        "email": "derickt@fcogden.com",
+        "note": "Finishing college soccer and want to keep playing in Northern Utah? Reach out to Derick directly.",
+        "subject": "Interested in FC Ogden (via The 91st)"
+      }
+    }
+  ]
+}
