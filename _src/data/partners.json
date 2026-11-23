@@ -19,10 +19,18 @@
         "For players finishing college soccer, that makes it a real place to keep competing in Northern Utah. The 91st and FC Ogden work together to connect those players with the club."
       ],
       "facts": [
-        ["Founded", "2026"],
-        ["First season", "UPSL Division 1, spring 2028"],
-        ["Home", "Ogden, Utah"],
-        ["Cost to play", "Free"]
+        [
+          "Founded",
+          "2026"
+        ],
+        [
+          "First season",
+          "UPSL Division 1, spring 2028"
+        ],
+        [
+          "Home",
+          "Ogden, Utah"
+        ]
       ],
       "contact": {
         "name": "Derick Turner",
@@ -30,7 +38,8 @@
         "email": "derickt@fcogden.com",
         "note": "Finishing college soccer and want to keep playing in Northern Utah? Reach out to Derick directly.",
         "subject": "Interested in FC Ogden (via The 91st)"
-      }
+      },
+      "summary": "A community-run professional club in Ogden, Utah, kicking off in UPSL Division 1 in spring 2028."
     }
   ]
 }

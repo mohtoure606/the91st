@@ -414,8 +414,9 @@ def profile_body(p, idx):
 
 
 def partner_feature(pt):
-    """Large featured card for a formal partner on the Resources page."""
+    """Compact partner card on Resources: small logo, one-line summary, and a Learn more panel."""
     from urllib.parse import quote
+    pid = esc(pt["id"])
     c = pt.get("contact") or {}
     story = "".join(f"<p>{esc(t)}</p>" for t in pt.get("story", []))
     facts = "".join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in pt.get("facts", []))
@@ -423,30 +424,27 @@ def partner_feature(pt):
     if c.get("email"):
         mail = f'mailto:{c["email"]}' + (f'?subject={quote(c["subject"])}' if c.get("subject") else "")
         contact = f'''<div class="pfeat-contact">
-        <div class="pfeat-contact-text">
           <p class="pfeat-label">Get involved</p>
           <p class="pfeat-person"><strong>{esc(c.get("name", ""))}</strong><span>{esc(c.get("role", ""))}</span></p>
           {f'<p class="pfeat-note">{esc(c["note"])}</p>' if c.get("note") else ""}
           <a class="pfeat-email" href="{esc(mail)}">{esc(c["email"])}</a>
-        </div>
-        <div class="btn-row">
-          <a class="btn" href="{esc(mail)}">Email {esc(c.get("name", "").split(" ")[0] or "them")} {ARROW}</a>
-          <a class="btn btn--ghost" href="{esc(pt["url"])}" target="_blank" rel="noopener">Visit {esc(pt.get("site_label", "website"))}</a>
-        </div>
-      </div>'''
-    return f'''<article class="pfeat reveal" id="partner-{esc(pt["id"])}" aria-labelledby="pf-{esc(pt["id"])}">
-  <div class="pfeat-media">
-    <a class="pfeat-crest tilt" data-tilt-max="8" href="{esc(pt["url"])}" target="_blank" rel="noopener" aria-label="{esc(pt["name"])} website (opens in a new tab)">
-      <img src="{esc(pt["logo"])}" alt="{esc(pt["name"])} crest" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy">
-      <span class="pcard-glare" aria-hidden="true"></span>
-    </a>
-    <p class="pfeat-ribbon">Official partner of The 91st</p>
-    {f'<p class="pfeat-since">Partner since {esc(pt["since"])}</p>' if pt.get("since") else ""}
+          <div class="btn-row mt-s">
+            <a class="btn btn--sm" href="{esc(mail)}">Email {esc(c.get("name", "").split(" ")[0] or "them")} {ARROW}</a>
+            <a class="btn btn--sm btn--ghost" href="{esc(pt["url"])}" target="_blank" rel="noopener">Visit {esc(pt.get("site_label", "website"))}</a>
+          </div>
+        </div>'''
+    return f'''<article class="ptn-card" id="partner-{pid}" aria-labelledby="pc-{pid}">
+  <div class="ptn-row">
+    <a class="ptn-logo" href="{esc(pt["url"])}" target="_blank" rel="noopener" aria-label="{esc(pt["name"])} website (opens in a new tab)"><img src="{esc(pt["logo"])}" alt="{esc(pt["name"])} logo" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy"></a>
+    <div class="ptn-text">
+      <p class="ptn-kicker">{esc(pt.get("kicker", ""))}</p>
+      <h3 class="ptn-name" id="pc-{pid}">{esc(pt["name"])}</h3>
+      <p class="ptn-sum">{esc(pt.get("summary") or pt.get("tagline", ""))}</p>
+      <button type="button" class="ptn-toggle" aria-expanded="false" aria-controls="pc-more-{pid}"><span class="when-closed">Learn more</span><span class="when-open">Show less</span><span class="chev" aria-hidden="true"></span></button>
+    </div>
   </div>
-  <div class="pfeat-body">
-    <p class="eyebrow">{esc(pt.get("kicker", ""))}</p>
-    <h3 class="pfeat-name" id="pf-{esc(pt["id"])}">{esc(pt["name"])}</h3>
-    <p class="pfeat-tag">{esc(pt.get("tagline", ""))}</p>
+  <div class="ptn-more" id="pc-more-{pid}" hidden>
+    {f'<p class="pfeat-tag">{esc(pt["tagline"])}</p>' if pt.get("tagline") else ""}
     <div class="pfeat-story">{story}</div>
     {f'<dl class="pfeat-facts">{facts}</dl>' if facts else ""}
     {contact}
@@ -467,36 +465,34 @@ def resources():
             body += (f'<p class="res-sub">More resources</p>' if feats else "") + f'<div class="res-grid">{cards}</div>'
         if not body:
             body = '''<div class="empty"><p>We're building partnerships in this area now. Know an organization players should hear about?</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>'''
-        count = len(partners)
-        label = f'<span class="dir-count">{count} partner{"s" if count != 1 else ""}</span>' if count else ""
-        out.append(f'''<section class="dir-cat{" dir-cat--featured" if feats else ""}" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
-  <div class="dir-head"><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2>{label}<p class="mt-s">{esc(c["intro"])}</p></div>
+        out.append(f'''<section class="dir-cat" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
+  <div class="dir-head"><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2><p class="mt-s">{esc(c["intro"])}</p></div>
   <div class="dir-list">{body}</div>
 </section>''')
     return "\n".join(out)
 
 
 def partner_strip():
-    """Logo strip above the footer on every page. Each logo links to the partner's site."""
+    """Partner logos in the footer. Static while there is one partner; a 3D carousel once there are more."""
     if not PARTNERS:
         return ""
-    per_set = max(8, len(PARTNERS))
-    seq = [PARTNERS[i % len(PARTNERS)] for i in range(per_set)]
-    def tile(pt, hidden):
+    def tile(pt, hidden=False):
         attrs = ' aria-hidden="true" tabindex="-1"' if hidden else ""
         return (f'<a class="pstrip-item" href="{esc(pt["url"])}" target="_blank" rel="noopener"{attrs}'
                 f' aria-label="{esc(pt["name"])} website (opens in a new tab)">'
-                f'<span class="pstrip-logo"><img src="{esc(pt["logo"])}" alt="" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy"></span>'
+                f'<img src="{esc(pt["logo"])}" alt="" width="{pt.get("logo_w", 180)}" height="{pt.get("logo_h", 240)}" loading="lazy">'
                 f'<span class="pstrip-name">{esc(pt["name"])}</span></a>')
-    first = "".join(tile(pt, i >= len(PARTNERS)) for i, pt in enumerate(seq))
-    second = "".join(tile(pt, True) for pt in seq)
-    return f'''<section class="pstrip no-print" aria-labelledby="pstrip-h" data-pstrip>
-  <div class="wrap pstrip-head">
-    <p class="eyebrow" id="pstrip-h">Our partners</p>
-    <a class="link-arrow" href="/partners/">Become a partner <span class="arrow" aria-hidden="true">&rarr;</span></a>
-  </div>
-  <div class="pstrip-stage"><div class="pstrip-track">{first}{second}</div></div>
-</section>'''
+    if len(PARTNERS) == 1:
+        track, attr, cls = tile(PARTNERS[0]), "", " is-static"
+    else:
+        per_set = max(8, len(PARTNERS))
+        seq = [PARTNERS[i % len(PARTNERS)] for i in range(per_set)]
+        track = "".join(tile(pt, i >= len(PARTNERS)) for i, pt in enumerate(seq)) + "".join(tile(pt, True) for pt in seq)
+        attr, cls = " data-pstrip", ""
+    return f'''<div class="footer-partners pstrip{cls}"{attr}>
+        <h2>Our partners</h2>
+        <div class="pstrip-stage"><div class="pstrip-track">{track}</div></div>
+      </div>'''
 
 
 ICONS = {
