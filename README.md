@@ -40,8 +40,11 @@ Each player in `_src/data/players.json` gets a shareable profile page at `/stori
 ### Add a photo
 Use the largest original you have (phone screenshots are about 1,200px wide, so they are shown framed, not full width). Put the original in `images/`, add a line to the `PHOTOS` list in `_tools/optimize_images.py`, run `python3 _tools/optimize_images.py`, then rebuild.
 
+### Add a partner
+Formal partners (who agreed to be listed) go in `_src/data/partners.json`. Put a transparent PNG logo (about 240px tall) in `assets/img/partners/`. Each partner gets a featured card in its category on Resources and a tile in the logo strip above the footer on every page; the tile links to the partner's website. Rebuild after editing.
+
 ### Add a resource
-Add an item to the right category in `_src/data/resources.json`. Use `"status": "partner"` only for verified, formal partners who agreed to be listed; otherwise use `"public"`.
+Add an item to the right category in `_src/data/resources.json`. These are public resources we point to; formal partners go in `partners.json`.
 
 ## Forms
 All forms post to Formspree (`https://formspree.io/f/mlgavqpz`). Submissions arrive at the email connected to that Formspree form. To change the endpoint, edit `FORMSPREE` in `_build.py` and rebuild.

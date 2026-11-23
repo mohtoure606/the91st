@@ -492,6 +492,54 @@
     root.addEventListener("pointerleave", function () { layers.forEach(function (el) { el.style.transform = ""; }); });
   });
 
+  /* ---------- Partner logo strip: endless 3D carousel ---------- */
+  document.querySelectorAll("[data-pstrip]").forEach(function (strip) {
+    var stage = strip.querySelector(".pstrip-stage");
+    var track = strip.querySelector(".pstrip-track");
+    var items = Array.prototype.slice.call(track.children);
+    if (!items.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { strip.classList.add("is-static"); return; }
+    var x = 0, setW = 0, stageW = 0, centers = [], last = 0, paused = false, visible = false, raf = 0;
+    var SPEED = 38; /* px per second */
+    function measure() {
+      stageW = stage.clientWidth;
+      setW = track.scrollWidth / 2;
+      centers = items.map(function (el) { return el.offsetLeft + el.offsetWidth / 2; });
+    }
+    function paint() {
+      track.style.transform = "translate3d(" + x.toFixed(2) + "px,0,0)";
+      var half = stageW / 2 || 1;
+      for (var i = 0; i < items.length; i++) {
+        var d = (centers[i] + x - half) / half;          /* -1 left edge, 0 centre, 1 right edge */
+        if (d < -1.4 || d > 1.4) continue;
+        var c = Math.max(-1, Math.min(1, d));
+        var a = Math.abs(c);
+        items[i].style.transform = "rotateY(" + (-c * 38).toFixed(1) + "deg) translateZ(" + ((1 - a) * 70).toFixed(1) + "px) scale(" + (0.86 + (1 - a) * 0.14).toFixed(3) + ")";
+        items[i].style.opacity = (1 - a * 0.45).toFixed(2);
+      }
+    }
+    function frame(t) {
+      var dt = last ? Math.min(64, t - last) : 16; last = t;
+      if (!paused) { x -= SPEED * dt / 1000; if (-x >= setW) x += setW; }
+      paint();
+      raf = visible ? requestAnimationFrame(frame) : 0;
+    }
+    function start() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
+    measure(); paint();
+    strip.addEventListener("pointerenter", function () { paused = true; });
+    strip.addEventListener("pointerleave", function () { paused = false; });
+    strip.addEventListener("focusin", function () { paused = true; });
+    strip.addEventListener("focusout", function () { paused = false; });
+    window.addEventListener("resize", function () { measure(); paint(); });
+    window.addEventListener("load", function () { measure(); paint(); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) start();
+      }, { rootMargin: "120px" }).observe(strip);
+    } else { visible = true; start(); }
+  });
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
