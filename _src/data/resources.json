@@ -5,7 +5,14 @@
       "id": "football",
       "title": "Professional football",
       "intro": "Clubs, academies, trials, and development programs that offer real pathways for players finishing college soccer, in the United States and abroad.",
-      "items": []
+      "items": [
+        {
+          "name": "FC Ogden",
+          "status": "partner",
+          "url": "https://fcogden.com/",
+          "desc": "FC Ogden is building Ogden’s professional soccer club from the ground up, starting in UPSL Division 1 in spring 2028 and earning their way up. The club is community-driven, keeps its books open to the public, and never charges players to play. Post-college players looking to keep competing in Northern Utah are welcome to reach out through fcogden.com."
+        }
+      ]
     },
     {
       "id": "education",
