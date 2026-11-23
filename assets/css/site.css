@@ -1471,11 +1471,6 @@ body.menu-open { overflow: hidden; }
    Partners: compact card on Resources + logos in the footer
    ========================================================= */
 .dir-head .h3 { display: inline; }
-.dir-count {
-  display: inline-block; margin-left: 10px; vertical-align: 3px;
-  font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--forest); background: var(--green); padding: 3px 9px; border-radius: 999px;
-}
 .dir-list { gap: 16px; }
 .res-sub { margin: 14px 0 0; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 

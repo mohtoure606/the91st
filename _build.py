@@ -465,10 +465,8 @@ def resources():
             body += (f'<p class="res-sub">More resources</p>' if feats else "") + f'<div class="res-grid">{cards}</div>'
         if not body:
             body = '''<div class="empty"><p>We're building partnerships in this area now. Know an organization players should hear about?</p><a class="link-arrow" href="#suggest">Suggest a resource <span class="arrow" aria-hidden="true">&rarr;</span></a></div>'''
-        count = len(partners)
-        label = f'<span class="dir-count">{count} partner{"s" if count != 1 else ""}</span>' if count else ""
         out.append(f'''<section class="dir-cat" id="{c["id"]}" aria-labelledby="{c["id"]}-h">
-  <div class="dir-head"><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2>{label}<p class="mt-s">{esc(c["intro"])}</p></div>
+  <div class="dir-head"><h2 class="h3" id="{c["id"]}-h">{esc(c["title"])}</h2><p class="mt-s">{esc(c["intro"])}</p></div>
   <div class="dir-list">{body}</div>
 </section>''')
     return "\n".join(out)
