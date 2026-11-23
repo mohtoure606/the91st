@@ -492,7 +492,18 @@
     root.addEventListener("pointerleave", function () { layers.forEach(function (el) { el.style.transform = ""; }); });
   });
 
-  /* ---------- Partner logo strip: endless 3D carousel ---------- */
+  /* ---------- Partner card: Learn more ---------- */
+  document.querySelectorAll(".ptn-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+      btn.setAttribute("aria-expanded", String(open));
+      panel.hidden = !open;
+      btn.closest(".ptn-card").classList.toggle("is-open", open);
+    });
+  });
+
+  /* ---------- Partner logos: 3D carousel (only rendered when there are 2+ partners) ---------- */
   document.querySelectorAll("[data-pstrip]").forEach(function (strip) {
     var stage = strip.querySelector(".pstrip-stage");
     var track = strip.querySelector(".pstrip-track");
